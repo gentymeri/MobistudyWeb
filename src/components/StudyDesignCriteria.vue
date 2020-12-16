@@ -403,8 +403,8 @@ export default {
           })
         } else return []
       },
-      set: function (diseasesOpts) {
-        this.value.medications = diseasesOpts.map(x => {
+      set: function (medsOpts) {
+        this.value.medications = medsOpts.map(x => {
           return {
             term: x.label,
             conceptId: x.value,
@@ -425,6 +425,11 @@ export default {
         return
       }
       let concepts = await API.searchDiseaseConcept(diseaseDescription, 'en')
+      concepts.data = concepts.data.filter((concept) => {
+        if (!this.conceptIdExistsInArrayOfObjects(this.value.diseases, concept.conceptId)) {
+          return true
+        } else return false
+      })
       if (concepts.data.length) {
         console.log('Received diseases:', concepts)
         update(() => {
@@ -444,6 +449,11 @@ export default {
         return
       }
       let concepts = await API.searchMedicationConcept(medDescription, 'en')
+      concepts.data = concepts.data.filter((concept) => {
+        if (!this.conceptIdExistsInArrayOfObjects(this.value.medications, concept.conceptId)) {
+          return true
+        } else return false
+      })
       if (concepts.data.length) {
         update(() => {
           this.medsOptions = concepts.data.map((c) => {
@@ -455,6 +465,18 @@ export default {
           })
         })
       } else abort()
+    },
+    conceptIdExistsInArrayOfObjects (array, conceptId) {
+      let exists = false
+      console.log('Array to check', array)
+      // eslint-disable-next-line no-unused-vars
+      for (let [key, value] of array.entries()) {
+        console.log('Checking value:', value)
+        if (value.conceptId === conceptId) {
+          exists = true
+        }
+      }
+      return exists
     },
     clearDiseasesFilter () {
       if (this.$refs.diseasesSelect !== void 0) {
