@@ -157,14 +157,16 @@
           </div>
           <div class="col q-pl-sm">
             <q-select
+              ref="diseasesSelect"
               v-model="diseasesVue"
               use-input
               use-chips
               multiple
+              map-options
               :options="diseaseOptions"
               input-debounce="500"
               @filter="searchDisease"
-              @input="update()"
+              @input="clearFilter"
             >
               <template v-slot:no-option>
                 <q-item>
@@ -191,14 +193,17 @@
           </div>
           <div class="col q-pl-sm">
             <q-select
+              ref="medsSelect"
               v-model="medsVue"
               use-input
               use-chips
               multiple
+              map-options
+              emit-value
               :options="medsOptions"
               input-debounce="500"
               @filter="searchMeds"
-              @input="update()"
+              @input="clearFilter"
             >
               <template v-slot:no-option>
                 <q-item>
@@ -362,54 +367,9 @@ export default {
   data () {
     return {
       diseaseOptions: [],
-      medsOptions: []
-    }
-  },
-  computed: {
-    // these are used to map label and value to term and conceptId
-    diseasesVue: {
-      get: function () {
-        if (this.value.diseases && this.value.diseases.length) {
-          return this.value.diseases.map(x => {
-            return {
-              label: x.term,
-              value: x.conceptId,
-              vocabulary: x.vocabulary
-            }
-          })
-        } else return []
-      },
-      set: function (diseasesOpts) {
-        this.value.diseases = diseasesOpts.map(x => {
-          return {
-            term: x.label,
-            conceptId: x.value,
-            vocabulary: x.vocabulary
-          }
-        })
-      }
-    },
-    medsVue: {
-      get: function () {
-        if (this.value.medications && this.value.medications.length) {
-          return this.value.medications.map(x => {
-            return {
-              label: x.term,
-              value: x.conceptId,
-              vocabulary: x.vocabulary
-            }
-          })
-        } else return []
-      },
-      set: function (diseasesOpts) {
-        this.value.medications = diseasesOpts.map(x => {
-          return {
-            term: x.label,
-            conceptId: x.value,
-            vocabulary: x.vocabulary
-          }
-        })
-      }
+      medsOptions: [],
+      medsVue: [],
+      diseasesVue: []
     }
   },
   methods: {
@@ -423,11 +383,12 @@ export default {
         return
       }
       let concepts = await API.searchDiseaseConcept(diseaseDescription, 'en')
-      if (concepts.length) {
+      if (concepts.data.length) {
+        console.log('Received diseases:', concepts)
         update(() => {
-          this.diseaseOptions = concepts.map((c) => {
+          this.diseaseOptions = concepts.data.map((c) => {
             return {
-              label: c.name,
+              label: c.term,
               value: c.conceptId,
               vocabulary: c.vocabulary
             }
@@ -441,17 +402,24 @@ export default {
         return
       }
       let concepts = await API.searchMedicationConcept(medDescription, 'en')
-      if (concepts.length) {
+      if (concepts.data.length) {
         update(() => {
-          this.diseaseOptions = concepts.map((c) => {
+          this.medsOptions = concepts.data.map((c) => {
             return {
-              label: c.name,
+              label: c.term,
               value: c.conceptId,
               vocabulary: c.vocabulary
             }
           })
         })
       } else abort()
+    },
+    clearFilter () {
+      console.log('Calling clear filter')
+      if (this.$refs.diseasesSelect !== void 0 && this.$refs.medsSelect !== void 0) {
+        this.$refs.diseasesSelect.updateInputValue('')
+        this.$refs.medsSelect.updateInputValue('')
+      }
     },
     addRowCriteriaQuestion () {
       this.value.criteriaQuestions.push({
