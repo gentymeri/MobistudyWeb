@@ -162,11 +162,10 @@
               use-input
               use-chips
               multiple
-              map-options
               :options="diseaseOptions"
               input-debounce="500"
               @filter="searchDisease"
-              @input="clearFilter"
+              @input="clearDiseasesFilter"
             >
               <template v-slot:no-option>
                 <q-item>
@@ -198,12 +197,10 @@
               use-input
               use-chips
               multiple
-              map-options
-              emit-value
               :options="medsOptions"
               input-debounce="500"
               @filter="searchMeds"
-              @input="clearFilter"
+              @input="clearMedsFilter"
             >
               <template v-slot:no-option>
                 <q-item>
@@ -367,9 +364,54 @@ export default {
   data () {
     return {
       diseaseOptions: [],
-      medsOptions: [],
-      medsVue: [],
-      diseasesVue: []
+      medsOptions: []
+    }
+  },
+  computed: {
+    // these are used to map label and value to term and conceptId
+    diseasesVue: {
+      get: function () {
+        if (this.value.diseases && this.value.diseases.length) {
+          return this.value.diseases.map(x => {
+            return {
+              label: x.term,
+              value: x.conceptId,
+              vocabulary: x.vocabulary
+            }
+          })
+        } else return []
+      },
+      set: function (diseasesOpts) {
+        this.value.diseases = diseasesOpts.map(x => {
+          return {
+            term: x.label,
+            conceptId: x.value,
+            vocabulary: x.vocabulary
+          }
+        })
+      }
+    },
+    medsVue: {
+      get: function () {
+        if (this.value.medications && this.value.medications.length) {
+          return this.value.medications.map(x => {
+            return {
+              label: x.term,
+              value: x.conceptId,
+              vocabulary: x.vocabulary
+            }
+          })
+        } else return []
+      },
+      set: function (diseasesOpts) {
+        this.value.medications = diseasesOpts.map(x => {
+          return {
+            term: x.label,
+            conceptId: x.value,
+            vocabulary: x.vocabulary
+          }
+        })
+      }
     }
   },
   methods: {
@@ -414,12 +456,17 @@ export default {
         })
       } else abort()
     },
-    clearFilter () {
-      console.log('Calling clear filter')
-      if (this.$refs.diseasesSelect !== void 0 && this.$refs.medsSelect !== void 0) {
+    clearDiseasesFilter () {
+      if (this.$refs.diseasesSelect !== void 0) {
         this.$refs.diseasesSelect.updateInputValue('')
+      }
+      this.update()
+    },
+    clearMedsFilter () {
+      if (this.$refs.medsSelect !== void 0) {
         this.$refs.medsSelect.updateInputValue('')
       }
+      this.update()
     },
     addRowCriteriaQuestion () {
       this.value.criteriaQuestions.push({
