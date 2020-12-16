@@ -189,7 +189,7 @@ export default {
   },
   methods: {
     niceTimestamp (timeStamp) {
-      return date.formatDate(timeStamp, 'YYYY/MM/DD HH:mm:ss')
+      return date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm:ss')
     },
     async updateFilters () {
       this.loadLogs({
@@ -211,7 +211,7 @@ export default {
           userEmail: params.filter.userEmail,
           sortDirection: params.pagination.descending ? 'DESC' : 'ASC',
           offset: (params.pagination.page - 1) * params.pagination.rowsPerPage,
-          rowsPerPage: params.pagination.rowsPerPage
+          rowsPerPage: params.pagination.rowsPerPage === 0 ? undefined : params.pagination.rowsPerPage
         }
         this.pagination.rowsNumber = await API.getLogs(true, queryParams)
         this.logs = await API.getLogs(false, queryParams)
