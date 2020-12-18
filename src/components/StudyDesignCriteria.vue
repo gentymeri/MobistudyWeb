@@ -157,6 +157,7 @@
           </div>
           <div class="col q-pl-sm">
             <q-select
+              ref="diseasesSelect"
               v-model="diseasesVue"
               use-input
               use-chips
@@ -164,7 +165,7 @@
               :options="diseaseOptions"
               input-debounce="500"
               @filter="searchDisease"
-              @input="update()"
+              @input="clearDiseasesFilter"
             >
               <template v-slot:no-option>
                 <q-item>
@@ -191,6 +192,7 @@
           </div>
           <div class="col q-pl-sm">
             <q-select
+              ref="medsSelect"
               v-model="medsVue"
               use-input
               use-chips
@@ -198,7 +200,7 @@
               :options="medsOptions"
               input-debounce="500"
               @filter="searchMeds"
-              @input="update()"
+              @input="clearMedsFilter"
             >
               <template v-slot:no-option>
                 <q-item>
@@ -401,8 +403,8 @@ export default {
           })
         } else return []
       },
-      set: function (diseasesOpts) {
-        this.value.medications = diseasesOpts.map(x => {
+      set: function (medsOpts) {
+        this.value.medications = medsOpts.map(x => {
           return {
             term: x.label,
             conceptId: x.value,
@@ -423,11 +425,17 @@ export default {
         return
       }
       let concepts = await API.searchDiseaseConcept(diseaseDescription, 'en')
-      if (concepts.length) {
+      concepts.data = concepts.data.filter((concept) => {
+        if (!this.conceptIdExistsInArrayOfObjects(this.value.diseases, concept.conceptId)) {
+          return true
+        } else return false
+      })
+      if (concepts.data.length) {
+        console.log('Received diseases:', concepts)
         update(() => {
-          this.diseaseOptions = concepts.map((c) => {
+          this.diseaseOptions = concepts.data.map((c) => {
             return {
-              label: c.name,
+              label: c.term,
               value: c.conceptId,
               vocabulary: c.vocabulary
             }
@@ -441,17 +449,46 @@ export default {
         return
       }
       let concepts = await API.searchMedicationConcept(medDescription, 'en')
-      if (concepts.length) {
+      concepts.data = concepts.data.filter((concept) => {
+        if (!this.conceptIdExistsInArrayOfObjects(this.value.medications, concept.conceptId)) {
+          return true
+        } else return false
+      })
+      if (concepts.data.length) {
         update(() => {
-          this.diseaseOptions = concepts.map((c) => {
+          this.medsOptions = concepts.data.map((c) => {
             return {
-              label: c.name,
+              label: c.term,
               value: c.conceptId,
               vocabulary: c.vocabulary
             }
           })
         })
       } else abort()
+    },
+    conceptIdExistsInArrayOfObjects (array, conceptId) {
+      let exists = false
+      console.log('Array to check', array)
+      // eslint-disable-next-line no-unused-vars
+      for (let [key, value] of array.entries()) {
+        console.log('Checking value:', value)
+        if (value.conceptId === conceptId) {
+          exists = true
+        }
+      }
+      return exists
+    },
+    clearDiseasesFilter () {
+      if (this.$refs.diseasesSelect !== void 0) {
+        this.$refs.diseasesSelect.updateInputValue('')
+      }
+      this.update()
+    },
+    clearMedsFilter () {
+      if (this.$refs.medsSelect !== void 0) {
+        this.$refs.medsSelect.updateInputValue('')
+      }
+      this.update()
     },
     addRowCriteriaQuestion () {
       this.value.criteriaQuestions.push({
