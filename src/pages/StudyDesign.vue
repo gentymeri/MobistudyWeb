@@ -4,20 +4,79 @@
       <q-toolbar-title>
         Study Designer
       </q-toolbar-title>
-      <q-btn class="q-mr-md" v-show="studyKey && !studyDesign.publishedTS" color="negative" label="Delete Draft" @click="removeDraftStudy()"/>
-      <q-btn class="q-mr-md" v-show="!studyDesign.publishedTS" color="warning" label="Save Draft" @click="saveProgress()"/>
-      <q-btn class="float-right q-mr-md" v-show="!studyDesign.publishedTS" color="positive" label="Publish" @click="publish()"/>
-      <q-btn class="float-right q-mr-md" v-show="studyDesign.publishedTS" disabled color="blue" label="Published"/>
-      <q-btn class="float-right q-mr-md" round color="black" icon="close" @click="exitDesigner"/>
+      <q-btn
+        class="q-mr-md"
+        v-show="studyKey && !studyDesign.publishedTS"
+        color="negative"
+        label="Delete Draft"
+        @click="removeDraftStudy()"
+      />
+      <q-btn
+        class="q-mr-md"
+        v-show="!studyDesign.publishedTS"
+        color="warning"
+        label="Save Draft"
+        @click="saveProgress()"
+      />
+      <q-btn
+        class="float-right q-mr-md"
+        v-show="!studyDesign.publishedTS"
+        color="positive"
+        label="Publish"
+        @click="publish()"
+      />
+      <q-btn
+        class="float-right q-mr-md"
+        v-show="studyDesign.publishedTS"
+        disabled
+        color="blue"
+        label="Published"
+      />
+      <q-btn
+        class="float-right q-mr-md"
+        round
+        color="black"
+        icon="close"
+        @click="exitDesigner"
+      />
     </q-toolbar>
 
-    <q-tabs v-model="studyTab" class="bg-secondary text-grey-2 shadow-2" active-color="white" switch-indicator align="justify">
-      <q-tab name="tab-gen" icon="subject" label="Generalities" :class="$v.studyDesign.generalities.$error? 'text-red': ''"/>
-      <q-tab name="tab-crit" icon="fingerprint" label="Inclusion Criteria" :class="$v.studyDesign.inclusionCriteria.$error? 'text-red': ''"/>
-      <q-tab name="tab-tasks" icon="list" label="Tasks" :class="$v.studyDesign.tasks.$error? 'text-red': ''"/>
-      <q-tab name="tab-consent" icon="verified_user" label="Consent" :class="$v.studyDesign.consent.$error? 'text-red': ''"/>
+    <q-tabs
+      v-model="studyTab"
+      class="bg-secondary text-grey-2 shadow-2"
+      active-color="white"
+      switch-indicator
+      align="justify"
+    >
+      <q-tab
+        name="tab-gen"
+        icon="subject"
+        label="Generalities"
+        :class="$v.studyDesign.generalities.$error? 'text-red': ''"
+      />
+      <q-tab
+        name="tab-crit"
+        icon="fingerprint"
+        label="Inclusion Criteria"
+        :class="$v.studyDesign.inclusionCriteria.$error? 'text-red': ''"
+      />
+      <q-tab
+        name="tab-tasks"
+        icon="list"
+        label="Tasks"
+        :class="$v.studyDesign.tasks.$error? 'text-red': ''"
+      />
+      <q-tab
+        name="tab-consent"
+        icon="verified_user"
+        label="Consent"
+        :class="$v.studyDesign.consent.$error? 'text-red': ''"
+      />
     </q-tabs>
-    <q-tab-panels v-model="studyTab" animated>
+    <q-tab-panels
+      v-model="studyTab"
+      animated
+    >
       <q-tab-panel name="tab-gen">
         <study-design-generalities
           v-model="studyDesign.generalities"
@@ -45,8 +104,17 @@
         />
       </q-tab-panel>
     </q-tab-panels>
-    <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-      <q-btn class="shadow-10" fab icon="keyboard_arrow_up" color="secondary" />
+    <q-page-scroller
+      position="bottom-right"
+      :scroll-offset="150"
+      :offset="[18, 18]"
+    >
+      <q-btn
+        class="shadow-10"
+        fab
+        icon="keyboard_arrow_up"
+        color="secondary"
+      />
     </q-page-scroller>
   </q-page>
 </template>
@@ -74,8 +142,10 @@ export default {
       studyTab: 'tab-gen',
       studyDesign: {
         teamKey: '',
+        invitationCode: 'None',
         publishedTS: undefined,
         generalities: {
+          invitational: false,
           languages: ['en'],
           title: {
             en: '',
@@ -145,6 +215,7 @@ export default {
   validations: {
     studyDesign: {
       generalities: {
+        invitational: { required },
         languages: { required },
         title: { required },
         shortDescription: { required },
@@ -260,6 +331,20 @@ export default {
         })
       } else {
         if (this.checkValidation() !== false) {
+          // If the study is invitational only, generate a new invitational code.
+          if (this.studyDesign.generalities.invitational) {
+            try {
+              this.studyDesign.invitationCode = await API.getInvitationCode()
+              console.log('Retrieved invitation code:', this.studyDesign.invitationCode)
+            } catch (err) {
+              this.$q.notify({
+                color: 'negative',
+                position: 'bottom',
+                message: 'Error. Invitation code could not be generated.',
+                icon: 'report_problem'
+              })
+            }
+          }
           if (this.studyKey) {
             // If there is a studyKey, a draft exists
             try {
