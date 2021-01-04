@@ -38,7 +38,6 @@ If you use VS Code, follow the [recommended settings from Quasar](https://quasar
 
 Run `quasar build`. This will generate the material UI interfaces and make it available under `./dist/`
 
-
 ## Docker
 
 This only explains how to build and run the Docker instance of this project.
@@ -46,11 +45,13 @@ For the full setup including database and web interface, see the
 [Wiki](https://github.com/Mobistudy/MobistudyAPI/wiki/Docker-setup).
 
 Build the docker instance:
+
 ```bash
 docker build -t mobistudyweb .
 ```
 
 Then run it with:
+
 ```bash
 docker run -d -p 80:80 --name mobistudyweb mobistudyweb
 ```
@@ -65,10 +66,13 @@ Original idea: [Dario Salvi](https://github.com/dariosalvi78) and [Carmelo Velar
 Coordination: [Dario Salvi](https://github.com/dariosalvi78) and [Carl Magnus Olsson](https://github.com/Trasselkalle).
 
 Development:
+
 - [Dario Salvi](https://github.com/dariosalvi78)
 - [Arvind Goburdhun](https://github.com/arvgo)
 - [Elin Forsnor](https://github.com/elinforsnor)
 - [Felix Morau](https://github.com/femosc2)
+- [Jacky Tu](https://github.com/jackytu99)
+- [Elliott Hellstrand](https://github.com/Elliott0121)
 
 ## License
 
