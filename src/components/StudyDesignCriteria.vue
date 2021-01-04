@@ -357,6 +357,9 @@ import QInputMultilang from './QInputMultilang'
 
 export default {
   name: 'StudyDesignCriteria',
+  // value here is the inclusion criteria part of the study design
+  // v is the vuelidate object
+  // TODO: would be better if value is the whole study design
   props: ['value', 'v', 'languages'],
   components: {
     QInputMultilang
