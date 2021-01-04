@@ -42,7 +42,7 @@
             <q-item
               clickable
               v-close-popup
-              @click.native="addQCSTT()()"
+              @click.native="addQCSTT()"
             >
               <q-item-section>
                 <q-item-label>Queens college step test</q-item-label>
@@ -51,7 +51,7 @@
             <q-item
               clickable
               v-close-popup
-              @click.native="addSMWTT()()"
+              @click.native="addSMWTT()"
             >
               <q-item-section>
                 <q-item-label>Six minute walk test</q-item-label>

@@ -9,6 +9,30 @@
         <div class="row">
           <div class="col-4 q-pt-lg">
             <div class="text-bold">
+              Invitational Only
+            </div>
+            <div class="text-caption">
+              This study will only be available to pariticipants that have an invitation code.
+            </div>
+          </div>
+          <div class="col q-pl-sm">
+            <q-field
+              :error="v.invitational.$error"
+              error-message="You must specify if its invitational only"
+            >
+              <q-checkbox
+                v-model.trim="v.invitational.$model"
+                @blur="v.invitational.$touch"
+                @input="update()"
+                val="true"
+                label="Yes"
+              />
+            </q-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 q-pt-lg">
+            <div class="text-bold">
               Supported languages:
             </div>
             <div class="text-caption">

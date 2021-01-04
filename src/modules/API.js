@@ -126,6 +126,10 @@ export default {
     let resp = await axios.delete(BASE_URL + '/studies/' + studyKey, axiosConfig)
     return resp.data
   },
+  async getInvitationCode () {
+    let resp = await axios.get(BASE_URL + '/newInvitationCode', axiosConfig)
+    return resp.data
+  },
   // FORMS
   async getSpecificForm (formKey) {
     let resp = await axios.get(BASE_URL + '/forms/' + formKey, axiosConfig)
