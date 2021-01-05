@@ -9,10 +9,12 @@
         <div class="row">
           <div class="col-4 q-pt-lg">
             <div class="text-bold">
-              Invitational Only
+              Invitational
             </div>
             <div class="text-caption">
-              This study will only be available to pariticipants that have an invitation code.
+              Optional.
+              If set to Yes, this study will only be available to pariticipants that have an invitation code.
+              The invitation code will be available in the study summary after the study has been published.
             </div>
           </div>
           <div class="col q-pl-sm">
@@ -425,6 +427,9 @@ import QInputMultilang from './QInputMultilang'
 
 export default {
   name: 'StudyDesignGeneralities',
+  // value here is the generalities part of the study design
+  // v is the vuelidate object
+  // TODO: would be better if value is the whole study design
   props: ['value', 'v'],
   components: {
     QInputMultilang

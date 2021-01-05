@@ -84,6 +84,7 @@
         />
       </q-tab-panel>
       <q-tab-panel name="tab-crit">
+        <!-- TODO: pass the whole study design to this component and remove languages -->
         <study-design-criteria
           v-model="studyDesign.inclusionCriteria"
           :v="$v.studyDesign.inclusionCriteria"
@@ -345,46 +346,35 @@ export default {
               })
             }
           }
-          if (this.studyKey) {
-            // If there is a studyKey, a draft exists
-            try {
-              this.studyDesign.publishedTS = new Date()
-              await API.updateDraftStudy(this.propStudyKey, this.studyDesign)
+          try {
+            this.studyDesign.publishedTS = new Date()
+            if (this.studyKey) {
+              // If there is a studyKey, a draft exists
+              await API.updateStudy(this.studyKey, this.studyDesign)
               this.$q.notify({
                 color: 'primary',
                 position: 'bottom',
                 message: 'Study has been published.',
                 icon: 'done'
               })
-              this.$router.push('/researcher')
-            } catch (err) {
-              this.$q.notify({
-                color: 'negative',
-                position: 'bottom',
-                message: 'Error. Please check the connection.',
-                icon: 'report_problem'
-              })
-            }
-          } else {
-            // If no studyKey, publish directly
-            try {
-              this.studyDesign.publishedTS = new Date()
-              await API.publishStudy(this.studyDesign)
+            } else {
+              // If no studyKey, publish directly
+              await API.createStudy(this.studyDesign)
               this.$q.notify({
                 color: 'primary',
                 position: 'bottom',
                 message: 'Study has been published.',
                 icon: 'done'
               })
-              this.$router.push('/researcher')
-            } catch (err) {
-              this.$q.notify({
-                color: 'negative',
-                position: 'bottom',
-                message: 'Cannot publish. Please check the connection.',
-                icon: 'report_problem'
-              })
             }
+            this.$router.push('/researcher')
+          } catch (err) {
+            this.$q.notify({
+              color: 'negative',
+              position: 'bottom',
+              message: 'Error. Please check the connection.',
+              icon: 'report_problem'
+            })
           }
         }
       }
@@ -392,7 +382,7 @@ export default {
     async saveProgress () {
       if (this.studyKey) {
         try {
-          await API.updateDraftStudy(this.studyKey, this.studyDesign)
+          await API.updateStudy(this.studyKey, this.studyDesign)
           this.$q.notify({
             color: 'primary',
             position: 'bottom',
@@ -411,7 +401,7 @@ export default {
         try {
           // If no studyKey in the prop, then save the study for the 1st time
           this.studyDesign.createdTS = new Date()
-          let response = await API.saveDraftStudy(this.studyDesign)
+          let response = await API.createStudy(this.studyDesign)
           this.keyOfStudy = response.data._key
           this.$q.notify({
             color: 'primary',

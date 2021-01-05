@@ -403,7 +403,7 @@ export default {
           startEvent: 'consent',
           startDelaySecs: undefined,
           untilSecs: undefined,
-          occurrences: 7,
+          occurrences: undefined,
           intervalType: 'd',
           interval: 1,
           months: [],

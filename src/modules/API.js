@@ -87,14 +87,11 @@ export default {
     return resp.data
   },
   // STUDY
-  async saveDraftStudy (design) {
+  async createStudy (design) {
     return axios.post(BASE_URL + '/studies', design, axiosConfig)
   },
-  async updateDraftStudy (studyKey, design) {
+  async updateStudy (studyKey, design) {
     return axios.put(BASE_URL + '/studies/' + studyKey, design, axiosConfig)
-  },
-  async publishStudy (design) {
-    return axios.post(BASE_URL + '/studies', design, axiosConfig)
   },
   async getStudy (studyKey) {
     let resp = await axios.get(BASE_URL + '/studies/' + studyKey, axiosConfig)
