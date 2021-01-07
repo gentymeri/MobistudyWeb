@@ -43,19 +43,19 @@
           </div>
           <div class="col q-pl-sm">
             <q-field
-              :error="v.languages.$error"
+              :error="v.generalities.languages.$error"
               error-message="At least one language must be specified"
             >
               <q-checkbox
-                v-model.trim="v.languages.$model"
-                @blur="v.languages.$touch"
+                v-model.trim="v.generalities.languages.$model"
+                @blur="v.generalities.languages.$touch"
                 @input="update()"
                 val="en"
                 label="English"
               />
               <q-checkbox
-                v-model.trim="v.languages.$model"
-                @blur="v.languages.$touch"
+                v-model.trim="v.generalities.languages.$model"
+                @blur="v.generalities.languages.$touch"
                 @input="update()"
                 val="sv"
                 label="Swedish"
@@ -74,10 +74,10 @@
           </div>
           <div class="col q-pl-sm">
             <q-input-multilang
-              v-model.trim="v.title.$model"
-              @blur="v.title.$touch"
+              v-model.trim="v.generalities.title.$model"
+              @blur="v.generalities.title.$touch"
               @input="update()"
-              :languages="value.languages"
+              :languages="value.generalities.languages"
               required
             />
           </div>
@@ -93,10 +93,10 @@
           </div>
           <div class="col q-pl-sm">
             <q-input-multilang
-              v-model.trim="v.shortDescription.$model"
-              @blur="v.shortDescription.$touch"
+              v-model.trim="v.generalities.shortDescription.$model"
+              @blur="v.generalities.shortDescription.$touch"
               @input="update()"
-              :languages="value.languages"
+              :languages="value.generalities.languages"
               required
             />
           </div>
@@ -113,10 +113,10 @@
           <div class="col q-pl-sm">
             <q-input-multilang
               type="textarea"
-              v-model.trim="v.longDescription.$model"
-              @blur="v.longDescription.$touch"
+              v-model.trim="v.generalities.longDescription.$model"
+              @blur="v.generalities.longDescription.$touch"
               @input="update()"
-              :languages="value.languages"
+              :languages="value.generalities.languages"
               required
             />
           </div>
@@ -131,7 +131,7 @@
       </q-card-section>
       <q-card-section>
         <div
-          v-for="(pi, index) in v.principalInvestigators.$each.$iter"
+          v-for="(pi, index) in v.generalities.principalInvestigators.$each.$iter"
           :key="index"
         >
           <div class="row">
@@ -211,7 +211,7 @@
             <div class="col">
               <q-btn
                 class="float-right"
-                v-show="index == value.principalInvestigators.length-1"
+                v-show="index == value.generalities.principalInvestigators.length-1"
                 label="Add PI"
                 color="primary"
                 icon="add"
@@ -222,7 +222,7 @@
           <q-separator
             color="primary"
             spaced="xl"
-            v-show="index != value.principalInvestigators.length-1"
+            v-show="index != value.generalities.principalInvestigators.length-1"
           />
         </div>
       </q-card-section>
@@ -235,7 +235,7 @@
       </q-card-section>
       <q-card-section>
         <div
-          v-for="(inst, index) in v.institutions.$each.$iter"
+          v-for="(inst, index) in v.generalities.institutions.$each.$iter"
           :key="index"
         >
           <div class="row">
@@ -338,7 +338,7 @@
                 @blur="inst.reasonForDataAccess.$touch"
                 :readonly="inst.dataAccess.$model === 'no'"
                 @input="update()"
-                :languages="value.languages"
+                :languages="value.generalities.languages"
                 required
               />
             </div>
@@ -356,7 +356,7 @@
             <div class="col">
               <q-btn
                 class="float-right"
-                v-show="index == value.institutions.length-1"
+                v-show="index == value.generalities.institutions.length-1"
                 label="Add Institution"
                 color="primary"
                 icon="add"
@@ -364,7 +364,7 @@
               />
             </div>
           </div>
-          <q-separator v-show="index != value.institutions.length-1" />
+          <q-separator v-show="index != value.generalities.institutions.length-1" />
         </div>
       </q-card-section>
     </q-card>
@@ -388,10 +388,10 @@
             <q-input
               type="date"
               format="D-MMM-YYYY"
-              v-model.trim="v.startDate.$model"
-              @blur="v.startDate.$touch"
+              v-model.trim="v.generalities.startDate.$model"
+              @blur="v.generalities.startDate.$touch"
               @input="update()"
-              :error="v.startDate.$error"
+              :error="v.generalities.startDate.$error"
               error-message="Field is required."
             />
           </div>
@@ -409,10 +409,10 @@
             <q-input
               type="date"
               format="D-MMM-YYYY"
-              v-model.trim="v.endDate.$model"
-              @blur="v.endDate.$touch"
+              v-model.trim="v.generalities.endDate.$model"
+              @blur="v.generalities.endDate.$touch"
               @input="update()"
-              :error="v.endDate.$error"
+              :error="v.generalities.endDate.$error"
               error-message="Field is required."
             />
           </div>
@@ -440,18 +440,18 @@ export default {
     },
     addRowInvestigator (index) {
       // increment the id
-      this.value.principalInvestigators.push({
+      this.value.generalities.principalInvestigators.push({
         name: '',
         contact: '',
         institution: ''
       })
     },
     removeRowInvestigator (index) {
-      this.value.principalInvestigators.splice(index, 1)
+      this.value.generalities.principalInvestigators.splice(index, 1)
     },
     addRowInstitution (index) {
       // increment the id
-      this.value.institutions.push({
+      this.value.generalities.institutions.push({
         name: '',
         contact: '',
         dataAccess: '',
@@ -462,7 +462,7 @@ export default {
       })
     },
     removeRowInstitution (index) {
-      this.value.institutions.splice(index, 1)
+      this.value.generalities.institutions.splice(index, 1)
     }
   }
 }

@@ -79,16 +79,15 @@
     >
       <q-tab-panel name="tab-gen">
         <study-design-generalities
-          v-model="studyDesign.generalities"
-          :v="$v.studyDesign.generalities"
+          v-model="studyDesign"
+          :v="$v.studyDesign"
         />
       </q-tab-panel>
       <q-tab-panel name="tab-crit">
         <!-- TODO: pass the whole study design to this component and remove languages -->
         <study-design-criteria
-          v-model="studyDesign.inclusionCriteria"
-          :v="$v.studyDesign.inclusionCriteria"
-          :languages="studyDesign.generalities.languages"
+          v-model="studyDesign"
+          :v="$v.studyDesign"
         />
       </q-tab-panel>
       <q-tab-panel name="tab-tasks">
@@ -143,10 +142,10 @@ export default {
       studyTab: 'tab-gen',
       studyDesign: {
         teamKey: '',
-        invitationCode: 'None',
+        invitationCode: undefined,
+        invitational: false,
         publishedTS: undefined,
         generalities: {
-          invitational: false,
           languages: ['en'],
           title: {
             en: '',
@@ -215,8 +214,8 @@ export default {
   },
   validations: {
     studyDesign: {
+      invitational: { required },
       generalities: {
-        invitational: { required },
         languages: { required },
         title: { required },
         shortDescription: { required },
@@ -333,7 +332,7 @@ export default {
       } else {
         if (this.checkValidation() !== false) {
           // If the study is invitational only, generate a new invitational code.
-          if (this.studyDesign.generalities.invitational) {
+          if (this.studyDesign.invitational) {
             try {
               this.studyDesign.invitationCode = await API.getInvitationCode()
               console.log('Retrieved invitation code:', this.studyDesign.invitationCode)
