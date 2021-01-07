@@ -335,7 +335,6 @@ export default {
           if (this.studyDesign.invitational) {
             try {
               this.studyDesign.invitationCode = await API.getInvitationCode()
-              console.log('Retrieved invitation code:', this.studyDesign.invitationCode)
             } catch (err) {
               this.$q.notify({
                 color: 'negative',
@@ -343,6 +342,7 @@ export default {
                 message: 'Error. Invitation code could not be generated.',
                 icon: 'report_problem'
               })
+              return
             }
           }
           try {

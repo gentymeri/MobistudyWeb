@@ -125,6 +125,7 @@ export default {
   },
   async getInvitationCode () {
     let resp = await axios.get(BASE_URL + '/newInvitationCode', axiosConfig)
+    console.log('Receving from server:', resp)
     return resp.data
   },
   // FORMS
