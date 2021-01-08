@@ -475,11 +475,10 @@ export default {
           this.update()
           return this.value.invitationCode
         } catch (err) {
-          console.log('Err:', err)
           this.$q.notify({
             color: 'negative',
             position: 'bottom',
-            message: 'Error. Invitation code could not be generated.',
+            message: 'Error. Invitation code could not be generated.', // TODO
             icon: 'report_problem'
           })
         }
