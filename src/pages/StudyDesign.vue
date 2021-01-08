@@ -331,20 +331,6 @@ export default {
         })
       } else {
         if (this.checkValidation() !== false) {
-          // If the study is invitational only, generate a new invitational code.
-          if (this.studyDesign.invitational) {
-            try {
-              this.studyDesign.invitationCode = await API.getInvitationCode()
-            } catch (err) {
-              this.$q.notify({
-                color: 'negative',
-                position: 'bottom',
-                message: 'Error. Invitation code could not be generated.',
-                icon: 'report_problem'
-              })
-              return
-            }
-          }
           try {
             this.studyDesign.publishedTS = new Date()
             if (this.studyKey) {

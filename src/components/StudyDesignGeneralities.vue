@@ -22,13 +22,16 @@
               :error="v.invitational.$error"
               error-message="You must specify if its invitational only"
             >
-              <q-checkbox
-                v-model.trim="v.invitational.$model"
-                @blur="v.invitational.$touch"
-                @input="update()"
-                val="true"
-                label="Yes"
-              />
+              <div>
+                <q-checkbox
+                  v-model.trim="v.invitational.$model"
+                  @blur="v.invitational.$touch"
+                  @input="getInvitationCode"
+                  val="true"
+                  label="Yes"
+                />
+                <div v-if="value.invitationCode">{{value.invitationCode}}</div>
+              </div>
             </q-field>
           </div>
         </div>
@@ -424,7 +427,7 @@
 
 <script>
 import QInputMultilang from './QInputMultilang'
-
+import API from '../modules/API.js'
 export default {
   name: 'StudyDesignGeneralities',
   // value here is the generalities part of the study design
@@ -463,6 +466,28 @@ export default {
     },
     removeRowInstitution (index) {
       this.value.generalities.institutions.splice(index, 1)
+    },
+    async getInvitationCode () {
+      // If the study is invitational only, generate a new invitational code.
+      if (this.value.invitational && !this.value.invitationCode) {
+        try {
+          this.value.invitationCode = await API.getInvitationCode()
+          this.update()
+          return this.value.invitationCode
+        } catch (err) {
+          console.log('Err:', err)
+          this.$q.notify({
+            color: 'negative',
+            position: 'bottom',
+            message: 'Error. Invitation code could not be generated.',
+            icon: 'report_problem'
+          })
+        }
+      } else {
+        this.value.invitationCode = undefined
+        this.update()
+        return this.value.invitationCode
+      }
     }
   }
 }
