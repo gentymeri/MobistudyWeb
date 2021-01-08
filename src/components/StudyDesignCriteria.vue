@@ -20,17 +20,17 @@
           </div>
           <div class="col q-pl-sm">
             <q-field
-              :error="v.countries.$error"
+              :error="v.inclusionCriteria.countries.$error"
               error-message="At least one country must be specified"
             >
               <q-checkbox
-                v-model="v.countries.$model"
+                v-model="v.inclusionCriteria.countries.$model"
                 label="Sweden"
                 val="se"
                 @input="update()"
               />
               <q-checkbox
-                v-model="v.countries.$model"
+                v-model="v.inclusionCriteria.countries.$model"
                 label="United Kingdom"
                 val="gb"
                 @input="update()"
@@ -56,11 +56,11 @@
               type="number"
               align="center"
               min="0"
-              v-model.number="v.minAge.$model"
+              v-model.number="v.inclusionCriteria.minAge.$model"
               hint="Minimum age."
-              @blur="v.minAge.$touch"
+              @blur="v.inclusionCriteria.minAge.$touch"
               @input="update()"
-              :error="v.minAge.$error"
+              :error="v.inclusionCriteria.minAge.$error"
               error-message="A minimum age of 0 is required"
             />
           </div>
@@ -69,11 +69,11 @@
               type="number"
               align="center"
               min="0"
-              v-model.number="v.maxAge.$model"
+              v-model.number="v.inclusionCriteria.maxAge.$model"
               hint="Maximum age."
-              @blur="v.maxAge.$touch"
+              @blur="v.inclusionCriteria.maxAge.$touch"
               @input="update()"
-              :error="v.maxAge.$error"
+              :error="v.inclusionCriteria.maxAge.$error"
               error-message="A minimum age of 0 is required"
             />
           </div>
@@ -93,23 +93,23 @@
           </div>
           <div class="col q-pl-sm">
             <q-field
-              :error="v.sex.$error"
+              :error="v.inclusionCriteria.sex.$error"
               error-message="At least one sex must be specified"
             >
               <q-checkbox
-                v-model="v.sex.$model"
+                v-model="v.inclusionCriteria.sex.$model"
                 label="Male"
                 val="male"
                 @input="update()"
               />
               <q-checkbox
-                v-model="v.sex.$model"
+                v-model="v.inclusionCriteria.sex.$model"
                 label="Female"
                 val="female"
                 @input="update()"
               />
               <q-checkbox
-                v-model="v.sex.$model"
+                v-model="v.inclusionCriteria.sex.$model"
                 label="Other"
                 val="other"
                 @input="update()"
@@ -230,11 +230,11 @@
               min="5"
               max="210"
               align="center"
-              v-model.number="v.minBMI.$model"
+              v-model.number="v.inclusionCriteria.minBMI.$model"
               hint="Minimum BMI."
-              @blur="v.minBMI.$touch"
+              @blur="v.inclusionCriteria.minBMI.$touch"
               @input="update()"
-              :error="v.minBMI.$error"
+              :error="v.inclusionCriteria.minBMI.$error"
               error-message="A BMI between 5 and 210 is required"
             />
           </div>
@@ -244,11 +244,11 @@
               min="5"
               max="210"
               align="center"
-              v-model.number="v.maxBMI.$model"
+              v-model.number="v.inclusionCriteria.maxBMI.$model"
               hint="Maximum BMI."
-              @blur="v.maxBMI.$touch"
+              @blur="v.inclusionCriteria.maxBMI.$touch"
               :input="update()"
-              :error="v.maxBMI.$error"
+              :error="v.inclusionCriteria.maxBMI.$error"
               error-message="A BMI between 5 and 210 is required"
             />
           </div>
@@ -281,7 +281,7 @@
               <q-input-multilang
                 v-model="criteriaQuestion.title"
                 @input="update()"
-                :languages="languages"
+                :languages="value.generalities.languages"
                 required
               />
             </div>
@@ -321,7 +321,7 @@
               />
               <q-btn
                 class="float-right"
-                v-show="index == value.criteriaQuestions.length-1"
+                v-show="index == value.inclusionCriteria.criteriaQuestions.length-1"
                 label="Add Question"
                 color="primary"
                 icon="add"
@@ -331,14 +331,14 @@
           </div>
           <q-separator
             class="q-mt-sm"
-            v-show="index != value.criteriaQuestions.length-1"
+            v-show="index != value.inclusionCriteria.criteriaQuestions.length-1"
           />
         </div>
         <div class="row">
           <div class="col">
             <q-btn
               class="float-right"
-              v-show="value.criteriaQuestions.length == 0"
+              v-show="value.inclusionCriteria.criteriaQuestions.length == 0"
               label="Add Question"
               color="primary"
               icon="add"
@@ -360,7 +360,7 @@ export default {
   // value here is the inclusion criteria part of the study design
   // v is the vuelidate object
   // TODO: would be better if value is the whole study design
-  props: ['value', 'v', 'languages'],
+  props: ['value', 'v'],
   components: {
     QInputMultilang
   },
@@ -374,8 +374,8 @@ export default {
     // these are used to map label and value to term and conceptId
     diseasesVue: {
       get: function () {
-        if (this.value.diseases && this.value.diseases.length) {
-          return this.value.diseases.map(x => {
+        if (this.value.inclusionCriteria.diseases && this.value.inclusionCriteria.diseases.length) {
+          return this.value.inclusionCriteria.diseases.map(x => {
             return {
               label: x.term,
               value: x.conceptId,
@@ -385,7 +385,7 @@ export default {
         } else return []
       },
       set: function (diseasesOpts) {
-        this.value.diseases = diseasesOpts.map(x => {
+        this.value.inclusionCriteria.diseases = diseasesOpts.map(x => {
           return {
             term: x.label,
             conceptId: x.value,
@@ -396,8 +396,8 @@ export default {
     },
     medsVue: {
       get: function () {
-        if (this.value.medications && this.value.medications.length) {
-          return this.value.medications.map(x => {
+        if (this.value.inclusionCriteria.medications && this.value.inclusionCriteria.medications.length) {
+          return this.value.inclusionCriteria.medications.map(x => {
             return {
               label: x.term,
               value: x.conceptId,
@@ -407,7 +407,7 @@ export default {
         } else return []
       },
       set: function (medsOpts) {
-        this.value.medications = medsOpts.map(x => {
+        this.value.inclusionCriteria.medications = medsOpts.map(x => {
           return {
             term: x.label,
             conceptId: x.value,
@@ -429,7 +429,7 @@ export default {
       }
       let concepts = await API.searchDiseaseConcept(diseaseDescription, 'en')
       concepts.data = concepts.data.filter((concept) => {
-        if (!this.conceptIdExistsInArrayOfObjects(this.value.diseases, concept.conceptId)) {
+        if (!this.conceptIdExistsInArrayOfObjects(this.value.inclusionCriteria.diseases, concept.conceptId)) {
           return true
         } else return false
       })
@@ -453,7 +453,7 @@ export default {
       }
       let concepts = await API.searchMedicationConcept(medDescription, 'en')
       concepts.data = concepts.data.filter((concept) => {
-        if (!this.conceptIdExistsInArrayOfObjects(this.value.medications, concept.conceptId)) {
+        if (!this.conceptIdExistsInArrayOfObjects(this.value.inclusionCriteria.medications, concept.conceptId)) {
           return true
         } else return false
       })
@@ -475,7 +475,7 @@ export default {
       // eslint-disable-next-line no-unused-vars
       for (let [key, value] of array.entries()) {
         console.log('Checking value:', value)
-        if (value.conceptId === conceptId) {
+        if (value.inclusionCriteria.conceptId === conceptId) {
           exists = true
         }
       }
@@ -494,7 +494,7 @@ export default {
       this.update()
     },
     addRowCriteriaQuestion () {
-      this.value.criteriaQuestions.push({
+      this.value.inclusionCriteria.criteriaQuestions.push({
         title: {
           en: '',
           sv: ''
@@ -504,7 +504,7 @@ export default {
       this.update()
     },
     removeRowCriteriaQuestion (index) {
-      this.value.criteriaQuestions.splice(index, 1)
+      this.value.inclusionCriteria.criteriaQuestions.splice(index, 1)
       this.update()
     }
   }

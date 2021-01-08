@@ -136,6 +136,10 @@ export default {
           en: '',
           sv: ''
         },
+        footer: {
+          en: '',
+          sv: ''
+        },
         type: 'freetext',
         nextDefaultId: undefined,
         answerChoices: []
@@ -145,6 +149,7 @@ export default {
       currentAnswerFreeText: undefined,
       langselect: true,
       language: this.languages[0],
+      footer: { en: '' },
       finished: false
     }
   },
@@ -207,6 +212,11 @@ export default {
         this.currentQuestion = this.form.questions[nextQIdx]
       }
     }
+  },
+  created () {
+    console.log('DialogFormSimulator:', this.language)
+    console.log('DialogFormSimulator:', this.form)
+    console.log('Current question:', this.currentQuestion)
   }
 }
 </script>

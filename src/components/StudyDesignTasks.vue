@@ -363,6 +363,7 @@ export default {
     return data
   },
   async created () {
+    console.log('Value:', this.value)
     this.getForms()
   },
   methods: {
@@ -372,6 +373,7 @@ export default {
     async getForms () {
       try {
         let forms = await API.getFormsList()
+        if (!forms) return
         this.selectOptionsFormsList = forms.map((f) => {
           return {
             name: f.name,
