@@ -2,7 +2,7 @@ export default {
   privacyPolicy: {
     collectedData: `För att bedriva den här studien, behöver vi samla data från dig när du använder dig av Mobistudy.
     Vad för personlig data kommer bli insamlad?
-\u2022 Generell profil information som email address, namn, efternamn, födelsedag, kön, land, språk, huvudsakliga hälsoproblem, långsiktiga behandlingar, vikt och längd.
+\u2022 Generell profil information som email address, namn, efternamn, födelsedatum, kön, land, språk, huvudsakliga hälsoproblem, långsiktiga behandlingar, vikt och längd.
 Denna information behövs för att identifiera dig och för att skapa statistik angående de som deltagar i studien.
 \u2022 Ditt deltagande i den här studien och tiden det tar för dig att slutföra uppgifterna.
 Denna information är nödvändig för att bedöma din nivå av deltagande i studien.
