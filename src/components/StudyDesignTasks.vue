@@ -57,6 +57,15 @@
                 <q-item-label>Six minute walk test</q-item-label>
               </q-item-section>
             </q-item>
+             <q-item
+              clickable
+              v-close-popup
+              @click.native="addPulseOximeterT()"
+            >
+              <q-item-section>
+                <q-item-label>Pulse oximeter</q-item-label>
+              </q-item-section>
+            </q-item>
           </q-list>
         </q-btn-dropdown>
       </q-card-section>
@@ -80,6 +89,10 @@
           class="text-h5"
           v-if="task.type === 'miband3'"
         >Miband3 Task</div>
+        <div
+          class="text-h5"
+          v-if="task.type === 'po60'"
+        >Pulse Oximeter Task</div>
         <div
           class="text-h5"
           v-if="task.type === 'qcst'"
@@ -459,6 +472,24 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'smwt',
+        scheduling: {
+          startEvent: 'consent',
+          startDelaySecs: undefined,
+          untilSecs: undefined,
+          occurrences: undefined,
+          intervalType: 'd',
+          interval: 1,
+          months: [],
+          monthDays: [],
+          weekDays: []
+        }
+      })
+      this.update()
+    },
+    addPulseOximeterT () {
+      this.value.tasks.push({
+        id: this.value.tasks.length + 1,
+        type: 'po60',
         scheduling: {
           startEvent: 'consent',
           startDelaySecs: undefined,
