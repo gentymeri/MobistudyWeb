@@ -16,7 +16,7 @@ Denna information är nödvändig för säkerhet och granskningssyften.
     collectedDataSMWT: `    \u2022 Din geografiska position, distansen och antal steg under loppet av ett Six-minute Walk Test`,
     collectedDataMiband3: `    \u2022 Hjärtfrekvens, aktivitetsnivå, antal steg and aktivitetstyp insamlad av en MiBand3 hälso-klocka.`,
     collectedDataPO60: `    \u2022 Hjärtfrekvens och syremättnadsnivå insamlad av en Beurer PO60 pulsoximeter`,
-    collectedDataReason: ` Den här insamlade datan är nödvändig för att uppnå forskningssyftet. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
+    collectedDataReason: ` Den här insamlade datan är nödvändig för att uppnå forskningssyftet. [LÄGG TILL ANLEDNINGEN FÖR INSAMLINGEN AV SPECIFIKT DEN HÄR DATAN]`,
     storage: `All den här datan kommer bli lagrad på Mobistudys server, vilken sköts av Malmö Universitet i Sverige. Din telefon kommer endast att lagra din profil och data relaterat till ditt deltagande i studien. 
 
 Hur länge kommer datan att förvaras?
@@ -24,7 +24,7 @@ Din profil och deltagandet i studien kommer att förvaras så länge du har ett 
 Datan insamlag inom de olika uppgifterna tilldelade i den här studien kommer att förvaras hos Mobistudy servrar tills slutet av studien, {studyEndDate}.
 Teknisk insamlad data (loggar) kommer att bli borttagna 1 år efter att de har producerats. 
 
-[SPECIFY FOR HOW LONG STUDY DATA WILL BE KEPT BY RESEARCHERS]
+[SPECIFIERA HUR LÄNGE STUDIENS INSAMLADE DATA KOMMER ATT BEHÅLLAS AV FORSKARNA]
 `,
     access: `Vem kommer att ha tillgång till datan?
 \u2022 Personal från Malmö Universitet för tekniskt underhåll och granskning (Malmö Universitet är handläggaren av din personliga information).`,
