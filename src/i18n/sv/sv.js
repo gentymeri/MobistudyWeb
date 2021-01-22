@@ -15,6 +15,7 @@ Denna information är nödvändig för säkerhet och granskningssyften.
     collectedDataQCST: `    \u2022 Hjärtfrekvens och stegräkning under loppet av ett Queens College Step Test.`,
     collectedDataSMWT: `    \u2022 Din geografiska position, distansen och antal steg under loppet av ett Six-minute Walk Test`,
     collectedDataMiband3: `    \u2022 Hjärtfrekvens, aktivitetsnivå, antal steg and aktivitetstyp insamlad av en MiBand3 hälso-klocka.`,
+    collectedDataPO60: `    \u2022 Hjärtfrekvens och syremättnadsnivå insamlad av en Beurer PO60 pulsoximeter`,
     collectedDataReason: ` Den här insamlade datan är nödvändig för att uppnå forskningssyftet. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `All den här datan kommer bli lagrad på Mobistudys server, vilken sköts av Malmö Universitet i Sverige. Din telefon kommer endast att lagra din profil och data relaterat till ditt deltagande i studien. 
 
@@ -45,7 +46,8 @@ Teknisk insamlad data (loggar) kommer att bli borttagna 1 år efter att de har p
     taskItemForm: `Jag godkänner att svara på {formName} form, {scheduling}`,
     taskItemMiBand3: `Jag godkänner att skicka min data insamlad av MiBand3 hälso-klockan, {scheduling}`,
     taskItemQCST: 'Jag godkänner att utföra queens college step test, {scheduling}',
-    taskItemSMWT: 'Jag godkänner att utföra six minute walk test, {scheduling}'
+    taskItemSMWT: 'Jag godkänner att utföra six minute walk test, {scheduling}',
+    taskItemPO60: 'Jag godkänner att skicka data insamlad av Beurer PO60 pulsoximetern, {scheduling}'
   },
   scheduling: {
     notDefined: 'Icke definierad än',
