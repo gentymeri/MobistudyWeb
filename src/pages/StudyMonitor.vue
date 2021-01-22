@@ -12,7 +12,7 @@
       <q-tab name="tab-description" icon="subject" label="Description"/>
     </q-tabs>
     <q-tabs color="secondary">
-      <q-tab-panels v-model="statsTab">
+      <q-tab-panels v-model="statsTab" keep-alive>
         <q-tab-panel name="tab-stats">
           <study-stats :studyDesign="studyDesign"/>
         </q-tab-panel>
@@ -52,6 +52,7 @@ export default {
   },
   async created () {
     try {
+      console.log('Studykey:', this.studyKey)
       this.studyDesign = await API.getStudy(this.studyKey)
     } catch (err) {
       this.$q.notify({
