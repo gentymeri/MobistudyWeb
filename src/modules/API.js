@@ -184,7 +184,7 @@ export default {
   async getLogs (countOnly, filter) {
     let queryParams = ''
     let firstParam = true
-    for (let param in filter) {
+    for (const param in filter) {
       if (filter[param] || filter[param] === 0) {
         queryParams += (firstParam ? '' : '&') + param + '=' + encodeURIComponent(filter[param])
         firstParam = false

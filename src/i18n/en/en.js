@@ -15,6 +15,7 @@ These are needed for security and auditing.
     collectedDataQCST: `    \u2022 Heart rate and steps collected during a Queens College Step Test.`,
     collectedDataSMWT: `    \u2022 Your geographical position, distance and steps during the Six-minute Walk Test`,
     collectedDataMiband3: `    \u2022 Your heart rate, activity level, steps and activity type collected by the MiBand3 fitness tracker.`,
+    collectedDataPO60: `    \u2022 Your heart rate and blood oxygen saturation collected by the Beurer PO60 pulse oximeter.`,
     collectedDataReason: `These data are needed to fulfil the aims of the research. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `All these data will be stored on the Mobistudy servers, which are managed by the University of Malmö in Sweden. Your phone will keep your profile and data about your participation in the studies only.
 
@@ -45,7 +46,8 @@ Technical logs will be deleted after 1 year they are produced.
     taskItemForm: `I agree to answer the {formName} form, {scheduling}`,
     taskItemMiBand3: `I agree to send my data collected by the MiBand3 fitness tracker, {scheduling}`,
     taskItemQCST: 'I agree to perform the queens college step test, {scheduling}',
-    taskItemSMWT: 'I agree to perform the six minute walk test, {scheduling}'
+    taskItemSMWT: 'I agree to perform the six minute walk test, {scheduling}',
+    taskItemPO60: 'I agree to send my data collected by the Beurer PO60 pulse oximeter, {scheduling}'
   },
   scheduling: {
     notDefined: 'Not defined yet',

@@ -200,6 +200,10 @@ export default {
           newTaskItem.description[lang] = this.$i18n.t('consent.taskItemSMWT', lang, {
             scheduling: schedulingToString(task.scheduling, lang)
           })
+        } else if (task.type === 'po60') {
+          newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPO60', lang, {
+            scheduling: schedulingToString(task.scheduling, lang)
+          })
         }
       }
       this.value.consent.taskItems.push(newTaskItem)
@@ -240,6 +244,8 @@ export default {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataQCST', lang)
           } else if (task.type === 'smwt') {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataSMWT', lang)
+          } else if (task.type === 'po60') {
+            string += '\n' + this.$i18n.t('privacyPolicy.collectedDataPO60', lang)
           }
         }
         string += this.$i18n.t('privacyPolicy.collectedDataReason', lang)
