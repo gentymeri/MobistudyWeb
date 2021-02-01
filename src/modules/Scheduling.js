@@ -2,6 +2,7 @@ import { i18n } from '../boot/i18n.js'
 
 export function schedulingToString (sc, lang) {
   if (!sc.startEvent) return i18n.t('scheduling.notDefined', lang)
+  if (sc.alwaysOn) return i18n.t('scheduling.notDefined', lang)
 
   let s = ''
   if (sc.startEvent === 'consent') {

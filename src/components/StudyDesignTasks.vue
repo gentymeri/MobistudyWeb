@@ -126,10 +126,28 @@
           </div>
         </div>
         <div
-          v-if="task.type === 'dataQuery' && allowAggregated(task.dataType)"
           class="row"
         >
           <div class="col-4">
+            <div class="text-bold">
+              Always On:
+            </div>
+            <div class="text-caption">
+              The task can be completed at any time, as many times as the participant wants, during the study period.
+            </div>
+          </div>
+          <div class="col q-pl-sm">
+            <q-checkbox
+              v-model="task.scheduling.alwaysOn"
+              @input="update()"
+            />
+          </div>
+        </div>
+        <div
+          v-if="task.type === 'dataQuery' && allowAggregated(task.dataType)"
+          class="row"
+        >
+          <div class="col-4 q-pt-lg">
             <div class="text-bold">
               Aggregation:
             </div>
@@ -423,7 +441,8 @@ export default {
           interval: 1,
           months: [],
           monthDays: [],
-          weekDays: []
+          weekDays: [],
+          alwaysOn: false
         },
         dataType: undefined,
         aggregated: false,
@@ -444,7 +463,8 @@ export default {
           interval: 1,
           months: [],
           monthDays: [],
-          weekDays: []
+          weekDays: [],
+          alwaysOn: false
         },
         hrInterval: 1
       })
@@ -463,7 +483,8 @@ export default {
           interval: 1,
           months: [],
           monthDays: [],
-          weekDays: []
+          weekDays: [],
+          alwaysOn: false
         }
       })
       this.update()
@@ -481,7 +502,8 @@ export default {
           interval: 1,
           months: [],
           monthDays: [],
-          weekDays: []
+          weekDays: [],
+          alwaysOn: false
         }
       })
       this.update()
@@ -499,7 +521,8 @@ export default {
           interval: 1,
           months: [],
           monthDays: [],
-          weekDays: []
+          weekDays: [],
+          alwaysOn: false
         }
       })
       this.update()
@@ -526,7 +549,8 @@ export default {
           interval: 1,
           months: [],
           monthDays: [],
-          weekDays: []
+          weekDays: [],
+          alwaysOn: false
         },
         formKey: undefined,
         // this is mainly used for the consent tab, it can be discarded when the object is sent to the server
