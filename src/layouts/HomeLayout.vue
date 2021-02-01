@@ -52,8 +52,9 @@ export default {
     }
   },
   methods: {
-    logout () {
-      userinfo.logout()
+    async logout () {
+      console.log('Logout called HOMELAYOUT')
+      await userinfo.logout()
       API.setToken('')
       this.$router.push('/login')
     }
