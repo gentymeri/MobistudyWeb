@@ -1,6 +1,7 @@
 <template>
   <q-dialog v-model="opened">
     <q-card style="width: 800px; max-width: 90vw;">
+        <q-form @submit="publish">
       <q-card-section class="row items-center">
         <div class="text-h6">
           Form builder
@@ -293,7 +294,7 @@
           <div class="col">
             <q-btn
               color="primary"
-              @click="publish()"
+              type="submit"
               label="Publish"
             />
           </div>
@@ -306,6 +307,7 @@
           </div>
         </div>
       </q-card-section>
+        </q-form>
     </q-card>
   </q-dialog>
 </template>
@@ -454,6 +456,7 @@ export default {
         this.$emit('saved', this.value)
         this.opened = false
       } catch (err) {
+        console.error('Err:', err)
         this.$q.notify({
           color: 'negative',
           position: 'bottom',
