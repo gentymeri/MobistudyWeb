@@ -57,7 +57,7 @@
                 <q-item-label>Six minute walk test</q-item-label>
               </q-item-section>
             </q-item>
-             <q-item
+            <q-item
               clickable
               v-close-popup
               @click.native="addPulseOximeterT()"
@@ -125,9 +125,7 @@
             />
           </div>
         </div>
-        <div
-          class="row"
-        >
+        <div class="row">
           <div class="col-4">
             <div class="text-bold">
               Always On:
@@ -394,7 +392,6 @@ export default {
     return data
   },
   async created () {
-    console.log('Value:', this.value)
     this.getForms()
   },
   methods: {
