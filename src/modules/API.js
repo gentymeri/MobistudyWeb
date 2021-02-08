@@ -10,7 +10,6 @@ export default {
         'Authorization': 'Bearer ' + newtoken
       }
     }
-    console.log('set token', axiosConfig)
   },
   async login (email, password) {
     let resp = await axios.post(BASE_URL + '/login', { email: email, password: password })
@@ -61,7 +60,6 @@ export default {
   // NEW GET ROLE TYPES FUNCTION
   async getRoleTypes () {
     let resp = await axios.get(BASE_URL + '/users/roleTypes', axiosConfig)
-    console.log('ROLE TYPES:', resp.data)
     return resp.data
   },
   async getUserByKey (userKey) {
@@ -125,7 +123,6 @@ export default {
   },
   async getInvitationCode () {
     let resp = await axios.get(BASE_URL + '/newInvitationCode', axiosConfig)
-    console.log('Receving from server:', resp)
     return resp.data
   },
   // FORMS

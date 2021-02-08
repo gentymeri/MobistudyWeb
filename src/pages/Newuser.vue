@@ -143,7 +143,7 @@ export default {
             icon: 'report_problem'
           })
         } else {
-          console.error('Failed', error)
+          console.log('Failed', error)
           this.$q.notify({
             color: 'negative',
             message: 'Registration failed: ' + error.response.data ? error.response.data : error.message,

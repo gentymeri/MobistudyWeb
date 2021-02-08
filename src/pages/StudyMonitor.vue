@@ -52,7 +52,6 @@ export default {
   },
   async created () {
     try {
-      console.log('Studykey:', this.studyKey)
       this.studyDesign = await API.getStudy(this.studyKey)
     } catch (err) {
       this.$q.notify({

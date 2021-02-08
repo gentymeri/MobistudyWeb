@@ -212,11 +212,6 @@ export default {
         this.currentQuestion = this.form.questions[nextQIdx]
       }
     }
-  },
-  created () {
-    console.log('DialogFormSimulator:', this.language)
-    console.log('DialogFormSimulator:', this.form)
-    console.log('Current question:', this.currentQuestion)
   }
 }
 </script>

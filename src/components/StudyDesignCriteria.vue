@@ -419,7 +419,6 @@ export default {
   },
   methods: {
     update () {
-      console.log(this.value)
       this.$emit('input', this.value)
     },
     async searchDisease (diseaseDescription, update, abort) {
@@ -434,7 +433,6 @@ export default {
         } else return false
       })
       if (concepts.data.length) {
-        console.log('Received diseases:', concepts)
         update(() => {
           this.diseaseOptions = concepts.data.map((c) => {
             return {
@@ -471,10 +469,8 @@ export default {
     },
     conceptIdExistsInArrayOfObjects (array, conceptId) {
       let exists = false
-      console.log('Array to check', array)
       // eslint-disable-next-line no-unused-vars
       for (let [key, value] of array.entries()) {
-        console.log('Checking value:', value)
         if (value.inclusionCriteria.conceptId === conceptId) {
           exists = true
         }

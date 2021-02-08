@@ -394,7 +394,6 @@ export default {
     return data
   },
   async created () {
-    console.log('Value:', this.value)
     this.getForms()
   },
   methods: {
