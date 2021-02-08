@@ -46,7 +46,7 @@ const routes = [
       },
       {
         path: '/studyMonitor/:studyKey',
-        component: () => import('pages/studyMonitor.vue'),
+        component: () => import('pages/StudyMonitor.vue'),
         props: true
       }
     ]
