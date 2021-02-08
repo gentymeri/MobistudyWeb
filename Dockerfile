@@ -19,6 +19,6 @@ RUN npm ci
 COPY . /usr/src/app
 RUN quasar build
 
-FROM nginx:alpine
+FROM caddy:2-alpine
 
-COPY --from=build /usr/src/app/dist/spa /usr/share/nginx/html/
+COPY --from=build /usr/src/app/dist/spa /var/www
