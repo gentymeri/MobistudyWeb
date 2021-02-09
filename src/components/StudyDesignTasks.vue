@@ -57,7 +57,7 @@
                 <q-item-label>Six minute walk test</q-item-label>
               </q-item-section>
             </q-item>
-             <q-item
+            <q-item
               clickable
               v-close-popup
               @click.native="addPulseOximeterT()"
@@ -125,6 +125,25 @@
             />
           </div>
         </div>
+<<<<<<< HEAD
+=======
+        <div class="row">
+          <div class="col-4">
+            <div class="text-bold">
+              Always On:
+            </div>
+            <div class="text-caption">
+              The task can be completed at any time, as many times as the participant wants, during the study period.
+            </div>
+          </div>
+          <div class="col q-pl-sm">
+            <q-checkbox
+              v-model="task.scheduling.alwaysOn"
+              @input="update()"
+            />
+          </div>
+        </div>
+>>>>>>> d45f49821346719ee25f94a20052ca85530c0a09
         <div
           v-if="task.type === 'dataQuery' && allowAggregated(task.dataType)"
           class="row"

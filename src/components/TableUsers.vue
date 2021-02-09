@@ -122,7 +122,10 @@ export default {
             filter: this.filter
           })
         } catch (err) {
+<<<<<<< HEAD
           console.log(err)
+=======
+>>>>>>> d45f49821346719ee25f94a20052ca85530c0a09
           this.$q.notify({
             color: 'negative',
             message: 'Cannot delete user ' + user.email,

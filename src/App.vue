@@ -14,7 +14,6 @@ export default {
     // check if already logged in, otherwise go to login
     let resettingpwd = window.location.href.includes('resetPassword')
     if (!user.getUser().loggedin && !resettingpwd) {
-      console.log('LOGGED OUT, GOING TO LOGIN')
       this.$router.push('login')
       return
     } else {
@@ -25,7 +24,6 @@ export default {
       return response
     }, function (error) {
       if (error.response.status === 401 && !error.config.url.includes('login')) {
-        console.log('Got disconnected !')
         user.logout()
         this.$router.push('login')
       }

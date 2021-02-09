@@ -4,20 +4,41 @@
       <q-toolbar-title>
         Statistics about <strong>{{ niceTitle(studyDesign.generalities.title) }}</strong>
       </q-toolbar-title>
-      <q-btn class="float-right q-mr-md" round color="black" icon="close" @click="$router.push('/researcher')"/>
+      <q-btn
+        class="float-right q-mr-md"
+        round
+        color="black"
+        icon="close"
+        @click="$router.push('/researcher')"
+      />
     </q-toolbar>
 
-    <q-tabs v-model="statsTab" class="bg-secondary text-white shadow-2" align="justify">
-      <q-tab name="tab-stats" icon="bar_chart" label="Study"/>
-      <q-tab name="tab-description" icon="subject" label="Description"/>
+    <q-tabs
+      v-model="statsTab"
+      class="bg-secondary text-white shadow-2"
+      align="justify"
+    >
+      <q-tab
+        name="tab-stats"
+        icon="bar_chart"
+        label="Study"
+      />
+      <q-tab
+        name="tab-description"
+        icon="subject"
+        label="Description"
+      />
     </q-tabs>
     <q-tabs color="secondary">
-      <q-tab-panels v-model="statsTab" keep-alive>
+      <q-tab-panels
+        v-model="statsTab"
+        keep-alive
+      >
         <q-tab-panel name="tab-stats">
-          <study-stats :studyDesign="studyDesign"/>
+          <study-stats :studyDesign="studyDesign" />
         </q-tab-panel>
         <q-tab-panel name="tab-description">
-          <study-summary :studyDesign="studyDesign"/>
+          <study-summary :studyDesign="studyDesign" />
         </q-tab-panel>
       </q-tab-panels>
     </q-tabs>

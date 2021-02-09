@@ -1,23 +1,55 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header>
-      <q-toolbar color="primary" :glossy="$q.theme === 'mat'" :inverted="$q.theme === 'ios'" >
-        <img src="statics/icons/favicon-32x32.png" alt="Mobistudy-Logo">
+      <q-toolbar
+        color="primary"
+        :glossy="$q.theme === 'mat'"
+        :inverted="$q.theme === 'ios'"
+      >
+        <img
+          src="statics/icons/favicon-32x32.png"
+          alt="Mobistudy-Logo"
+        >
         <q-toolbar-title>
           Mobistudy
           <!--<span slot="subtitle">{{ welcomeLabel }}</span>-->
         </q-toolbar-title>
         <span class="gt-xs q-mr-lg text-blue-grey-2"> {{ loggedInAsUserLabel }}</span>
-        <q-btn label="LOGOUT" flat dense icon-right="exit_to_app" @click="confirm = true" />
-        <q-dialog v-model="confirm" persistent>
+        <q-btn
+          label="LOGOUT"
+          flat
+          dense
+          icon-right="exit_to_app"
+          @click="confirm = true"
+        />
+        <q-dialog
+          v-model="confirm"
+          persistent
+        >
           <q-card>
             <q-card-section class="row items-center">
-              <q-avatar icon="warning" color="negative" text-color="white" size="lg" />
+              <q-avatar
+                icon="warning"
+                color="negative"
+                text-color="white"
+                size="lg"
+              />
               <span class="q-ml-sm">Are you sure you want to logout?</span>
             </q-card-section>
             <q-card-actions align="right">
-              <q-btn flat label="Cancel" color="primary" v-close-popup  />
-              <q-btn flat label="Logout" color="primary" v-close-popup @click="logout()" />
+              <q-btn
+                flat
+                label="Cancel"
+                color="primary"
+                v-close-popup
+              />
+              <q-btn
+                flat
+                label="Logout"
+                color="primary"
+                v-close-popup
+                @click="logout()"
+              />
             </q-card-actions>
           </q-card>
         </q-dialog>

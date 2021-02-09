@@ -157,7 +157,7 @@ export default {
         title: 'Deleting Study',
         color: 'warning',
         message: 'You are deleting the study ' + study.studytitle.en + ' from the DB. This will affect participants of that study ' +
-        ' and they will no longer be associated to that study. This cannot be undone. Would you like to continue?',
+          ' and they will no longer be associated to that study. This cannot be undone. Would you like to continue?',
         ok: 'Yes, delete Study',
         cancel: 'Cancel'
       }).onOk(async () => {
@@ -170,7 +170,6 @@ export default {
             filter: this.filter
           })
         } catch (err) {
-          console.debug(err)
           this.$q.notify({
             color: 'negative',
             message: 'Cannot delete study ' + study.studytitle.en,
