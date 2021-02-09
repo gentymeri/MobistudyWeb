@@ -125,22 +125,6 @@
             />
           </div>
         </div>
-        <div class="row">
-          <div class="col-4">
-            <div class="text-bold">
-              Always On:
-            </div>
-            <div class="text-caption">
-              The task can be completed at any time, as many times as the participant wants, during the study period.
-            </div>
-          </div>
-          <div class="col q-pl-sm">
-            <q-checkbox
-              v-model="task.scheduling.alwaysOn"
-              @input="update()"
-            />
-          </div>
-        </div>
         <div
           v-if="task.type === 'dataQuery' && allowAggregated(task.dataType)"
           class="row"

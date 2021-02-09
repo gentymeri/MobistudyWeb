@@ -47,7 +47,7 @@
         />
       </q-tab-panel>
 
-     F <q-tab-panel name="tab-studies">
+      <q-tab-panel name="tab-studies">
         <table-studies />
       </q-tab-panel>
 
