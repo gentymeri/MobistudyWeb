@@ -24,15 +24,28 @@
             <q-input type="number" v-model="until" clearable hint="Optional. In number of days from the start. If To and Occurrences are not specified, this task will run until the end date of the study." @input="update()" />
           </div>
         </div>
-        <div v-if="!value.alwaysOn" class="row">
+        <div class="row">
+          <div class="col-2 text-bold q-pt-lg"> Always On: </div>
+          <div class="col">
+            <q-field hint="Optional. The tasks will always be available 24/7 during the study period.">
+              <div class="row">
+                <q-checkbox
+                  v-model="alwaysOn"
+                  @input="update()"
+                />
+              </div>
+            </q-field>
+          </div>
+        </div>
+        </div>
+        <div v-if="!alwaysOn" class="row">
           <div class="col-2 text-bold q-pt-lg"> Occurrences: </div>
           <div class="col">
             <q-input type="number" v-model="occurrences" clearable hint="Optional. The maximum number of occurrences. If Occurrences and To are not specified, this task will run until the end date of the study." @input="update()" />
           </div>
         </div>
-      </div>
       <q-separator />
-      <div v-if="!value.alwaysOn">
+      <div v-if="!alwaysOn">
         <p class="q-mt-lg">
           Recurrence:
         </p>
@@ -94,6 +107,7 @@ export default {
     return {
       startDelaySecs: this.value.startDelaySecs,
       validitySecs: this.value.untilSecs,
+      alwaysOn: this.value.alwaysOn,
       occurrences: this.value.occurrences,
       intervalType: this.value.intervalType,
       intervalTypeOptions: [
@@ -570,6 +584,7 @@ export default {
         startEvent: 'consent',
         startDelaySecs: isNaN(this.startDelaySecs) ? undefined : this.startDelaySecs,
         untilSecs: isNaN(this.validitySecs) ? undefined : this.validitySecs,
+        alwaysOn: this.alwaysOn,
         occurrences: isNaN(this.occurrences) ? undefined : this.occurrences,
         intervalType: this.intervalType,
         months: this.months,

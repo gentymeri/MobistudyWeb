@@ -51,6 +51,7 @@ Technical logs will be deleted after 1 year they are produced.
   },
   scheduling: {
     notDefined: 'Not defined yet',
+    alwaysOn: 'Always available',
     fromDaysConsented: `The day after you have consented | {n} days after you have consented`,
     untilDaysConsented: `Until {days} days after you have consented`,
     occurrences: `Repeated {occurrences} times`,

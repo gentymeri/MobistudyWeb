@@ -51,6 +51,7 @@ Teknisk insamlad data (loggar) kommer att bli borttagna 1 år efter att de har p
   },
   scheduling: {
     notDefined: 'Icke definierad än',
+    alwaysOn: 'Alltid tillgänglig',
     fromDaysConsented: `Dagen efter du har gett ditt samtycke | {n} dagar efter att du har gett ditt samtycke`,
     untilDaysConsented: `Tills {days} dagar efter att du har gett ditt samtycke`,
     occurrences: `Upprepad {occurrences} gånger`,
