@@ -7,7 +7,7 @@
         :inverted="$q.theme === 'ios'"
       >
         <img
-          src="statics/icons/favicon-32x32.png"
+          src="icons/favicon-32x32.png"
           alt="Mobistudy-Logo"
         >
         <q-toolbar-title>
