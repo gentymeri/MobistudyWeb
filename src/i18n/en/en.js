@@ -15,9 +15,9 @@ These are needed for security and auditing.
     collectedDataQCST: `    \u2022 Heart rate and steps collected during a Queens College Step Test.`,
     collectedDataSMWT: `    \u2022 Your geographical position, distance and steps during the Six-minute Walk Test`,
     collectedDataMiband3: `    \u2022 Your heart rate, activity level, steps and activity type collected by the MiBand3 fitness tracker.`,
-    collectedDataPO60: `    \u2022 Your heart rate and blood oxygen saturation collected by the Beurer PO60 pulse oximeter.`,
+    collectedDataPO60: `    \u2022 Your blood oxygen saturation and heart rate measured by the pulseoximeter.`,
     collectedDataReason: `These data are needed to fulfil the aims of the research. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
-    storage: `All these data will be stored on the Mobistudy servers, which are managed by the University of Malmö in Sweden. Your phone will keep your profile and data about your participation in the studies only.
+    storage: `All these data will be stored on the Mobistudy servers, which are managed by Malmö University in Sweden. Your phone will keep your profile and data about your participation in the studies only.
 
 For how long will this data be kept?
 Your profile and participation in the study will be kept for as long as you will keep an account on Mobistudy.
@@ -27,7 +27,7 @@ Technical logs will be deleted after 1 year they are produced.
 [SPECIFY FOR HOW LONG STUDY DATA WILL BE KEPT BY RESEARCHERS]
 `,
     access: `Who will have access to this data?
-\u2022 Personnel from the University of Malmö for technical maintenance and auditing (Malmö University is the processor of your personal information).`,
+\u2022 Personnel from Malmö University for technical maintenance and auditing (Malmö University is the processor of your personal information).`,
     accessInstitution: `\u2022 {institution}`,
     accessReason: ` for {reason} ({institution} is the controller of your personal information).`,
     rights: `What are my rights?

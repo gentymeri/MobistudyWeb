@@ -15,7 +15,7 @@ Denna information är nödvändig för säkerhet och granskningssyften.
     collectedDataQCST: `    \u2022 Hjärtfrekvens och stegräkning under loppet av ett Queens College Step Test.`,
     collectedDataSMWT: `    \u2022 Din geografiska position, distansen och antal steg under loppet av ett Six-minute Walk Test`,
     collectedDataMiband3: `    \u2022 Hjärtfrekvens, aktivitetsnivå, antal steg and aktivitetstyp insamlad av en MiBand3 hälso-klocka.`,
-    collectedDataPO60: `    \u2022 Hjärtfrekvens och syremättnadsnivå insamlad av en Beurer PO60 pulsoximeter`,
+    collectedDataPO60: `    \u2022 Hjärtfrekvens och syremättnadsnivå insamlad av en pulsoximeter`,
     collectedDataReason: ` Den här insamlade datan är nödvändig för att uppnå forskningssyftet. [LÄGG TILL ANLEDNINGEN FÖR INSAMLINGEN AV SPECIFIKT DEN HÄR DATAN]`,
     storage: `All den här datan kommer bli lagrad på Mobistudys server, vilken sköts av Malmö Universitet i Sverige. Din telefon kommer endast att lagra din profil och data relaterat till ditt deltagande i studien. 
 
