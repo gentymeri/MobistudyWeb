@@ -74,6 +74,7 @@ Development:
 - [Jacky Tu](https://github.com/jackytu99)
 - [Elliott Hellstrand](https://github.com/Elliott0121)
 - [Andreas Holm](https://github.com/HeyOooh)
+- [Daniel Abella](https://github.com/assimilate)
 
 ## License
 
