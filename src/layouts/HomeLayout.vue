@@ -6,13 +6,13 @@
         :glossy="$q.theme === 'mat'"
         :inverted="$q.theme === 'ios'"
       >
-        <img
-          src="icons/favicon-32x32.png"
-          alt="Mobistudy-Logo"
-        >
+
         <q-toolbar-title>
-          Mobistudy
-          <!--<span slot="subtitle">{{ welcomeLabel }}</span>-->
+          <img
+            square
+            src="icons/mobistudy-white.svg"
+            style="max-width: 130px"
+          >
         </q-toolbar-title>
         <span class="gt-xs q-mr-lg text-blue-grey-2"> {{ loggedInAsUserLabel }}</span>
         <q-btn
