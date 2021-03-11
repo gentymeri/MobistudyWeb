@@ -264,7 +264,7 @@
       </q-card-section>
       <q-card-section>
         <div
-          v-for="(criteriaQuestion, index) in value.criteriaQuestions"
+          v-for="(criteriaQuestion, index) in value.inclusionCriteria.criteriaQuestions"
           :key="index"
         >
           <div class="row">
@@ -359,7 +359,6 @@ export default {
   name: 'StudyDesignCriteria',
   // value here is the inclusion criteria part of the study design
   // v is the vuelidate object
-  // TODO: would be better if value is the whole study design
   props: ['value', 'v'],
   components: {
     QInputMultilang
