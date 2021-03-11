@@ -10,21 +10,34 @@
       <q-card-section v-show="teamsListOptions.length > 0">
         <div class="text-subtitle">You are a member of the following team(s). Please select one from the List to continue:</div>
         <div class="row">
-          <q-select emit-value map-options v-model="selectedTeamValue" :options="teamsListOptions" @input="selectTeam()"/>
+          <q-select
+            emit-value
+            map-options
+            v-model="selectedTeamValue"
+            :options="teamsListOptions"
+            @input="selectTeam()"
+          />
         </div>
       </q-card-section>
       <q-separator />
       <q-card-actions>
-        <q-btn color="positive" label="Add me to a team" @click="promptAddTeam()"/>
+        <q-btn
+          color="primary"
+          label="Add me to a team"
+          @click="promptAddTeam()"
+        />
       </q-card-actions>
     </q-card>
 
-    <q-card class="q-ma-lg q-pa-lg" v-show="teamsListOptions.length > 0">
+    <q-card
+      class="q-ma-lg q-pa-lg"
+      v-show="teamsListOptions.length > 0"
+    >
       <q-card-section>
         <div class="text-h5">Studies</div>
       </q-card-section>
       <q-card-section>
-        <div class="text-subtitle">List of Studies for team {{ this.selectedTeamLabel }}</div>
+        <div class="text-subtitle">List of studies for team {{ this.selectedTeamLabel }}</div>
       </q-card-section>
 
       <q-separator />
@@ -34,18 +47,36 @@
           <p>
             Draft studies (not published):
           </p>
-          <q-btn v-for="(pstudy, index) in unpublishedStudies" :key="'d' + index" class="q-ma-md" :label="getStudyName(pstudy.title)" color="primary" @click="goToStudyDesigner(index)"/>
+          <q-btn
+            v-for="(pstudy, index) in unpublishedStudies"
+            :key="'d' + index"
+            class="q-ma-md"
+            :label="getStudyName(pstudy.title)"
+            color="primary"
+            @click="goToStudyDesigner(index)"
+          />
         </div>
 
         <div v-show="publishedStudies.length > 0">
           <p>
             Published studies:
           </p>
-          <q-btn v-for="(pstudy, index) in publishedStudies" :key="'p' + index" class="q-ma-md" :label="getStudyName(pstudy.title)" color="secondary" @click="goToStudyStats(pstudy.study_key)"/>
+          <q-btn
+            v-for="(pstudy, index) in publishedStudies"
+            :key="'p' + index"
+            class="q-ma-md"
+            :label="getStudyName(pstudy.title)"
+            color="secondary"
+            @click="goToStudyStats(pstudy.study_key)"
+          />
         </div>
 
-        <div class ="row q-mt-lg">
-          <q-btn :label="createStudyLabel" color="positive" @click="createNewStudy()"/>
+        <div class="row q-mt-lg">
+          <q-btn
+            :label="createStudyLabel"
+            color="primary"
+            @click="createNewStudy()"
+          />
         </div>
       </q-card-section>
     </q-card>

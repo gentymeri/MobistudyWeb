@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <q-toolbar class="bg-secondary text-white">
+    <q-toolbar class="bg-info text-black">
       <q-toolbar-title>
         Study Designer
       </q-toolbar-title>
@@ -43,8 +43,8 @@
 
     <q-tabs
       v-model="studyTab"
-      class="bg-secondary text-grey-2 shadow-2"
-      active-color="white"
+      class="bg-info text-black shadow-2"
+      active-color="brown-5"
       switch-indicator
       align="justify"
     >
