@@ -40,7 +40,7 @@ describe('QInput Multilanguage', () => {
   it('sets the correct default data', () => {
     expect(multilang.props('value').en).toBe('test text')
     expect(multilang.props('value').it).toBe('testo test')
-    let qinputs = multilang.findAll(components.QInput)
+    let qinputs = multilang.findAllComponents(components.QInput)
     expect(qinputs.length).toBe(2)
     expect(qinputs.at(0).isVisible()).toBe(true)
     expect(qinputs.at(1).isVisible()).toBe(true)
@@ -57,5 +57,4 @@ describe('QInput Multilanguage', () => {
     expect(multilang.vm.value.en).toBe('test 1')
     expect(multilang.vm.value.it).toBe('test 2')
   })
-
 })
