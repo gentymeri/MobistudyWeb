@@ -75,6 +75,7 @@ Development:
 - [Elliott Hellstrand](https://github.com/Elliott0121)
 - [Andreas Holm](https://github.com/HeyOooh)
 - [Daniel Abella](https://github.com/assimilate)
+- [Kevin Tsang](https://github.com/kevinchtsang)
 
 ## License
 
