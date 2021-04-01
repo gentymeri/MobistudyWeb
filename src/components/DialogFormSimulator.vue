@@ -48,6 +48,19 @@
               clearable
               hint="Write your answer here."
             />
+            <q-input
+              v-if="currentQuestion.type === 'number'"
+              class="q-ma-sm"
+              v-model.number="currentAnswerNumber"
+              align="center"
+              type="number"
+              :rules="[
+                val => val !== null && val !== '' || 'Write you answer here',
+                val => val >= currentQuestion.min || 'Number is too small',
+                val => val <= currentQuestion.max || 'Number is too big'
+              ]"
+              clearable
+            />
             <div
               class="q-ma-sm"
               v-if="currentQuestion.type === 'singleChoice'"
@@ -147,6 +160,7 @@ export default {
       currentAnswerSingleChoice: undefined,
       currentAnswerMultiChoice: [],
       currentAnswerFreeText: undefined,
+      currentAnswerNumber: undefined,
       langselect: true,
       language: this.languages[0],
       footer: { en: '' },
@@ -162,6 +176,7 @@ export default {
       this.currentAnswerSingleChoice = undefined
       this.currentAnswerMultiChoice = []
       this.currentAnswerFreeText = undefined
+      this.currentAnswerNumber = undefined
       this.opened = true
     },
     start () {
@@ -175,6 +190,7 @@ export default {
       this.currentAnswerSingleChoice = undefined
       this.currentAnswerMultiChoice = []
       this.currentAnswerFreeText = undefined
+      this.currentAnswerNumber = undefined
     },
     close () {
       this.opened = false
@@ -183,7 +199,7 @@ export default {
     next () {
       let type = this.currentQuestion.type
       let nextQId
-      if (type === 'freetext' || type === 'multiChoice') {
+      if (type === 'freetext' || type === 'number' || type === 'multiChoice') {
         if (this.currentQuestion.nextDefaultId) nextQId = this.currentQuestion.nextDefaultId
       } else if (type === 'singleChoice') {
         if (this.currentAnswerSingleChoice) {
@@ -208,6 +224,7 @@ export default {
         this.currentAnswerSingleChoice = undefined
         this.currentAnswerMultiChoice = []
         this.currentAnswerFreeText = undefined
+        this.currentAnswerNumber = undefined
         this.currentIndex = nextQIdx
         this.currentQuestion = this.form.questions[nextQIdx]
       }

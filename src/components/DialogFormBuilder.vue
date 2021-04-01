@@ -258,6 +258,28 @@
                 </div>
               </div>
             </div>
+
+            <!-- number answers -->
+            <div
+              class="q-pa-lg q-mt-sm shadow-1 bg-green-1"
+              style="max-width: 800px"
+              v-show="question.type == 'number'"
+            >
+              <div class="col q-pl-sm">
+                  <q-input
+                    label="Minimum"
+                    v-model.number="question.min"
+                    type="number"
+                    hint="optional"
+                  />
+                  <q-input
+                    label="Maximum"
+                    v-model.number="question.max"
+                    type="number"
+                    hint="optional"
+                  />
+                </div>
+            </div>
             <div class="row q-mt-sm">
               <div class="col-6">
                 <q-btn
@@ -328,6 +350,10 @@ export default {
       questionTypeOptions: [{
         label: 'Freetext',
         value: 'freetext'
+      },
+      {
+        label: 'Number',
+        value: 'number'
       },
       {
         label: 'Single choice',

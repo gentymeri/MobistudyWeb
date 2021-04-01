@@ -114,6 +114,9 @@
               <p v-if="answer.questionType == 'freetext'">
                 {{ answer.answer }}
               </p>
+              <p v-if="answer.questionType == 'number'">
+                {{ answer.answer }}
+              </p>
               <p v-if="answer.questionType == 'singleChoice'">
                 {{ answer.answer.answerText }}
               </p>
