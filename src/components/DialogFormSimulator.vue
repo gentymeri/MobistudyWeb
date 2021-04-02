@@ -66,13 +66,24 @@
               v-if="currentQuestion.type === 'singleChoice'"
             >
               <q-field hint="Please choose one.">
-                <q-radio
+                <div
                   v-for="(answerChoice, index) in currentQuestion.answerChoices"
                   :key="index"
-                  v-model="currentAnswerSingleChoice"
-                  :val="answerChoice.id"
-                  :label="answerChoice.text[language]"
-                />
+                >
+                  <q-radio
+                    v-model="currentAnswerSingleChoice"
+                    :val="answerChoice.id"
+                    :label="answerChoice.text[language]"
+                  />
+                  <q-input
+                    v-show="currentAnswerSingleChoice == answerChoice.id && answerChoice.includeFreeText"
+                    v-model="currentAnswerSingleChoiceFreeText"
+                    type="textarea"
+                    label="Write your answer here"
+                    rows="3"
+                    clearable
+                  />
+                </div>
               </q-field>
             </div>
             <div
@@ -80,13 +91,24 @@
               v-if="currentQuestion.type === 'multiChoice'"
             >
               <q-field hint="Please choose one or more.">
-                <q-checkbox
+                <div
                   v-for="(answerChoice, index) in currentQuestion.answerChoices"
                   :key="index"
-                  v-model="currentAnswerMultiChoice"
-                  :val="answerChoice.id"
-                  :label="answerChoice.text[language]"
-                />
+                >
+                  <q-checkbox
+                    v-model="currentAnswerMultiChoice"
+                    :val="answerChoice.id"
+                    :label="answerChoice.text[language]"
+                  />
+                  <q-input
+                    v-show="currentAnswerMultiChoice.includes(answerChoice.id) && answerChoice.includeFreeText"
+                    v-model="currentAnswerMultiChoiceFreeText[index]"
+                    type="textarea"
+                    label="Write your answer here"
+                    rows="3"
+                    clearable
+                  />
+                </div>
               </q-field>
             </div>
           </q-card>
@@ -158,7 +180,9 @@ export default {
         answerChoices: []
       },
       currentAnswerSingleChoice: undefined,
+      currentAnswerSingleChoiceFreeText: undefined,
       currentAnswerMultiChoice: [],
+      currentAnswerMultiChoiceFreeText: [],
       currentAnswerFreeText: undefined,
       currentAnswerNumber: undefined,
       langselect: true,
@@ -174,7 +198,9 @@ export default {
       this.currentIndex = 0
       this.currentQuestion = this.form.questions[0]
       this.currentAnswerSingleChoice = undefined
+      this.currentAnswerSingleChoiceFreeText = undefined
       this.currentAnswerMultiChoice = []
+      this.currentAnswerMultiChoiceFreeText = []
       this.currentAnswerFreeText = undefined
       this.currentAnswerNumber = undefined
       this.opened = true
@@ -188,7 +214,9 @@ export default {
       this.currentIndex = 0
       this.currentQuestion = this.form.questions[0]
       this.currentAnswerSingleChoice = undefined
+      this.currentAnswerSingleChoiceFreeText = undefined
       this.currentAnswerMultiChoice = []
+      this.currentAnswerMultiChoiceFreeText = []
       this.currentAnswerFreeText = undefined
       this.currentAnswerNumber = undefined
     },
@@ -222,7 +250,9 @@ export default {
       } else {
         let nextQIdx = this.form.questions.findIndex((q) => { return q.id === nextQId })
         this.currentAnswerSingleChoice = undefined
+        this.currentAnswerSingleChoiceFreeText = undefined
         this.currentAnswerMultiChoice = []
+        this.currentAnswerMultiChoiceFreeText = []
         this.currentAnswerFreeText = undefined
         this.currentAnswerNumber = undefined
         this.currentIndex = nextQIdx
