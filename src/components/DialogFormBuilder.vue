@@ -239,6 +239,12 @@
               </div>
               <div class="row q-mt-md">
                 <div class="col-6">
+                  <q-checkbox
+                    v-model="question.answerChoices.includeFreeText"
+                    label="Free text option"
+                  />
+                </div>
+                <div class="col-6">
                   <q-btn
                     v-if="aIndex !==0"
                     color="negative"
@@ -256,6 +262,34 @@
                     @click="addAnswerChoice(qIndex)"
                   />
                 </div>
+              </div>
+            </div>
+
+            <!-- number answers -->
+            <div
+              class="q-pa-lg q-mt-sm shadow-1 bg-green-1"
+              style="max-width: 800px"
+              v-show="question.type == 'number'"
+            >
+              <div class="col q-pl-sm">
+                <div class="col-2">
+                  Number Minimum and Maximum
+                  <div class="text-caption">
+                    Optional.
+                  </div>
+                </div>
+                <q-input
+                  label="Minimum"
+                  v-model.number="question.min"
+                  type="number"
+                  hint="optional"
+                />
+                <q-input
+                  label="Maximum"
+                  v-model.number="question.max"
+                  type="number"
+                  hint="optional"
+                />
               </div>
             </div>
             <div class="row q-mt-sm">
@@ -328,6 +362,10 @@ export default {
       questionTypeOptions: [{
         label: 'Freetext',
         value: 'freetext'
+      },
+      {
+        label: 'Number',
+        value: 'number'
       },
       {
         label: 'Single choice',
