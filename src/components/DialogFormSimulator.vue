@@ -55,7 +55,6 @@
               align="center"
               type="number"
               :rules="[
-                val => val !== null && val !== '' || 'Write you answer here',
                 val => val >= currentQuestion.min || 'Number is too small',
                 val => val <= currentQuestion.max || 'Number is too big'
               ]"
@@ -76,7 +75,8 @@
                     :label="answerChoice.text[language]"
                   />
                   <q-input
-                    v-show="currentAnswerSingleChoice == answerChoice.id && answerChoice.includeFreeText"
+                    v-show="answerChoice.includeFreeText"
+                    :disable="currentAnswerSingleChoice !== answerChoice.id"
                     v-model="currentAnswerSingleChoiceFreeText"
                     type="textarea"
                     label="Write your answer here"
@@ -101,7 +101,8 @@
                     :label="answerChoice.text[language]"
                   />
                   <q-input
-                    v-show="currentAnswerMultiChoice.includes(answerChoice.id) && answerChoice.includeFreeText"
+                    v-show="answerChoice.includeFreeText"
+                    :disable = "!currentAnswerMultiChoice.includes(answerChoice.id)"
                     v-model="currentAnswerMultiChoiceFreeText[index]"
                     type="textarea"
                     label="Write your answer here"
