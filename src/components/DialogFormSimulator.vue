@@ -46,7 +46,6 @@
               type="textarea"
               rows="3"
               clearable
-              hint="Write your answer here."
             />
             <q-input
               v-if="currentQuestion.type === 'number'"
@@ -64,53 +63,49 @@
               class="q-ma-sm"
               v-if="currentQuestion.type === 'singleChoice'"
             >
-              <q-field hint="Please choose one.">
-                <div
-                  v-for="(answerChoice, index) in currentQuestion.answerChoices"
-                  :key="index"
-                >
-                  <q-radio
-                    v-model="currentAnswerSingleChoice"
-                    :val="answerChoice.id"
-                    :label="answerChoice.text[language]"
-                  />
-                  <q-input
-                    v-show="answerChoice.includeFreeText"
-                    :disable="currentAnswerSingleChoice !== answerChoice.id"
-                    v-model="currentAnswerSingleChoiceFreeText"
-                    type="textarea"
-                    label="Write your answer here"
-                    rows="3"
-                    clearable
-                  />
-                </div>
-              </q-field>
+              <div
+                v-for="(answerChoice, index) in currentQuestion.answerChoices"
+                :key="index"
+              >
+                <q-radio
+                  v-model="currentAnswerSingleChoice"
+                  :val="answerChoice.id"
+                  :label="answerChoice.text[language]"
+                />
+                <q-input
+                  v-show="answerChoice.includeFreeText"
+                  :disable="currentAnswerSingleChoice !== answerChoice.id"
+                  v-model="currentAnswerSingleChoiceFreeText"
+                  type="textarea"
+                  :label="answerChoice.text[language]"
+                  rows="1"
+                  clearable
+                />
+              </div>
             </div>
             <div
               class="q-ma-sm"
               v-if="currentQuestion.type === 'multiChoice'"
             >
-              <q-field hint="Please choose one or more.">
-                <div
-                  v-for="(answerChoice, index) in currentQuestion.answerChoices"
-                  :key="index"
-                >
-                  <q-checkbox
-                    v-model="currentAnswerMultiChoice"
-                    :val="answerChoice.id"
-                    :label="answerChoice.text[language]"
-                  />
-                  <q-input
-                    v-show="answerChoice.includeFreeText"
-                    :disable = "!currentAnswerMultiChoice.includes(answerChoice.id)"
-                    v-model="currentAnswerMultiChoiceFreeText[index]"
-                    type="textarea"
-                    label="Write your answer here"
-                    rows="3"
-                    clearable
-                  />
-                </div>
-              </q-field>
+              <div
+                v-for="(answerChoice, index) in currentQuestion.answerChoices"
+                :key="index"
+              >
+                <q-checkbox
+                  v-model="currentAnswerMultiChoice"
+                  :val="answerChoice.id"
+                  :label="answerChoice.text[language]"
+                />
+                <q-input
+                  v-show="answerChoice.includeFreeText"
+                  :disable="!currentAnswerMultiChoice.includes(answerChoice.id)"
+                  v-model="currentAnswerMultiChoiceFreeText[index]"
+                  type="textarea"
+                  :label="answerChoice.text[language]"
+                  rows="1"
+                  clearable
+                />
+              </div>
             </div>
           </q-card>
         </div>
