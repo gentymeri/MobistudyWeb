@@ -18,7 +18,7 @@
               @click.native="addDT()"
             >
               <q-item-section>
-                <q-item-label>Data query Task</q-item-label>
+                <q-item-label>Data query</q-item-label>
               </q-item-section>
             </q-item>
             <q-item
@@ -36,7 +36,7 @@
               @click.native="addMiband3T()"
             >
               <q-item-section>
-                <q-item-label>MiBand3 data collection</q-item-label>
+                <q-item-label>Wearable (MiBand3) data collection</q-item-label>
               </q-item-section>
             </q-item>
             <q-item
@@ -45,7 +45,7 @@
               @click.native="addQCSTT()"
             >
               <q-item-section>
-                <q-item-label>Queens college step test</q-item-label>
+                <q-item-label>Queen's college step test</q-item-label>
               </q-item-section>
             </q-item>
             <q-item
