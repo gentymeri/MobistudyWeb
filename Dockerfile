@@ -1,4 +1,4 @@
-FROM node:15-alpine3.10  as build
+FROM node:14-alpine3.10  as build
 
 # install python (needed by some dev deps)
 RUN apk add --no-cache --virtual .gyp \
