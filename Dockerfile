@@ -1,4 +1,6 @@
-FROM node:14-alpine3.10  as build
+FROM node:14.16.1-alpine3.10  as build
+
+RUN apk update
 
 # install python (needed by some dev deps)
 RUN apk add --no-cache --virtual .gyp \
@@ -6,18 +8,14 @@ RUN apk add --no-cache --virtual .gyp \
     make \
     g++
 
-RUN npm install -g @quasar/cli
-
+# create local folder where to keep the src code
 RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-# copy package json and install dependencies
-COPY package* /usr/src/app/
-RUN npm ci
-
-# copy source code and build
 COPY . /usr/src/app
-RUN quasar build
+
+# build
+WORKDIR /usr/src/app
+RUN npm install
+RUN npx quasar build
 
 FROM caddy:2-alpine
 
