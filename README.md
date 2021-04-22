@@ -10,7 +10,9 @@ You need to install the following on your system:
 - nodejs
 - (optional) the [quasar command line tool](https://quasar.dev/quasar-cli/installation)
 
-Install all other dependencies with `npm install`.
+In order to guarantee that the same version of node is used across developers, it is recommendable to use [nvm](https://github.com/nvm-sh/nvm) and run `nvm install && nvm use` to switch to the node version used in this project.
+
+Install all dependencies with `npm install`.
 
 ## Run
 
