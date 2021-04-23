@@ -90,6 +90,11 @@
                 </q-item-section>
               </q-item>
             </q-list>
+            <q-btn
+              label="Generate consent items"
+              color="primary"
+              @click="generateConsent()"
+            />
           </div>
         </div>
         <div class="row q-mt-sm">
@@ -170,48 +175,99 @@ export default {
     }
   },
   created () {
-    this.value.consent.taskItems = []
+    let consentItemList = []
     for (let i = 0; i < this.value.tasks.length; i++) {
       let task = this.value.tasks[i]
       let newTaskItem = {
         description: undefined,
-        taskId: task.id
+        taskId: task.id,
+        type: task.type
       }
-      newTaskItem.description = {}
-      for (let lang of this.value.generalities.languages) {
-        if (task.type === 'dataQuery') {
-          let localDatatype = this.$i18n.t('healthDataTypes.' + task.dataType, lang)
-          newTaskItem.description[lang] = this.$i18n.t('consent.taskItemDataQuery', lang, {
-            dataType: localDatatype, scheduling: schedulingToString(task.scheduling, lang)
-          })
-        } else if (task.type === 'form') {
-          newTaskItem.description[lang] = this.$i18n.t('consent.taskItemForm', lang, {
-            formName: task.formName[lang], scheduling: schedulingToString(task.scheduling, lang)
-          })
-        } else if (task.type === 'miband3') {
-          newTaskItem.description[lang] = this.$i18n.t('consent.taskItemMiBand3', lang, {
-            scheduling: schedulingToString(task.scheduling, lang)
-          })
-        } else if (task.type === 'qcst') {
-          newTaskItem.description[lang] = this.$i18n.t('consent.taskItemQCST', lang, {
-            scheduling: schedulingToString(task.scheduling, lang)
-          })
-        } else if (task.type === 'smwt') {
-          newTaskItem.description[lang] = this.$i18n.t('consent.taskItemSMWT', lang, {
-            scheduling: schedulingToString(task.scheduling, lang)
-          })
-        } else if (task.type === 'po60') {
-          newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPO60', lang, {
-            scheduling: schedulingToString(task.scheduling, lang)
-          })
+      // check if exisiting task description
+      let oldTask = this.value.consent.taskItems[i]
+      if (!oldTask || task.type !== oldTask.type) {
+        newTaskItem.description = {}
+        for (let lang of this.value.generalities.languages) {
+          if (task.type === 'dataQuery') {
+            let localDatatype = this.$i18n.t('healthDataTypes.' + task.dataType, lang)
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemDataQuery', lang, {
+              dataType: localDatatype, scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'form') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemForm', lang, {
+              formName: task.formName[lang], scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'miband3') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemMiBand3', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'qcst') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemQCST', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'smwt') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemSMWT', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'po60') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPO60', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          }
         }
+      } else {
+        newTaskItem.description = oldTask.description
       }
-      this.value.consent.taskItems.push(newTaskItem)
+      consentItemList.push(newTaskItem)
     }
+    this.value.consent.taskItems = consentItemList
   },
   methods: {
     update () {
       this.$emit('input', this.value)
+    },
+    generateConsent () {
+      let consentItemList = []
+      for (let i = 0; i < this.value.tasks.length; i++) {
+        let task = this.value.tasks[i]
+        console.log(task)
+        let newTaskItem = {
+          description: undefined,
+          taskId: task.id,
+          type: task.type
+        }
+        newTaskItem.description = {}
+        for (let lang of this.value.generalities.languages) {
+          if (task.type === 'dataQuery') {
+            let localDatatype = this.$i18n.t('healthDataTypes.' + task.dataType, lang)
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemDataQuery', lang, {
+              dataType: localDatatype, scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'form') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemForm', lang, {
+              formName: task.formName[lang], scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'miband3') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemMiBand3', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'qcst') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemQCST', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'smwt') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemSMWT', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'po60') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPO60', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          }
+        }
+        consentItemList.push(newTaskItem)
+      }
+      this.value.consent.taskItems = consentItemList
     },
     addExtraItem () {
       this.value.consent.extraItems.push({
@@ -226,6 +282,7 @@ export default {
       this.value.consent.extraItems.splice(index, 1)
     },
     generatePrivacy () {
+      console.log(this.value.tasks)
       for (let lang of this.value.generalities.languages) {
         let string = this.$i18n.t('privacyPolicy.collectedData', lang)
         for (let task of this.value.tasks) {
