@@ -244,16 +244,8 @@ export default {
       }
     },
     showLogData (props) {
-      if (props.row.refData === 'answers') {
-        this.logDataType = 'answers'
-        this.logDataModalContent = props.value
-      } else if (props.row.refData === 'healthStoreData') {
-        this.logDataType = 'healthStoreData'
-        this.logDataModalContent = props.value
-      } else {
-        this.logDataType = 'raw'
-        this.logDataModalContent = JSON.stringify(props.value, null, 2)
-      }
+      this.logDataType = 'raw'
+      this.logDataModalContent = JSON.stringify(props.value, null, 2)
       this.logDataModal = true
     }
   }
