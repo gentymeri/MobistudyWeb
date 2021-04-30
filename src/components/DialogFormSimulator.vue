@@ -34,10 +34,15 @@
             {{currentQuestion.helper[language]}}
           </div>
           <!-- Answers -->
-          <q-card class="bg-green-2 q-ma-md">
+          <q-card
+            class="bg-green-2 q-ma-md"
+            v-if="currentQuestion.type !== 'textOnly'"
+          >
             <div>
               Answer
             </div>
+
+            <!-- freetext -->
             <q-input
               v-if="currentQuestion.type === 'freetext'"
               class="q-ma-sm"
@@ -47,6 +52,8 @@
               rows="3"
               clearable
             />
+
+            <!-- number -->
             <q-input
               v-if="currentQuestion.type === 'number'"
               class="q-ma-sm"
@@ -59,6 +66,30 @@
               ]"
               clearable
             />
+
+            <!-- slider -->
+            <div
+              v-if="currentQuestion.type === 'slider'"
+              class="text-center"
+            >
+              <div>
+                {{ currentQuestion.maxText[$i18n.locale] }}
+              </div>
+              <div class="row justify-center">
+                <q-slider
+                  v-model.number="currentAnswerNumber"
+                  :min="currentQuestion.min"
+                  :max="currentQuestion.max"
+                  vertical
+                  reverse
+                />
+              </div>
+              <div>
+                {{ currentQuestion.minText[$i18n.locale] }}
+              </div>
+            </div>
+
+            <!-- single choice -->
             <div
               class="q-ma-sm"
               v-if="currentQuestion.type === 'singleChoice'"
@@ -83,6 +114,8 @@
                 />
               </div>
             </div>
+
+            <!-- multi choice -->
             <div
               class="q-ma-sm"
               v-if="currentQuestion.type === 'multiChoice'"

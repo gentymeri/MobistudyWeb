@@ -101,7 +101,7 @@
                     emit-value
                     map-options
                     :options="questionTypeOptions"
-                    @input="update()"
+                    @input="updateQuestionType(question)"
                   />
                 </div>
               </div>
@@ -276,28 +276,41 @@
                 </div>
               </div>
 
-              <!-- number answers -->
+              <!-- number or slider answers -->
               <div
                 class="q-pa-lg q-mt-sm shadow-1 bg-info"
-                v-show="question.type == 'number'"
+                v-if="question.type == 'number' || question.type == 'slider'"
               >
                 <div>
-                  Number Minimum and Maximum
-                  <div class="text-caption">
-                    Optional.
-                  </div>
+                  Minimum and maximum allowed values.
                 </div>
                 <q-input
                   label="Minimum"
                   v-model.number="question.min"
                   type="number"
-                  hint="optional"
+                  @input="update()"
+                />
+                <q-input-multilang
+                  label="Minimum description"
+                  v-model="question.minText"
+                  type="text"
+                  :languages="languages"
+                  hint="Description of the minimum value"
+                  v-if="question.type == 'slider'"
                 />
                 <q-input
                   label="Maximum"
                   v-model.number="question.max"
                   type="number"
-                  hint="optional"
+                  @input="update()"
+                />
+                <q-input-multilang
+                  label="Maximum description"
+                  v-model="question.maxText"
+                  type="text"
+                  :languages="languages"
+                  hint="Description of the maximum value"
+                  v-if="question.type == 'slider'"
                 />
               </div>
               <div class="row q-mt-sm">
@@ -368,6 +381,10 @@ export default {
     return {
       questionsCounter: this.value.questions.length,
       questionTypeOptions: [{
+        label: 'Only text (no question)',
+        value: 'textOnly'
+      },
+      {
         label: 'Freetext',
         value: 'freetext'
       },
@@ -376,14 +393,15 @@ export default {
         value: 'number'
       },
       {
+        label: 'Slider',
+        value: 'slider'
+      },
+      {
         label: 'Single choice',
         value: 'singleChoice'
       }, {
         label: 'Multiple choice',
         value: 'multiChoice'
-      }, {
-        label: 'Only text (no question)',
-        value: 'textOnly'
       }],
       opened: false
     }
@@ -415,21 +433,49 @@ export default {
         text: {},
         helper: {},
         footer: {},
-        type: 'singleChoice',
-        nextDefaultId: undefined,
-        answerChoices: [{
-          id: qid + 'A1',
-          text: {},
-          nextQuestionId: undefined,
-          includeFreeText: false
-        }]
+        type: 'textOnly',
+        nextDefaultId: undefined
       }
       for (let lang of this.languages) {
         newQuestion.text[lang] = ''
         newQuestion.helper[lang] = ''
-        newQuestion.answerChoices[0].text[lang] = ''
       }
       this.value.questions.push(newQuestion)
+
+      this.update()
+    },
+    updateQuestionType (question) {
+      if (question.type === 'singleChoice' || question.type === 'multiChoice') {
+        this.$set(question, 'answerChoices', [{
+          id: question.id + 'A1',
+          text: {},
+          nextQuestionId: undefined,
+          includeFreeText: false
+        }])
+      }
+      if (question.type === 'number') {
+        this.$set(question, 'min', undefined)
+        this.$set(question, 'max', undefined)
+      }
+      if (question.type === 'slider') {
+        this.$set(question, 'min', undefined)
+        this.$set(question, 'max', undefined)
+        this.$set(question, 'minText', {})
+        this.$set(question, 'maxText', {})
+        for (let lang of this.languages) {
+          this.$set(question.minText, lang, '')
+          this.$set(question.maxText, lang, '')
+        }
+      }
+      if (question.type === 'textOnly' || question.type === 'freetext') {
+        delete question.answerChoices
+        delete question.min
+        delete question.minText
+        delete question.max
+        delete question.maxText
+      }
+
+      this.update()
     },
     // removes a question and updates all question IDs, answerChoiceIDs and nextQuestionIDs
     removeQuestion (qIndex) {
@@ -464,10 +510,13 @@ export default {
           }
         }
       }
+      this.update()
     },
     // add an answer choice
     addAnswerChoice (qIndex) {
-      if (!this.value.questions[qIndex].answerChoices) this.value.questions[qIndex].answerChoices = []
+      if (!this.value.questions[qIndex].answerChoices) {
+        this.$set(this.value.questions[qIndex], 'answerChoices', [])
+      }
       let newAnswer = {
         id: this.value.questions[qIndex].id + 'A' + (this.value.questions[qIndex].answerChoices.length + 1),
         text: {},
@@ -478,6 +527,7 @@ export default {
         newAnswer.text[lang] = ''
       }
       this.value.questions[qIndex].answerChoices.push(newAnswer)
+      this.update()
     },
     // removes an answer choice
     removeAnswerChoice (qIndex, aIndex) {
@@ -485,6 +535,7 @@ export default {
       for (let i = aIndex; i < this.value.questions[qIndex].answerChoices.length; i++) {
         this.value.questions[qIndex].answerChoices[i].id = this.value.questions[qIndex].id + 'A' + (i + 1)
       }
+      this.update()
     },
     // cancel the form
     cancelForm () {
