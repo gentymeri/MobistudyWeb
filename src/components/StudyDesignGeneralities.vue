@@ -63,6 +63,13 @@
                 val="sv"
                 label="Swedish"
               />
+              <q-checkbox
+                v-model.trim="v.generalities.languages.$model"
+                @blur="v.generalities.languages.$touch"
+                @input="update()"
+                val="es"
+                label="Spanish"
+              />
             </q-field>
           </div>
         </div>
@@ -432,7 +439,6 @@ export default {
   name: 'StudyDesignGeneralities',
   // value here is the generalities part of the study design
   // v is the vuelidate object
-  // TODO: would be better if value is the whole study design
   props: ['value', 'v'],
   components: {
     QInputMultilang
@@ -460,7 +466,8 @@ export default {
         dataAccess: '',
         reasonForDataAccess: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         }
       })
     },

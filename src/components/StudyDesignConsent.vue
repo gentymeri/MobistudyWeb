@@ -272,7 +272,8 @@ export default {
       this.value.consent.extraItems.push({
         description: {
           en: undefined,
-          sv: undefined
+          sv: undefined,
+          es: undefined
         },
         optional: true
       })

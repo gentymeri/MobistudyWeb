@@ -194,15 +194,18 @@ export default {
         id: undefined,
         text: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         helper: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         footer: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         type: 'freetext',
         nextDefaultId: undefined,

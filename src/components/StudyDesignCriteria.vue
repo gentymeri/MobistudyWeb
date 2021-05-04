@@ -35,6 +35,12 @@
                 val="gb"
                 @input="update()"
               />
+              <q-checkbox
+                v-model="v.inclusionCriteria.countries.$model"
+                label="Spain"
+                val="es"
+                @input="update()"
+              />
             </q-field>
           </div>
         </div>
@@ -492,7 +498,8 @@ export default {
       this.value.inclusionCriteria.criteriaQuestions.push({
         title: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         answer: ''
       })

@@ -149,15 +149,18 @@ export default {
           languages: ['en'],
           title: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           shortDescription: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           longDescription: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           startDate: undefined,
           endDate: undefined,
@@ -175,7 +178,8 @@ export default {
               dataAccess: '',
               reasonForDataAccess: {
                 en: '',
-                sv: ''
+                sv: '',
+                es: ''
               }
             }
           ]
@@ -200,11 +204,13 @@ export default {
         consent: {
           invitation: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           privacyPolicy: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           taskItems: [],
           extraItems: []

@@ -307,25 +307,30 @@ export default {
         teamKey: this.teamKey,
         name: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         description: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         questions: [{
           id: 'Q1',
           text: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           helper: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           footer: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           type: 'freetext',
           nextDefaultId: undefined,
@@ -333,7 +338,8 @@ export default {
             id: 'Q1A1',
             text: {
               en: '',
-              sv: ''
+              sv: '',
+              es: ''
             },
             nextQuestionId: undefined
           }]
