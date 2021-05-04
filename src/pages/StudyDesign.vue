@@ -252,8 +252,8 @@ export default {
       },
       inclusionCriteria: {
         countries: { required },
-        minAge: { required, minValue: minValue(0) },
-        maxAge: { required, minValue: minValue(0) },
+        minAge: { required, minValue: minValue(0), maxValue: maxValue(150) },
+        maxAge: { required, minValue: minValue(0), maxValue: maxValue(150) },
         sex: { required },
         minBMI: { required, minValue: minValue(5), maxValue: maxValue(210) },
         maxBMI: { required, minValue: minValue(5), maxValue: maxValue(210) }

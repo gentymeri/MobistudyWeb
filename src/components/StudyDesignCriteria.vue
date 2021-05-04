@@ -227,7 +227,7 @@
             </div>
             <div class="text-caption">
               Minimum and maximum BMI range of the participants.
-              Values must be between 10 and 80.
+              Values must be between 5 and 210.
             </div>
           </div>
           <div class="col q-pl-sm">
@@ -235,8 +235,7 @@
               type="number"
               min="5"
               max="210"
-              align="center"
-              v-model.number="v.inclusionCriteria.minBMI.$model"
+              v-model="value.inclusionCriteria.minBMI"
               hint="Minimum BMI."
               @blur="v.inclusionCriteria.minBMI.$touch"
               @input="update()"
@@ -250,7 +249,7 @@
               min="5"
               max="210"
               align="center"
-              v-model.number="v.inclusionCriteria.maxBMI.$model"
+              v-model="value.inclusionCriteria.maxBMI"
               hint="Maximum BMI."
               @blur="v.inclusionCriteria.maxBMI.$touch"
               :input="update()"
