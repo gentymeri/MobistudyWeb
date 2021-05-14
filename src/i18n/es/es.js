@@ -60,7 +60,7 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
     repeatedMonths: `Repetido mensualmente| Repetido cada {n} mes`,
     repeatedYears: `Repetido  cada año| Repetido cada {n} año`,
     onMonths: `En el mes (s) siguiente `,
-    atHours: `At the following hours`,
+    atHours: `En las siguientes horas`,
     onDaysMonth: `En los siguientes día(s) del mes`,
     onDaysWeek: `En los siguientes día(s) de la semana`
   },
