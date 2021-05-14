@@ -426,6 +426,7 @@ export default {
           occurrences: undefined,
           intervalType: 'd',
           interval: 1,
+          hours: [],
           months: [],
           monthDays: [],
           weekDays: [],
