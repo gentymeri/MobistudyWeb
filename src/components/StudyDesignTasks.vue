@@ -395,7 +395,7 @@ export default {
         this.selectOptionsFormsList = forms.map((f) => {
           return {
             name: f.name,
-            label: f.name[this.value.generalities.languages[0]], // use the name with the first language
+            label: this.visualizeFormName(f.name),
             value: f._key
           }
         })
@@ -545,6 +545,11 @@ export default {
         formName: undefined
       })
       this.update()
+    },
+    visualizeFormName (name) {
+      for (let lan of Object.keys(name)) {
+        if (name[lan]) return name[lan]
+      }
     },
     changeFormName (task, formKey) {
       let option = this.selectOptionsFormsList.find((opt) => {
