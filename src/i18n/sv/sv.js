@@ -8,7 +8,7 @@ Denna information behövs för att identifiera dig och för att skapa statistik 
 Denna information är nödvändig för att bedöma din nivå av deltagande i studien.
 \u2022 Teknisk information relaterat till access av servern (exempelvis inloggning).
 Denna information är nödvändig för säkerhets- och granskningssyften.
-\u2022 Datainsamling relaterad till uppgifter att utföra i studien, specifikt: 
+\u2022 Datainsamling relaterad till uppgifter att utföra i studien, specifikt:
 `,
     collectedDataForm: `    \u2022 Svar på {formName} formuläret.`,
     collectedDataQuery: `    \u2022 {dataType} från GoogleFit (Android-telefoner) eller HealthKit (iPhones).`,
@@ -16,13 +16,14 @@ Denna information är nödvändig för säkerhets- och granskningssyften.
     collectedDataSMWT: `    \u2022 Din geografiska position, distans och antal steg under ett 6-minuters gångtest`,
     collectedDataMiband3: `    \u2022 Hjärtfrekvens, aktivitetsnivå, steg and aktivitetstyp insamlad av en MiBand3 hälsoklocka.`,
     collectedDataPO60: `    \u2022 Hjärtfrekvens och syrehalt i blodet, insamlat av en pulsoximeter.`,
+    collectedDataPeakFlow: `    \u2022 Ditt toppflöde mätt med den smarta toppflödesmätaren.`,
     collectedDataReason: ` Den insamlade datan är nödvändig för att uppnå forskningssyftet. [LÄGG TILL ANLEDNINGEN FÖR INSAMLINGEN AV SPECIFIKT DEN HÄR DATAN]`,
-    storage: `All data kommer lagras på Mobistudys egen server, vilken hanteras av Malmö Universitet i Sverige. Din telefon lagrar enbart din profil samt data om deltagande vilka studier du deltar i. 
+    storage: `All data kommer lagras på Mobistudys egen server, vilken hanteras av Malmö Universitet i Sverige. Din telefon lagrar enbart din profil samt data om deltagande vilka studier du deltar i.
 
 Hur länge kommer denna data förvaras?
-Din profil och deltagande i en studie kommer att förvaras så länge du har ett konto på Mobistudy. 
+Din profil och deltagande i en studie kommer att förvaras så länge du har ett konto på Mobistudy.
 Data insamlag inom de olika uppgifter som ska utföras i en studie kommer att förvaras på Mobistudy:s server till slutet av studien, {studyEndDate}.
-Teknisk data (loggar) kommer att tas bort 1 år efter de producerats. 
+Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
 
 [SPECIFIERA HUR LÄNGE STUDIENS INSAMLADE DATA KOMMER ATT BEHÅLLAS AV FORSKARNA]
 `,
@@ -47,7 +48,8 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
     taskItemMiBand3: `Jag godkänner att skicka min data insamlad av MiBand3-hälsoklockan, {scheduling}`,
     taskItemQCST: 'Jag godkänner att utföra queens college step test, {scheduling}',
     taskItemSMWT: 'Jag godkänner att utföra 6-minuters gångtest, {scheduling}',
-    taskItemPO60: 'Jag godkänner att skicka data insamlad av Beurer PO60 pulsoximetern, {scheduling}'
+    taskItemPO60: 'Jag godkänner att skicka data insamlad av Beurer PO60 pulsoximetern, {scheduling}',
+    taskItemPeakFlow: 'Jag godkänner att skicka mina uppgifter som samlats in av Smart Peak Flow Meter, {scheduling}'
   },
   scheduling: {
     notDefined: 'Icke ännu definierad',
