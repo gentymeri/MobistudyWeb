@@ -75,6 +75,15 @@
                 <q-item-label>Peak Flow</q-item-label>
               </q-item-section>
             </q-item>
+            <q-item
+              clickable
+              v-close-popup
+              @click.native="addGPST()"
+            >
+              <q-item-section>
+                <q-item-label>GPS/ weather</q-item-label>
+              </q-item-section>
+            </q-item>
           </q-list>
         </q-btn-dropdown>
       </q-card-section>
@@ -114,6 +123,10 @@
           class="text-h5"
           v-if="task.type === 'peakflow'"
         >Peak Flow Task</div>
+        <div
+          class="text-h5"
+          v-if="task.type === 'gps'"
+        >GPS Task</div>
       </q-card-section>
       <q-card-section>
         <div
@@ -525,6 +538,25 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'peakflow',
+        scheduling: {
+          startEvent: 'consent',
+          startDelaySecs: undefined,
+          untilSecs: undefined,
+          occurrences: undefined,
+          intervalType: 'd',
+          interval: 1,
+          months: [],
+          monthDays: [],
+          weekDays: [],
+          alwaysOn: false
+        }
+      })
+      this.update()
+    },
+    addGPST () {
+      this.value.tasks.push({
+        id: this.value.tasks.length + 1,
+        type: 'gps',
         scheduling: {
           startEvent: 'consent',
           startDelaySecs: undefined,
