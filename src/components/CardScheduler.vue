@@ -15,13 +15,25 @@
         <div class="row">
           <div class="col-2 text-bold q-pt-lg"> From: </div>
           <div class="col">
-            <q-input type="number" v-model="start" clearable hint="Optional. Enter the number of days from the start." @input="update()" />
+            <q-input
+              type="number"
+              v-model="start"
+              clearable
+              hint="Optional. Enter the number of days from the start."
+              @input="update()"
+            />
           </div>
         </div>
         <div class="row">
           <div class="col-2 text-bold q-pt-lg"> To: </div>
           <div class="col">
-            <q-input type="number" v-model="until" clearable hint="Optional. In number of days from the start. If To and Occurrences are not specified, this task will run until the end date of the study." @input="update()" />
+            <q-input
+              type="number"
+              v-model="until"
+              clearable
+              hint="Optional. In number of days from the start. If To and Occurrences are not specified, this task will run until the end date of the study."
+              @input="update()"
+            />
           </div>
         </div>
         <div class="row">
@@ -37,13 +49,22 @@
             </q-field>
           </div>
         </div>
+      </div>
+      <div
+        v-if="!alwaysOn"
+        class="row"
+      >
+        <div class="col-2 text-bold q-pt-lg"> Occurrences: </div>
+        <div class="col">
+          <q-input
+            type="number"
+            v-model="occurrences"
+            clearable
+            hint="Optional. The maximum number of occurrences. If Occurrences and To are not specified, this task will run until the end date of the study."
+            @input="update()"
+          />
         </div>
-        <div v-if="!alwaysOn" class="row">
-          <div class="col-2 text-bold q-pt-lg"> Occurrences: </div>
-          <div class="col">
-            <q-input type="number" v-model="occurrences" clearable hint="Optional. The maximum number of occurrences. If Occurrences and To are not specified, this task will run until the end date of the study." @input="update()" />
-          </div>
-        </div>
+      </div>
       <q-separator />
       <div v-if="!alwaysOn">
         <p class="q-mt-lg">
@@ -52,51 +73,124 @@
         <div class="row">
           <div class="col-2 text-bold q-pt-lg"> Frequency: </div>
           <div class="col">
-            <q-select type="number" v-model="intervalType" :options="intervalTypeOptions" emit-value map-options hint="Enter the desired frequency." @input="update()" />
+            <q-select
+              type="number"
+              v-model="intervalType"
+              :options="intervalTypeOptions"
+              emit-value
+              map-options
+              hint="Enter the desired frequency."
+              @input="update()"
+            />
           </div>
         </div>
         <div class="row">
           <div class="col-2 text-bold q-pt-lg"> Interval: </div>
           <div class="col">
-            <q-select @input="update()" v-show="intervalType == 'd'" emit-value map-options  v-model="dailyInterval" :options="dailyIntervalOptions" />
-            <q-select @input="update()" v-show="intervalType == 'w'" emit-value map-options  v-model="weeklyInterval" :options="weeklyIntervalOptions" />
-            <q-select @input="update()" v-show="intervalType == 'm'" emit-value map-options  v-model="monthlyInterval" :options="monthlyIntervalOptions" />
-            <q-select @input="update()" v-show="intervalType == 'y'" emit-value map-options  v-model="yearlyInterval" :options="yearlyIntervalOptions" />
+            <q-select
+              @input="update()"
+              v-show="intervalType == 'd'"
+              emit-value
+              map-options
+              v-model="dailyInterval"
+              :options="dailyIntervalOptions"
+            />
+            <q-select
+              @input="update()"
+              v-show="intervalType == 'w'"
+              emit-value
+              map-options
+              v-model="weeklyInterval"
+              :options="weeklyIntervalOptions"
+            />
+            <q-select
+              @input="update()"
+              v-show="intervalType == 'm'"
+              emit-value
+              map-options
+              v-model="monthlyInterval"
+              :options="monthlyIntervalOptions"
+            />
+            <q-select
+              @input="update()"
+              v-show="intervalType == 'y'"
+              emit-value
+              map-options
+              v-model="yearlyInterval"
+              :options="yearlyIntervalOptions"
+            />
           </div>
         </div>
         <div class="row">
+          <div class="col-2 text-bold q-py-lg"> Hours: </div>
+          <div class="col">
+            <q-select
+              v-model="hours"
+              use-input
+              use-chips
+              multiple
+              hide-dropdown-icon
+              input-debounce="0"
+              new-value-mode="add-unique"
+              @input="update()"
+              hint="Optional. Tasks are scheduled soon after midnight, but you can specify an hour (0 to 23) or multiple hours. Write a number and press retrun to add an hour."
+            />
+          </div>
+        </div>
+        <div class="row q-pt-lg">
           <div class="col-2 text-bold q-pt-lg"> Week days: </div>
           <div class="col">
             <q-field hint="Optional. Specify the days in the week when this task is allowed. If not specified, all week days are eligible.">
               <div class="row">
-                <q-checkbox v-for="(opt, ind) in weekDaysOpts" :key="ind" @input="update()" v-model="weekDays" :val="opt.value" :label="opt.label" />
+                <q-checkbox
+                  v-for="(opt, ind) in weekDaysOpts"
+                  :key="ind"
+                  @input="update()"
+                  v-model="weekDays"
+                  :val="opt.value"
+                  :label="opt.label"
+                />
               </div>
             </q-field>
           </div>
         </div>
-        <div class="row">
+        <div class="row q-pt-md">
           <div class="col-2 text-bold q-pt-lg"> Months: </div>
           <div class="col">
             <q-field hint="Optional. Specify months.">
               <div class="row">
-                <q-checkbox v-for="(monOpt, ind2) in monthsOpts" :key="ind2" @input="update()" v-model="months" :val="monOpt.value" :label="monOpt.label" />
+                <q-checkbox
+                  v-for="(monOpt, ind2) in monthsOpts"
+                  :key="ind2"
+                  @input="update()"
+                  v-model="months"
+                  :val="monOpt.value"
+                  :label="monOpt.label"
+                />
               </div>
             </q-field>
           </div>
         </div>
-        <div class="row">
+        <div class="row q-pt-md">
           <div class="col-2 text-bold q-pt-lg"> Days of the month:: </div>
           <div class="col">
             <q-field hint="Optional. Specify the days of the month when this task is allowed.">
               <div class="row">
-                <q-checkbox v-for="monthday in 31" :key="monthday" @input="update()" v-model="monthDays" :val="monthday" :label="monthday.toString()" />
+                <q-checkbox
+                  v-for="monthday in 31"
+                  :key="monthday"
+                  @input="update()"
+                  v-model="monthDays"
+                  :val="monthday"
+                  :label="monthday.toString()"
+                />
               </div>
             </q-field>
           </div>
         </div>
       </div>
-  </q-card-section>
-</q-card>
+    </q-card-section>
+  </q-card>
 </template>
 
 <script>
@@ -557,6 +651,8 @@ export default {
         }
       ],
 
+      hours: this.value.hours,
+
       monthDays: this.value.monthDays
     }
   },
@@ -587,6 +683,7 @@ export default {
         alwaysOn: this.alwaysOn,
         occurrences: isNaN(this.occurrences) ? undefined : this.occurrences,
         intervalType: this.intervalType,
+        hours: this.hours,
         months: this.months,
         monthDays: this.monthDays,
         weekDays: this.weekDays

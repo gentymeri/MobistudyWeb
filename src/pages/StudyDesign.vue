@@ -149,15 +149,18 @@ export default {
           languages: ['en'],
           title: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           shortDescription: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           longDescription: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           startDate: undefined,
           endDate: undefined,
@@ -175,7 +178,8 @@ export default {
               dataAccess: '',
               reasonForDataAccess: {
                 en: '',
-                sv: ''
+                sv: '',
+                es: ''
               }
             }
           ]
@@ -200,11 +204,13 @@ export default {
         consent: {
           invitation: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           privacyPolicy: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           taskItems: [],
           extraItems: []
@@ -246,8 +252,8 @@ export default {
       },
       inclusionCriteria: {
         countries: { required },
-        minAge: { required, minValue: minValue(0) },
-        maxAge: { required, minValue: minValue(0) },
+        minAge: { required, minValue: minValue(0), maxValue: maxValue(150) },
+        maxAge: { required, minValue: minValue(0), maxValue: maxValue(150) },
         sex: { required },
         minBMI: { required, minValue: minValue(5), maxValue: maxValue(210) },
         maxBMI: { required, minValue: minValue(5), maxValue: maxValue(210) }

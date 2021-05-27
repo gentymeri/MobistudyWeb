@@ -24,7 +24,7 @@
             >
               <div>
                 <q-checkbox
-                  v-model.trim="v.invitational.$model"
+                  v-model="value.invitational"
                   @blur="v.invitational.$touch"
                   @input="getInvitationCode"
                   val="true"
@@ -50,18 +50,25 @@
               error-message="At least one language must be specified"
             >
               <q-checkbox
-                v-model.trim="v.generalities.languages.$model"
+                v-model="value.generalities.languages"
                 @blur="v.generalities.languages.$touch"
                 @input="update()"
                 val="en"
                 label="English"
               />
               <q-checkbox
-                v-model.trim="v.generalities.languages.$model"
+                v-model="value.generalities.languages"
                 @blur="v.generalities.languages.$touch"
                 @input="update()"
                 val="sv"
                 label="Swedish"
+              />
+              <q-checkbox
+                v-model="value.generalities.languages"
+                @blur="v.generalities.languages.$touch"
+                @input="update()"
+                val="es"
+                label="Spanish"
               />
             </q-field>
           </div>
@@ -77,7 +84,7 @@
           </div>
           <div class="col q-pl-sm">
             <q-input-multilang
-              v-model.trim="v.generalities.title.$model"
+              v-model="value.generalities.title"
               @blur="v.generalities.title.$touch"
               @input="update()"
               :languages="value.generalities.languages"
@@ -96,7 +103,7 @@
           </div>
           <div class="col q-pl-sm">
             <q-input-multilang
-              v-model.trim="v.generalities.shortDescription.$model"
+              v-model="value.generalities.shortDescription"
               @blur="v.generalities.shortDescription.$touch"
               @input="update()"
               :languages="value.generalities.languages"
@@ -116,7 +123,7 @@
           <div class="col q-pl-sm">
             <q-input-multilang
               type="textarea"
-              v-model.trim="v.generalities.longDescription.$model"
+              v-model="value.generalities.longDescription"
               @blur="v.generalities.longDescription.$touch"
               @input="update()"
               :languages="value.generalities.languages"
@@ -391,7 +398,7 @@
             <q-input
               type="date"
               format="D-MMM-YYYY"
-              v-model.trim="v.generalities.startDate.$model"
+              v-model="value.generalities.startDate"
               @blur="v.generalities.startDate.$touch"
               @input="update()"
               :error="v.generalities.startDate.$error"
@@ -412,7 +419,7 @@
             <q-input
               type="date"
               format="D-MMM-YYYY"
-              v-model.trim="v.generalities.endDate.$model"
+              v-model="value.generalities.endDate"
               @blur="v.generalities.endDate.$touch"
               @input="update()"
               :error="v.generalities.endDate.$error"
@@ -432,7 +439,6 @@ export default {
   name: 'StudyDesignGeneralities',
   // value here is the generalities part of the study design
   // v is the vuelidate object
-  // TODO: would be better if value is the whole study design
   props: ['value', 'v'],
   components: {
     QInputMultilang
@@ -460,7 +466,8 @@ export default {
         dataAccess: '',
         reasonForDataAccess: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         }
       })
     },

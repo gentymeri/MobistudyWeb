@@ -333,25 +333,30 @@ export default {
         teamKey: this.teamKey,
         name: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         description: {
           en: '',
-          sv: ''
+          sv: '',
+          es: ''
         },
         questions: [{
           id: 'Q1',
           text: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           helper: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           footer: {
             en: '',
-            sv: ''
+            sv: '',
+            es: ''
           },
           type: 'freetext',
           nextDefaultId: undefined,
@@ -359,7 +364,8 @@ export default {
             id: 'Q1A1',
             text: {
               en: '',
-              sv: ''
+              sv: '',
+              es: ''
             },
             nextQuestionId: undefined
           }]
@@ -415,7 +421,7 @@ export default {
         this.selectOptionsFormsList = forms.map((f) => {
           return {
             name: f.name,
-            label: f.name[this.value.generalities.languages[0]], // use the name with the first language
+            label: this.visualizeFormName(f.name),
             value: f._key
           }
         })
@@ -446,6 +452,7 @@ export default {
           occurrences: undefined,
           intervalType: 'd',
           interval: 1,
+          hours: [],
           months: [],
           monthDays: [],
           weekDays: [],
@@ -602,6 +609,11 @@ export default {
         formName: undefined
       })
       this.update()
+    },
+    visualizeFormName (name) {
+      for (let lan of Object.keys(name)) {
+        if (name[lan]) return name[lan]
+      }
     },
     changeFormName (task, formKey) {
       let option = this.selectOptionsFormsList.find((opt) => {

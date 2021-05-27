@@ -64,6 +64,7 @@ Technical logs will be deleted after 1 year they are produced.
     repeatedMonths: `Repeated monthly | Repeated every {n} months`,
     repeatedYears: `Repeated every year | Repeated every {n} years`,
     onMonths: `In the following month(s)`,
+    atHours: `At the following hours`,
     onDaysMonth: `On the following day(s) of the month`,
     onDaysWeek: `On the following day(s) of the week`
   },

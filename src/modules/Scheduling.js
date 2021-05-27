@@ -29,6 +29,10 @@ export function schedulingToString (sc, lang) {
   } else if (sc.intervalType === 'y' && sc.interval) {
     s += i18n.tc('scheduling.repeatedYears', sc.interval, lang) + '. '
   }
+  if (sc.hours && sc.hours.length) {
+    let hours = sc.hours.reduce((acc, val) => { return acc + ', ' + val })
+    s += i18n.tc('scheduling.atHours', lang) + ': ' + hours + '. '
+  }
   if (sc.months && sc.months.length) {
     s += i18n.t('scheduling.onMonths', lang) + ': '
     let mths = sc.months.reduce((acc, d, index) => {

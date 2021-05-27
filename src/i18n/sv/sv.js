@@ -64,6 +64,7 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
     repeatedMonths: `Upprepad månadsvis | Upprepad varje {n} månade`,
     repeatedYears: `Upprepad årligen | Upprepad varje {n} år`,
     onMonths: `På följande månad(er)`,
+    atHours: `Vid följande tider`,
     onDaysMonth: `På följande dag(ar) i månaden`,
     onDaysWeek: `På följande dag(ar) i månaden`
   },

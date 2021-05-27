@@ -19,7 +19,7 @@
           <div class="col q-pl-sm">
             <q-input-multilang
               type="textarea"
-              v-model.trim="value.consent.invitation"
+              v-model="value.consent.invitation"
               @blur="v.consent.invitation.$touch"
               @input="update()"
               :languages="value.generalities.languages"
@@ -39,13 +39,14 @@
           <div class="col q-pl-sm">
             <q-input-multilang
               type="textarea"
-              v-model.trim="value.consent.privacyPolicy"
+              v-model="value.consent.privacyPolicy"
               @blur="v.consent.privacyPolicy.$touch"
               @input="update()"
               :languages="value.generalities.languages"
               required
             />
             <q-btn
+              class="q-mt-sm"
               label="Generate example policy"
               color="primary"
               @click="generatePrivacy()"
@@ -91,6 +92,7 @@
               </q-item>
             </q-list>
             <q-btn
+              class="q-mt-sm"
               label="Generate consent items"
               color="primary"
               @click="generateConsent()"
@@ -288,7 +290,8 @@ export default {
       this.value.consent.extraItems.push({
         description: {
           en: undefined,
-          sv: undefined
+          sv: undefined,
+          es: undefined
         },
         optional: true
       })
