@@ -1,46 +1,28 @@
 <template>
   <q-dialog v-model="opened">
-    <q-card style="width: 800px; max-width: 90vw;">
+    <q-card style="width: 800px; max-width: 90vw">
       <q-card-section>
-        <div class="text-h6 q-mb-md">
-          Form builder
-        </div>
-        <div
-          class="q-ma-md"
-          v-show="langselect"
-        >
+        <div class="text-h6 q-mb-md">Form builder</div>
+        <div class="q-ma-md" v-show="langselect">
           Select the language:
-          <q-select
-            v-model="language"
-            :options="languages"
-            label="Standard"
-          />
+          <q-select v-model="language" :options="languages" label="Standard" />
         </div>
         <div v-show="!finished && !langselect">
           <div class="row">
-            <div class="col-2 text-bold"> Question ID: </div>
-            <div class="col"> {{currentQuestion.id}} </div>
+            <div class="col-2 text-bold">Question ID:</div>
+            <div class="col">{{ currentQuestion.id }}</div>
           </div>
-          <div
-            align="center"
-            class="text-h6"
-          >
-            {{currentQuestion.text[language]}}
+          <div align="center" class="text-h6">
+            {{ currentQuestion.text[language] }}
           </div>
-          <div
-            align="center"
-            class="text-weight-light"
-          >
-            {{currentQuestion.helper[language]}}
+          <div align="center" class="text-weight-light">
+            {{ currentQuestion.helper[language] }}
           </div>
           <!-- Answers -->
           <q-card
             class="bg-green-2 q-ma-md"
             v-if="currentQuestion.type !== 'textOnly'"
           >
-            <div>
-              Answer
-            </div>
 
             <!-- freetext -->
             <q-input
@@ -61,39 +43,27 @@
               align="center"
               type="number"
               :rules="[
-                val => val >= currentQuestion.min || 'Number is too small',
-                val => val <= currentQuestion.max || 'Number is too big'
+                (val) => val >= currentQuestion.min || 'Number is too small',
+                (val) => val <= currentQuestion.max || 'Number is too big',
               ]"
               clearable
             />
 
             <!-- slider -->
-            <div
-              v-if="currentQuestion.type === 'slider'"
-              class="text-center"
-            >
-              <div>
-                {{ currentQuestion.maxText[$i18n.locale] }}
-              </div>
+            <div v-if="currentQuestion.type === 'slider'" class="text-center">
               <div class="row justify-center">
                 <q-slider
                   v-model.number="currentAnswerNumber"
                   :min="currentQuestion.min"
                   :max="currentQuestion.max"
-                  vertical
-                  reverse
+                  :vertical="currentQuestion.vertical"
+                  :reverse="currentQuestion.vertical"
                 />
-              </div>
-              <div>
-                {{ currentQuestion.minText[$i18n.locale] }}
               </div>
             </div>
 
             <!-- single choice -->
-            <div
-              class="q-ma-sm"
-              v-if="currentQuestion.type === 'singleChoice'"
-            >
+            <div class="q-ma-sm" v-if="currentQuestion.type === 'singleChoice'">
               <div
                 v-for="(answerChoice, index) in currentQuestion.answerChoices"
                 :key="index"
@@ -116,10 +86,7 @@
             </div>
 
             <!-- multi choice -->
-            <div
-              class="q-ma-sm"
-              v-if="currentQuestion.type === 'multiChoice'"
-            >
+            <div class="q-ma-sm" v-if="currentQuestion.type === 'multiChoice'">
               <div
                 v-for="(answerChoice, index) in currentQuestion.answerChoices"
                 :key="index"
@@ -143,12 +110,7 @@
           </q-card>
         </div>
 
-        <div
-          class="q-ma-md"
-          v-show="finished"
-        >
-          COMPLETED
-        </div>
+        <div class="q-ma-md" v-show="finished">COMPLETED</div>
         <q-btn
           v-show="langselect"
           color="primary"
@@ -167,14 +129,10 @@
           @click="restart()"
           label="Restart"
         />
-        <q-btn
-          color="secondary"
-          @click="close()"
-          label="Close"
-        />
+        <q-btn color="secondary" @click="close()" label="Close" />
 
         <div align="center">
-          {{currentQuestion.footer[language]}}
+          {{ currentQuestion.footer[language] }}
         </div>
       </q-card-section>
     </q-card>
@@ -260,10 +218,12 @@ export default {
       let type = this.currentQuestion.type
       let nextQId
       if (type === 'freetext' || type === 'number' || type === 'multiChoice') {
-        if (this.currentQuestion.nextDefaultId) nextQId = this.currentQuestion.nextDefaultId
+        if (this.currentQuestion.nextDefaultId) { nextQId = this.currentQuestion.nextDefaultId }
       } else if (type === 'singleChoice') {
         if (this.currentAnswerSingleChoice) {
-          let anschoice = this.currentQuestion.answerChoices.find((a) => { return a.id ? a.id === this.currentAnswerSingleChoice : false })
+          let anschoice = this.currentQuestion.answerChoices.find((a) => {
+            return a.id ? a.id === this.currentAnswerSingleChoice : false
+          })
           if (anschoice && anschoice.nextQuestionId) {
             nextQId = anschoice.nextQuestionId
           } else {
@@ -273,14 +233,15 @@ export default {
       }
 
       if (!nextQId) {
-        if (this.currentIndex === (this.form.questions.length - 1)) nextQId = 'ENDFORM'
-        else nextQId = 'Q' + (this.currentIndex + 2)
+        if (this.currentIndex === this.form.questions.length - 1) { nextQId = 'ENDFORM' } else nextQId = 'Q' + (this.currentIndex + 2)
       }
 
       if (nextQId === 'ENDFORM') {
         this.finished = true
       } else {
-        let nextQIdx = this.form.questions.findIndex((q) => { return q.id === nextQId })
+        let nextQIdx = this.form.questions.findIndex((q) => {
+          return q.id === nextQId
+        })
         this.currentAnswerSingleChoice = undefined
         this.currentAnswerSingleChoiceFreeText = undefined
         this.currentAnswerMultiChoice = []

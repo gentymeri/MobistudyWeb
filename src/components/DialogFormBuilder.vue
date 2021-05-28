@@ -140,6 +140,52 @@
                   />
                 </div>
               </div>
+              <!-- number or slider answers -->
+              <div class="row q-mt-sm"
+                v-if="question.type == 'number' || question.type == 'slider'"
+              >
+                <div class="col-3">
+                  Min and max.
+                  <div class="text-caption">
+                    Mandatory. Minimum and maximum values allowed.
+                  </div>
+                </div>
+                <div class="col q-pl-sm">
+                  <div class="row justify-start">
+                  <q-input
+                  class="q-pr-lg"
+                  hint="Minimum"
+                  v-model.number="question.min"
+                  type="number"
+                  @input="update()"
+                />
+                <q-input
+                class="q-pl-lg"
+                  hint="Maximum"
+                  v-model.number="question.max"
+                  type="number"
+                  @input="update()"
+                />
+                </div>
+              </div>
+              </div>
+              <div class="row q-mt-sm"
+                v-if="question.type == 'slider'"
+              >
+                <div class="col-3">
+                  Vertical.
+                  <div class="text-caption">
+                    Optional. Vertical slider or horizontal?
+                  </div>
+                </div>
+                <div class="col q-pl-sm">
+                  <q-checkbox
+                  v-model="question.vertical"
+                  @input="update()"
+                />
+              </div>
+              </div>
+
               <div class="row q-mt-sm">
                 <div class="col-3">
                   Footer.
@@ -276,43 +322,6 @@
                 </div>
               </div>
 
-              <!-- number or slider answers -->
-              <div
-                class="q-pa-lg q-mt-sm shadow-1 bg-info"
-                v-if="question.type == 'number' || question.type == 'slider'"
-              >
-                <div>
-                  Minimum and maximum allowed values.
-                </div>
-                <q-input
-                  label="Minimum"
-                  v-model.number="question.min"
-                  type="number"
-                  @input="update()"
-                />
-                <q-input-multilang
-                  label="Minimum description"
-                  v-model="question.minText"
-                  type="text"
-                  :languages="languages"
-                  hint="Description of the minimum value"
-                  v-if="question.type == 'slider'"
-                />
-                <q-input
-                  label="Maximum"
-                  v-model.number="question.max"
-                  type="number"
-                  @input="update()"
-                />
-                <q-input-multilang
-                  label="Maximum description"
-                  v-model="question.maxText"
-                  type="text"
-                  :languages="languages"
-                  hint="Description of the maximum value"
-                  v-if="question.type == 'slider'"
-                />
-              </div>
               <div class="row q-mt-sm">
                 <div class="col-6">
                   <q-btn
@@ -460,19 +469,12 @@ export default {
       if (question.type === 'slider') {
         this.$set(question, 'min', undefined)
         this.$set(question, 'max', undefined)
-        this.$set(question, 'minText', {})
-        this.$set(question, 'maxText', {})
-        for (let lang of this.languages) {
-          this.$set(question.minText, lang, '')
-          this.$set(question.maxText, lang, '')
-        }
+        this.$set(question, 'vertical', false)
       }
       if (question.type === 'textOnly' || question.type === 'freetext') {
         delete question.answerChoices
         delete question.min
-        delete question.minText
         delete question.max
-        delete question.maxText
       }
 
       this.update()
