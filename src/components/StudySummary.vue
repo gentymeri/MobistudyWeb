@@ -9,6 +9,7 @@
           <div class="col-2 text-bold"> Description: </div>
           <div class="col"> {{ studyDesign.generalities.longDescription[$root.$i18n.locale] }} </div>
         </div>
+        <q-separator />
         <div class="row q-ma-sm">
           <div class="col-2 text-bold"> Start Date of Study: </div>
           <div class="col"> {{ niceDate(studyDesign.generalities.startDate) }} </div>
@@ -28,13 +29,18 @@
         </div>
         <q-separator />
         <div class="row q-ma-sm">
-          <div class="col-2 text-bold"> Invitation Code </div>
+          <div class="col-2 text-bold"> Languages: </div>
+          <div class="col"> {{ studyDesign.generalities.languages }} </div>
+        </div>
+        <q-separator v-if="studyDesign.invitational"/>
+        <div class="row q-ma-sm" v-if="studyDesign.invitational">
+          <div class="col-2 text-bold"> Invitation Code: </div>
           <div class="col"> {{ studyDesign.invitationCode }} </div>
         </div>
       </q-card-section>
     </q-card>
 
-    <q-card class="q-mt-md">
+    <q-card  class="q-mt-md">
       <q-card-section>
         <div class="text-h5"> Principal Investigators </div>
       </q-card-section>
@@ -96,6 +102,10 @@
       </q-card-section>
       <q-card-section>
         <div class="row q-ma-sm">
+          <div class="col-2 text-bold"> Countries: </div>
+          <div class="col"> {{ studyDesign.inclusionCriteria.countries }} </div>
+        </div>
+        <div class="row q-ma-sm">
           <div class="col-2 text-bold"> Age range: </div>
           <div class="col"> From {{ studyDesign.inclusionCriteria.minAge }} to {{ studyDesign.inclusionCriteria.maxAge }} </div>
         </div>
@@ -128,15 +138,6 @@
               v-for="(med, meIndex) in studyDesign.inclusionCriteria.medications"
               :key="meIndex"
             > {{ med.name }} </div>
-          </div>
-        </div>
-        <div class="row q-ma-sm">
-          <div class="col-2 text-bold"> Lifestyle: </div>
-          <div class="col">
-            <div
-              v-for="(lif, lifIndex) in studyDesign.inclusionCriteria.lifestyle"
-              :key="lifIndex"
-            > {{ lifIndex }}: {{ lif }} </div>
           </div>
         </div>
         <div class="row q-ma-sm">
@@ -193,7 +194,7 @@
             </div>
             <div class="row q-ma-sm">
               <div class="col-2 text-bold"> Name: </div>
-              <div class="col"> {{ task.formName }} </div>
+              <div class="col"> {{ task.formName[$root.$i18n.locale] }} </div>
             </div>
           </div>
           <div class="row q-ma-sm">
@@ -204,7 +205,8 @@
         </div>
       </q-card-section>
     </q-card>
-    <q-card class="form-card">
+
+    <q-card class="q-mt-md">
       <q-card-section>
         <div class="text-h5"> Consent: </div>
       </q-card-section>
