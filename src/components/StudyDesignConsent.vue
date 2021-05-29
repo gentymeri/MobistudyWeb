@@ -215,6 +215,14 @@ export default {
             newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPO60', lang, {
               scheduling: schedulingToString(task.scheduling, lang)
             })
+          } else if (task.type === 'peakflow') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPeakFlow', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'gps') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemGPS', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
           }
         }
       } else {
@@ -264,6 +272,14 @@ export default {
             newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPO60', lang, {
               scheduling: schedulingToString(task.scheduling, lang)
             })
+          } else if (task.type === 'peakflow') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPeakFlow', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'gps') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemGPS', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
           }
         }
         consentItemList.push(newTaskItem)
@@ -304,6 +320,10 @@ export default {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataSMWT', lang)
           } else if (task.type === 'po60') {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataPO60', lang)
+          } else if (task.type === 'peakflow') {
+            string += '\n' + this.$i18n.t('privacyPolicy.collectedDataPeakFlow', lang)
+          } else if (task.type === 'gps') {
+            string += '\n' + this.$i18n.t('privacyPolicy.collectedDataGPS', lang)
           }
         }
         string += this.$i18n.t('privacyPolicy.collectedDataReason', lang)

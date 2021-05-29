@@ -8,7 +8,7 @@ These are needed to identify you and to create statistics about those who partic
 These are needed to assess your level of involvement into the study.
 \u2022 Technical information related to access of the server (like logins).
 These are needed for security and auditing.
-\u2022 Data collected within the tasks assigned in this study, specifically: 
+\u2022 Data collected within the tasks assigned in this study, specifically:
 `,
     collectedDataForm: `    \u2022 Answers given to {formName} form.`,
     collectedDataQuery: `    \u2022 {dataType} from GoogleFit (Android phones) or HealthKit (iPhones).`,
@@ -16,6 +16,8 @@ These are needed for security and auditing.
     collectedDataSMWT: `    \u2022 Your geographical position, distance and steps during the 6-minute Walk Test`,
     collectedDataMiband3: `    \u2022 Your heart rate, activity level, steps and activity type collected by the MiBand3 fitness tracker.`,
     collectedDataPO60: `    \u2022 Your blood oxygen saturation and heart rate measured by the pulseoximeter.`,
+    collectedDataPeakFlow: `    \u2022 Your peak flow measured by the smart peak flow meter.`,
+    collectedDataGPS: `    \u2022 Your geographical position.`,
     collectedDataReason: `These data are needed to fulfil the aims of the research. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `All these data will be stored on the Mobistudy server, which is managed by Malmö University in Sweden. Your phone will only keep your profile and data about which studies you are participating in.
 
@@ -37,7 +39,7 @@ Technical logs will be deleted after 1 year they are produced.
 \u2022 You can find out what has been registered about you and download the data in a machine-readable format by contacting mobistudy@mau.se.
 \u2022 You can ask for errors in your data to be corrected. In this case, contact mobistudy@mau.se.
 \u2022 If you have complaints that cannot be resolved with Malmö University you may submit these to Datainspektionen.`,
-    contacts: `For questions about how data is processed by each institution involved in the study please contact: 
+    contacts: `For questions about how data is processed by each institution involved in the study please contact:
 \u2022 Malmö University's data protection officer at dataskyddsombud@mau.se`,
     piContact: `\u2022 {name} at: {contact}`
   },
@@ -47,7 +49,9 @@ Technical logs will be deleted after 1 year they are produced.
     taskItemMiBand3: `I agree to send my data collected by the MiBand3 fitness tracker, {scheduling}`,
     taskItemQCST: 'I agree to perform the queens college step test, {scheduling}',
     taskItemSMWT: 'I agree to perform the six minute walk test, {scheduling}',
-    taskItemPO60: 'I agree to send my data collected by the Beurer PO60 pulse oximeter, {scheduling}'
+    taskItemPO60: 'I agree to send my data collected by the Beurer PO60 pulse oximeter, {scheduling}',
+    taskItemPeakFlow: 'I agree to send my data collected by the Smart Peak Flow Meter, {scheduling}',
+    taskItemGPS: 'I agree to send my location, {scheduling}'
   },
   scheduling: {
     notDefined: 'Not yet defined',
