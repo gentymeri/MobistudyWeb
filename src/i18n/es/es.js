@@ -8,7 +8,7 @@ Estos son necesarios para identificarlo y crear estadísticas sobre quienes part
 Estos son necesarios para evaluar el nivel de participación en el estudio.
 \u2022 Información técnica relacionada con el acceso al servidor (como inicios de sesión).
 Estos son necesarios para la seguridad y la auditoría.
-\u2022 Datos recogidos dentro de las tareas asignadas en este estudio, específicamente: 
+\u2022 Datos recogidos dentro de las tareas asignadas en este estudio, específicamente:
 `,
     collectedDataForm: `    \u2022 Respuestas dadas al formulario de {formName} .`,
     collectedDataQuery: `    \u2022 {dataType} desde GoogleFit (Android phones) o HealthKit (iPhones).`,
@@ -16,6 +16,8 @@ Estos son necesarios para la seguridad y la auditoría.
     collectedDataSMWT: `    \u2022 Su posición geográfica, distancia y pasos durante el 6-minute Walk Test`,
     collectedDataMiband3: `    \u2022 Su frecuencia cardíaca, nivel de actividad, pasos y tipo de actividad recopilados por el reloj inteligente.`,
     collectedDataPO60: `    \u2022 Su saturación de oxígeno en sangre y frecuencia cardíaca medida por el oxímetro de pulso.`,
+    collectedDataPeakFlow: `    \u2022 Su flujo máximo medido por el medidor de flujo máximo inteligente.`,
+    collectedDataPosition: `    \u2022 Su posición geográfica.`,
     collectedDataReason: `Estos datos son necesarios para cumplir con los objetivos de la investigación. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `Todos estos datos se almacenarán en el servidor de Mobistudy, gestionado por la Universidad de Malmö en Suecia. Su teléfono solo conservará su perfil y datos sobre los estudios en los que está participando.
 
@@ -37,7 +39,7 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
 \u2022 Puede averiguar qué se ha registrado sobre usted y descargar los datos en un formato legible por máquina poniéndose en contacto con mobistudy@mau.se.
 \u2022 Puede solicitar la corrección de errores en sus datos. En este caso, póngase en contacto con mobistudy@mau.se.
 \u2022 Si tiene quejas que no se pueden resolver con la Universidad de Malmö, puede enviarlas a Datainspektionen.`,
-    contacts: `Si tiene preguntas sobre cómo procesa los datos cada institución involucrada en el estudio, comuníquese con: 
+    contacts: `Si tiene preguntas sobre cómo procesa los datos cada institución involucrada en el estudio, comuníquese con:
 \u2022 Responsable de protección de datos de la Universidad de Malmö en dataskyddsombud@mau.se`,
     piContact: `\u2022 {name} at: {contact}`
   },
@@ -47,7 +49,9 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
     taskItemMiBand3: `Acepto enviar mis datos recopilados por el reloj inteligente, {scheduling}`,
     taskItemQCST: 'Acepto realizar la prueba queens college step test, {scheduling}',
     taskItemSMWT: 'Acepto realizar la prueba six minute walk test, {scheduling}',
-    taskItemPO60: 'Acepto enviar mis datos recopilados por el oxímetro de pulso Beurer PO60, {scheduling}'
+    taskItemPO60: 'Acepto enviar mis datos recopilados por el oxímetro de pulso Beurer PO60, {scheduling}',
+    taskItemPeakFlow: 'Acepto enviar mis datos recopilados por el medidor de flujo máximo inteligente, {scheduling}',
+    taskItemPosition: 'Acepto enviar mi posición geográfica, {scheduling}'
   },
   scheduling: {
     notDefined: 'Aún no definido',

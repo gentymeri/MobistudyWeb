@@ -78,10 +78,10 @@
             <q-item
               clickable
               v-close-popup
-              @click.native="addGPST()"
+              @click.native="addPositionT()"
             >
               <q-item-section>
-                <q-item-label>GPS/ weather</q-item-label>
+                <q-item-label>Position</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -125,8 +125,8 @@
         >Peak Flow Task</div>
         <div
           class="text-h5"
-          v-if="task.type === 'gps'"
-        >GPS Task</div>
+          v-if="task.type === 'position'"
+        >Position Task</div>
       </q-card-section>
       <q-card-section>
         <div
@@ -317,6 +317,20 @@ let healthDataTypesEnum2String = function (type) {
   return '???'
 }
 
+const defaultScheduling = {
+  startEvent: 'consent',
+  startDelaySecs: undefined,
+  untilSecs: undefined,
+  occurrences: undefined,
+  intervalType: 'd',
+  interval: 1,
+  hours: [],
+  months: [],
+  monthDays: [],
+  weekDays: [],
+  alwaysOn: false
+}
+
 export default {
   components: {
     'scheduler': Scheduler,
@@ -445,19 +459,7 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'dataQuery',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          hours: [],
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        },
+        scheduling: defaultScheduling,
         dataType: undefined,
         aggregated: false,
         bucket: 'none'
@@ -468,18 +470,7 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'miband3',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        },
+        scheduling: defaultScheduling,
         hrInterval: 1
       })
       this.update()
@@ -488,18 +479,7 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'qcst',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        }
+        scheduling: defaultScheduling
       })
       this.update()
     },
@@ -507,18 +487,7 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'smwt',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        }
+        scheduling: defaultScheduling
       })
       this.update()
     },
@@ -526,18 +495,7 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'po60',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        }
+        scheduling: defaultScheduling
       })
       this.update()
     },
@@ -545,37 +503,26 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'peakflow',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        }
+        scheduling: defaultScheduling
       })
       this.update()
     },
-    addGPST () {
+    addPositionT () {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
-        type: 'gps',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        }
+        type: 'position',
+        scheduling: defaultScheduling
+      })
+      this.update()
+    },
+    addFormT () {
+      this.value.tasks.push({
+        id: this.value.tasks.length + 1,
+        type: 'form',
+        scheduling: defaultScheduling,
+        formKey: undefined,
+        // this is mainly used for the consent tab, it can be discarded when the object is sent to the server
+        formName: undefined
       })
       this.update()
     },
@@ -586,28 +533,6 @@ export default {
         // update the task ids after the one that has been removed
         if (i >= index) this.value.tasks[i].id = this.value.tasks[i].id - 1
       }
-      this.update()
-    },
-    addFormT () {
-      this.value.tasks.push({
-        id: this.value.tasks.length + 1,
-        type: 'form',
-        scheduling: {
-          startEvent: 'consent',
-          startDelaySecs: undefined,
-          untilSecs: undefined,
-          occurrences: undefined,
-          intervalType: 'd',
-          interval: 1,
-          months: [],
-          monthDays: [],
-          weekDays: [],
-          alwaysOn: false
-        },
-        formKey: undefined,
-        // this is mainly used for the consent tab, it can be discarded when the object is sent to the server
-        formName: undefined
-      })
       this.update()
     },
     visualizeFormName (name) {

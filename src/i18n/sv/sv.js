@@ -17,7 +17,7 @@ Denna information är nödvändig för säkerhets- och granskningssyften.
     collectedDataMiband3: `    \u2022 Hjärtfrekvens, aktivitetsnivå, steg and aktivitetstyp insamlad av en MiBand3 hälsoklocka.`,
     collectedDataPO60: `    \u2022 Hjärtfrekvens och syrehalt i blodet, insamlat av en pulsoximeter.`,
     collectedDataPeakFlow: `    \u2022 Ditt toppflöde mätt med den smarta toppflödesmätaren.`,
-    collectedDataGPS: `    \u2022 Din geografiska position.`,
+    collectedDataPosition: `    \u2022 Din geografiska position.`,
     collectedDataReason: ` Den insamlade datan är nödvändig för att uppnå forskningssyftet. [LÄGG TILL ANLEDNINGEN FÖR INSAMLINGEN AV SPECIFIKT DEN HÄR DATAN]`,
     storage: `All data kommer lagras på Mobistudys egen server, vilken hanteras av Malmö Universitet i Sverige. Din telefon lagrar enbart din profil samt data om deltagande vilka studier du deltar i.
 
@@ -51,7 +51,7 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
     taskItemSMWT: 'Jag godkänner att utföra 6-minuters gångtest, {scheduling}',
     taskItemPO60: 'Jag godkänner att skicka data insamlad av Beurer PO60 pulsoximetern, {scheduling}',
     taskItemPeakFlow: 'Jag godkänner att skicka mina uppgifter som samlats in av Smart Peak Flow Meter, {scheduling}',
-    taskItemGPS: 'Jag accepterar att skicka min plats, {scheduling}'
+    taskItemPosition: 'Jag accepterar att skicka min plats, {scheduling}'
   },
   scheduling: {
     notDefined: 'Icke ännu definierad',
