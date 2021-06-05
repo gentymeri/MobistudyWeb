@@ -121,7 +121,7 @@
         >SMWT Task</div>
         <div
           class="text-h5"
-          v-if="task.type === 'peakflow'"
+          v-if="task.type === 'peakFlow'"
         >Peak Flow Task</div>
         <div
           class="text-h5"
@@ -502,7 +502,7 @@ export default {
     addPeakFlowT () {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
-        type: 'peakflow',
+        type: 'peakFlow',
         scheduling: defaultScheduling
       })
       this.update()
