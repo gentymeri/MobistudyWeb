@@ -84,6 +84,17 @@
                 <q-item-label>Position</q-item-label>
               </q-item-section>
             </q-item>
+            <q-item
+              clickable
+              v-close-popup
+              @click.native="addTappingT
+        ()"
+            >
+              <q-item-section>
+                <q-item-label>Finger tapping</q-item-label>
+              </q-item-section>
+            </q-item>
+
           </q-list>
         </q-btn-dropdown>
       </q-card-section>
@@ -127,6 +138,10 @@
           class="text-h5"
           v-if="task.type === 'position'"
         >Position Task</div>
+        <div
+          class="text-h5"
+          v-if="task.type === 'fingerTapping'"
+        >Finger tapping</div>
       </q-card-section>
       <q-card-section>
         <div
@@ -523,6 +538,14 @@ export default {
         formKey: undefined,
         // this is mainly used for the consent tab, it can be discarded when the object is sent to the server
         formName: undefined
+      })
+      this.update()
+    },
+    addTappingT () {
+      this.value.tasks.push({
+        id: this.value.tasks.length + 1,
+        type: 'tapping',
+        scheduling: defaultScheduling
       })
       this.update()
     },
