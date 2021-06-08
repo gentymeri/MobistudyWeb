@@ -18,6 +18,7 @@ These are needed for security and auditing.
     collectedDataPO60: `    \u2022 Your blood oxygen saturation and heart rate measured by the pulseoximeter.`,
     collectedDataPeakFlow: `    \u2022 Your peak flow measured by the smart peak flow meter.`,
     collectedDataPosition: `    \u2022 Your geographical position.`,
+    collectedDataFingerTapping: `    \u2022 The time you tap on the screen during the finger tapping task.`,
     collectedDataReason: `These data are needed to fulfil the aims of the research. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `All these data will be stored on the Mobistudy server, which is managed by Malmö University in Sweden. Your phone will only keep your profile and data about which studies you are participating in.
 
@@ -51,7 +52,8 @@ Technical logs will be deleted after 1 year they are produced.
     taskItemSMWT: 'I agree to perform the six minute walk test, {scheduling}',
     taskItemPO60: 'I agree to send my data collected by the Beurer PO60 pulse oximeter, {scheduling}',
     taskItemPeakFlow: 'I agree to send my data collected by the Smart Peak Flow Meter, {scheduling}',
-    taskItemPosition: 'I agree to send my location, {scheduling}'
+    taskItemPosition: 'I agree to send my location, {scheduling}',
+    taskItemFingerTapping: 'I agree to send the time I tap on the screen during the finger tapping task, {scheduling}'
   },
   scheduling: {
     notDefined: 'Not yet defined',

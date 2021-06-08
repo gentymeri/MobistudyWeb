@@ -18,6 +18,7 @@ Estos son necesarios para la seguridad y la auditoría.
     collectedDataPO60: `    \u2022 Su saturación de oxígeno en sangre y frecuencia cardíaca medida por el oxímetro de pulso.`,
     collectedDataPeakFlow: `    \u2022 Su flujo máximo medido por el medidor de flujo máximo inteligente.`,
     collectedDataPosition: `    \u2022 Su posición geográfica.`,
+    collectedDataFingerTapping: `    \u2022 Los tiempos en los que tocas la pantalla durante la tarea de tocar con el dedo.`,
     collectedDataReason: `Estos datos son necesarios para cumplir con los objetivos de la investigación. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `Todos estos datos se almacenarán en el servidor de Mobistudy, gestionado por la Universidad de Malmö en Suecia. Su teléfono solo conservará su perfil y datos sobre los estudios en los que está participando.
 
@@ -51,7 +52,8 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
     taskItemSMWT: 'Acepto realizar la prueba six minute walk test, {scheduling}',
     taskItemPO60: 'Acepto enviar mis datos recopilados por el oxímetro de pulso Beurer PO60, {scheduling}',
     taskItemPeakFlow: 'Acepto enviar mis datos recopilados por el medidor de flujo máximo inteligente, {scheduling}',
-    taskItemPosition: 'Acepto enviar mi posición geográfica, {scheduling}'
+    taskItemPosition: 'Acepto enviar mi posición geográfica, {scheduling}',
+    taskItemFingerTapping: 'Acepto enviar lso tiempos en los que toco la pantalla durante la tarea de tocar con el dedo, {scheduling}'
   },
   scheduling: {
     notDefined: 'Aún no definido',
