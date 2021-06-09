@@ -103,7 +103,7 @@
     <q-card
       v-for="(task, index) in value.tasks"
       :key="index"
-      class="form-card"
+      class="form-card q-my-md"
     >
       <q-card-section>
         <div
@@ -544,7 +544,7 @@ export default {
     addTappingT () {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
-        type: 'tapping',
+        type: 'fingerTapping',
         scheduling: defaultScheduling
       })
       this.update()
