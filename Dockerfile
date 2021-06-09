@@ -1,12 +1,10 @@
-FROM node:14.16.1-alpine3.10  as build
-
-RUN apk update
+FROM node:14.17  as build
 
 # install python (needed by some dev deps)
-RUN apk add --no-cache --virtual .gyp \
-    python \
-    make \
-    g++
+#RUN apk add --no-cache --virtual .gyp \
+#    python \
+#    make \
+#    g++
 
 # create local folder where to keep the src code
 RUN mkdir -p /usr/src/app
