@@ -202,6 +202,10 @@ export default {
     */
     return resp.data
   },
+  async downloadStudyData (studyKey) {
+    let resp = await axios.post(BASE_URL + '/studydatacreate/' + studyKey, {}, axiosConfig)
+    return resp.data
+  },
   // Test stuff
   async sendTestEmail (email, subject, content) {
     return axios.post(BASE_URL + '/tester/sendemail/', { address: email, subject: subject, content: content }, axiosConfig)

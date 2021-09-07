@@ -20,9 +20,9 @@ export default {
       if (!resettingpwd) API.setToken(user.getUser().token)
     }
     // Add a 401 response interceptor
-    this.$axios.interceptors.response.use(function (response) {
+    this.$axios.interceptors.response.use((response) => {
       return response
-    }, function (error) {
+    }, (error) => {
       if (error.response.status === 401 && !error.config.url.includes('login')) {
         user.logout()
         this.$router.push('login')
