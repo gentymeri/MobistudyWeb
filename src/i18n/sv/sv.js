@@ -3,7 +3,7 @@ export default {
     collectedData: `För att genomföra denna studie behöver vi samla data från din användning av Mobistudy.
     Vilken personlig data kommer samlas in?
 \u2022 Din generella profil med information som mejladdress, namn, efternamn, födelsedatum, kön, land, språk, huvudsakliga hälsoproblem, långsiktiga behandlingar, vikt och längd.
-Denna information behövs för att identifiera dig och för att skapa statistik angående de som deltagar i studien.
+Denna information behövs för att identifiera dig och för att skapa statistik angående de som deltar i studien.
 \u2022 Ditt deltagande i studien och tid när du slutför uppgifter.
 Denna information är nödvändig för att bedöma din nivå av deltagande i studien.
 \u2022 Teknisk information relaterat till access av servern (exempelvis inloggning).
@@ -40,7 +40,7 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
 \u2022 Du kan få svar på vad som registrerats om dig och ladda ned datan i ett maskinläsligt format genom att kontakta mobistudy@mau.se.
 \u2022 Du kan be om att fel i din insamlade data blir rättade. I det här fallet, kontakta mobistudy@mau.se.
 \u2022 Om du har klagomål som inte kan åtgärdas med Malmö Universitet kan dessa skickas till Datainspektionen.`,
-    contacts: `För frågor gällande hur insamlad data är hanterad av respektive involverad instutition i studien, var god kontakta:
+    contacts: `För frågor gällande hur insamlad data är hanterad av respektive involverad institution i studien, var god kontakta:
 \u2022 Malmö Universitets dataskyddsombud via dataskyddsombud@mau.se`,
     piContact: `\u2022 {name} hos: {contact}`
   },
