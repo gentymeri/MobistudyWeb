@@ -227,6 +227,10 @@ export default {
             newTaskItem.description[lang] = this.$i18n.t('consent.taskItemFingerTapping', lang, {
               scheduling: schedulingToString(task.scheduling, lang)
             })
+          } else if (task.type === 'suagt') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemSUAGT', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
           }
         }
       } else {
@@ -285,7 +289,11 @@ export default {
               scheduling: schedulingToString(task.scheduling, lang)
             })
           } else if (task.type === 'fingerTapping') {
-            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemPosition', lang, {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemfingerTapping', lang, {
+              scheduling: schedulingToString(task.scheduling, lang)
+            })
+          } else if (task.type === 'suagt') {
+            newTaskItem.description[lang] = this.$i18n.t('consent.taskItemSUAGT', lang, {
               scheduling: schedulingToString(task.scheduling, lang)
             })
           }
@@ -334,6 +342,8 @@ export default {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataPosition', lang)
           } else if (task.type === 'tapping') {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataFingerTapping', lang)
+          } else if (task.type === 'suagt') {
+            string += '\n' + this.$i18n.t('privacyPolicy.collectedDataSUAGT', lang)
           }
         }
         string += this.$i18n.t('privacyPolicy.collectedDataReason', lang)
