@@ -94,6 +94,15 @@
                 <q-item-label>Finger tapping</q-item-label>
               </q-item-section>
             </q-item>
+            <q-item
+              clickable
+              v-close-popup
+              @click.native="addSUAGT()"
+            >
+              <q-item-section>
+                <q-item-label>Stand up and go Test</q-item-label>
+              </q-item-section>
+            </q-item>
 
           </q-list>
         </q-btn-dropdown>
@@ -142,6 +151,10 @@
           class="text-h5"
           v-if="task.type === 'fingerTapping'"
         >Finger tapping</div>
+        <div
+          class="text-h5"
+          v-if="task.type === 'suagt'"
+        >SUAGT Task</div>
       </q-card-section>
       <q-card-section>
         <div
@@ -545,6 +558,14 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'fingerTapping',
+        scheduling: defaultScheduling
+      })
+      this.update()
+    },
+    addSUAGT () {
+      this.value.tasks.push({
+        id: this.value.tasks.length + 1,
+        type: 'suagt',
         scheduling: defaultScheduling
       })
       this.update()
