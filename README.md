@@ -78,6 +78,7 @@ Development:
 - [Andreas Holm](https://github.com/HeyOooh)
 - [Daniel Abella](https://github.com/assimilate)
 - [Kevin Tsang](https://github.com/kevinchtsang)
+- [Gent Ymeri](https://github.com/gentymeri)
 
 ## License
 
