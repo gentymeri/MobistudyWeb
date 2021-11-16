@@ -6,6 +6,8 @@ export default {
 Denna information behövs för att identifiera dig och för att skapa statistik angående de som deltar i studien.
 \u2022 Ditt deltagande i studien och tid när du slutför uppgifter.
 Denna information är nödvändig för att bedöma din nivå av deltagande i studien.
+\u2022 Märket och modellen av din telefon.
+Dessa behövs för att studera hur data förändras från telefon till telefon.
 \u2022 Teknisk information relaterat till access av servern (exempelvis inloggning).
 Denna information är nödvändig för säkerhets- och granskningssyften.
 \u2022 Datainsamling relaterad till uppgifter att utföra i studien, specifikt:
@@ -20,7 +22,8 @@ Denna information är nödvändig för säkerhets- och granskningssyften.
     collectedDataPosition: `    \u2022 Din geografiska position.`,
     collectedDataFingerTapping: `    \u2022 Tiden du trycker på skärmen under fingeravtryckningsuppgiften.`,
     collectedDataReason: ` Den insamlade datan är nödvändig för att uppnå forskningssyftet. [LÄGG TILL ANLEDNINGEN FÖR INSAMLINGEN AV SPECIFIKT DEN HÄR DATAN]`,
-    storage: `All data kommer lagras på Mobistudys egen server, vilken hanteras av Malmö Universitet i Sverige. Din telefon lagrar enbart din profil samt data om deltagande vilka studier du deltar i.
+    storage: `Var kommer min data att lagras?
+All data kommer lagras på Mobistudys egen server, vilken hanteras av Malmö Universitet i Sverige. Din telefon lagrar enbart din profil samt data om deltagande vilka studier du deltar i.
 
 Hur länge kommer denna data förvaras?
 Din profil och deltagande i en studie kommer att förvaras så länge du har ett konto på Mobistudy.
@@ -35,7 +38,7 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
     accessReason: ` för {reason} ({institution} är den som hanterar din personliga information).`,
     rights: `Vad är mina rättigheter?
 \u2022 Du kan avbryta ditt deltagande i studien när du än vill från sektionen “studier” i appen. Data du har producerat fram till detta inom studien kommer att behållas, men om du vill ta bort även den, vänligen kontakta mobistudy@mau.se.
-\u2022 Du kan ta bort ditt konto från Mobistudy från sektionen "profil" i appen. Detta kommer att ta bort all din data insamlad av Mobistudy förutom tekniska loggar, vilka tas bort efter ett år. Var medveten om att den redan nedladdade datan av instutitioner inblandare i den här eller eller förflutna studier kan behålla din data efter att du tagit bort ditt konto. Om du vill att den datan också blir borttagen, vänligen kontakta mobistudy@mau.se.
+\u2022 Du kan ta bort ditt konto från Mobistudy från sektionen "profil" i appen. Detta kommer att ta bort all din data insamlad av Mobistudy förutom tekniska loggar, vilka tas bort efter ett år. Var medveten om att den redan nedladdade datan av instutitioner inblandare i den här eller eller förflutna studier kan behållas efter att du tagit bort ditt konto. Om du vill att den datan också blir borttagen, vänligen kontakta mobistudy@mau.se.
 \u2022 Du kan be att behandling av din data stoppas eller begränsas (även utan att ta bort ditt konto). I det här fallet, kontakta mobistudy@mau.se.
 \u2022 Du kan få svar på vad som registrerats om dig och ladda ned datan i ett maskinläsligt format genom att kontakta mobistudy@mau.se.
 \u2022 Du kan be om att fel i din insamlade data blir rättade. I det här fallet, kontakta mobistudy@mau.se.

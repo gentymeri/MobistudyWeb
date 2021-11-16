@@ -6,6 +6,8 @@ export default {
 Estos son necesarios para identificarlo y crear estadísticas sobre quienes participan en este estudio.
 \u2022 Tu participación en el estudio y las veces que completas una tarea.
 Estos son necesarios para evaluar el nivel de participación en el estudio.
+\u2022 La marca y el modelo de tu teléfono.
+Estos son necesarios para estudiar cómo cambian los datos de un teléfono a otro.
 \u2022 Información técnica relacionada con el acceso al servidor (como inicios de sesión).
 Estos son necesarios para la seguridad y la auditoría.
 \u2022 Datos recogidos dentro de las tareas asignadas en este estudio, específicamente:
@@ -20,7 +22,8 @@ Estos son necesarios para la seguridad y la auditoría.
     collectedDataPosition: `    \u2022 Su posición geográfica.`,
     collectedDataFingerTapping: `    \u2022 Los tiempos en los que tocas la pantalla durante la tarea de tocar con el dedo.`,
     collectedDataReason: `Estos datos son necesarios para cumplir con los objetivos de la investigación. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
-    storage: `Todos estos datos se almacenarán en el servidor de Mobistudy, gestionado por la Universidad de Malmö en Suecia. Su teléfono solo conservará su perfil y datos sobre los estudios en los que está participando.
+    storage: `¿Dónde se almacenarán mis datos?
+Todos estos datos se almacenarán en el servidor de Mobistudy, gestionado por la Universidad de Malmö en Suecia. Su teléfono solo conservará su perfil y datos sobre los estudios en los que está participando.
 
 ¿Durante cuánto tiempo se conservarán estos datos?
 Su perfil y participación en un estudio se mantendrán mientras mantenga una cuenta en Mobistudy.
@@ -35,7 +38,7 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
     accessReason: ` para {reason} ({institution} is the controller of your personal information).`,
     rights: `¿Cuáles son mis derechos?
 \u2022 Puede retirarse de este estudio cuando lo desee desde la sección "estudios" de la aplicación. Los datos que haya producido hasta ahora dentro del estudio se conservarán, pero si desea que también se eliminen, comuníquese con mobistudy@mau.se.
-\u2022 Puede eliminar su cuenta de Mobistudy desde la sección "perfil" de la aplicación. Esto eliminará todos sus datos recopilados por Mobistudy, excepto los registros técnicos, que se eliminarán después de 1 año. Tenga en cuenta que los datos ya descargados por las instituciones involucradas en este o en estudios anteriores aún pueden conservar sus datos después de haber eliminado su cuenta. Si desea que también se eliminen estos datos, póngase en contacto con mobistudy@mau.se.
+\u2022 Puede eliminar su cuenta de Mobistudy desde la sección "perfil" de la aplicación. Esto eliminará todos sus datos recopilados por Mobistudy, excepto los registros técnicos, que se eliminarán después de 1 año. Tenga en cuenta que los datos ya descargados por las instituciones involucradas en este o en estudios anteriores aún pueden conservarse después de haber eliminado su cuenta. Si desea que también se eliminen estos datos, póngase en contacto con mobistudy@mau.se.
 \u2022 Puede solicitar que se detenga o restrinja el procesamiento de sus datos (incluso sin eliminar su cuenta). En este caso, póngase en contacto con mobistudy@mau.se.
 \u2022 Puede averiguar qué se ha registrado sobre usted y descargar los datos en un formato legible por máquina poniéndose en contacto con mobistudy@mau.se.
 \u2022 Puede solicitar la corrección de errores en sus datos. En este caso, póngase en contacto con mobistudy@mau.se.

@@ -8,6 +8,8 @@ These are needed to identify you and to create statistics about those who partic
 These are needed to assess your level of involvement into the study.
 \u2022 Technical information related to access of the server (like logins).
 These are needed for security and auditing.
+\u2022 The brand and model of your phone.
+These are needed to study how data changes from phone to phone.
 \u2022 Data collected within the tasks assigned in this study, specifically:
 `,
     collectedDataForm: `    \u2022 Answers given to {formName} form.`,
@@ -20,7 +22,8 @@ These are needed for security and auditing.
     collectedDataPosition: `    \u2022 Your geographical position.`,
     collectedDataFingerTapping: `    \u2022 The time you tap on the screen during the finger tapping task.`,
     collectedDataReason: `These data are needed to fulfil the aims of the research. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
-    storage: `All these data will be stored on the Mobistudy server, which is managed by Malmö University in Sweden. Your phone will only keep your profile and data about which studies you are participating in.
+    storage: `Where will my data be stored?
+All these data will be stored on the Mobistudy server, which is managed by Malmö University in Sweden. Your phone will only keep your profile and data about which studies you are participating in.
 
 For how long will this data be kept?
 Your profile and participation in a study will be kept for as long as you will keep an account on Mobistudy.
@@ -35,7 +38,7 @@ Technical logs will be deleted after 1 year they are produced.
     accessReason: ` for {reason} ({institution} is the controller of your personal information).`,
     rights: `What are my rights?
 \u2022 You can withdraw from this study whenever you want from the “studies” section of the app. Data you have produced so far within the study will be kept, but if you want such data to be removed also, please contact mobistudy@mau.se.
-\u2022 You can remove your account from Mobistudy from the “profile” section of the app. This will remove all your data collected by Mobistudy except the technical logs, which will be deleted after 1 year. Be aware that data already downloaded by institutions involved in this or past studies may still keep your data after you have removed your account. If you want these data to be deleted also, please contact mobistudy@mau.se.
+\u2022 You can remove your account from Mobistudy from the “profile” section of the app. This will remove all your data collected by Mobistudy except the technical logs, which will be deleted after 1 year. Be aware that data already downloaded by institutions involved in this or past studies may still be kept after you have removed your account. If you want these data to be deleted also, please contact mobistudy@mau.se.
 \u2022 You can ask the processing of your data to be stopped or restricted (even without deleting your account). In this case contact mobistudy@mau.se.
 \u2022 You can find out what has been registered about you and download the data in a machine-readable format by contacting mobistudy@mau.se.
 \u2022 You can ask for errors in your data to be corrected. In this case, contact mobistudy@mau.se.
