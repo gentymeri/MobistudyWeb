@@ -16,27 +16,28 @@
     "dev:test": "concurrently \"quasar dev\" \"jest --watch\""
   },
   "dependencies": {
-    "@quasar/extras": "^1.11.3",
-    "axios": "^0.24.0",
-    "core-js": "^3.19.0",
+    "@quasar/extras": "^1.10.11",
+    "axios": "^0.21.3",
+    "core-js": "^3.16.3",
     "owasp-password-strength-test": "^1.3.0",
-    "quasar": "^1.16.0",
-    "vue-i18n": "^8.26.5",
+    "quasar": "^1.15.23",
+    "vue-i18n": "^8.25.0",
     "vuelidate": "^0.7.6",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.13.14",
-    "@quasar/app": "^3.0.0",
-    "@quasar/quasar-app-extension-testing": "^2.0.1",
-    "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
-    "eslint": "^7.14.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.0.0",
-    "eslint-webpack-plugin": "^2.4.0"
+    "@quasar/app": "^2.2.4",
+    "@quasar/quasar-app-extension-testing-unit-jest": "^2.2.2",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-vue": "^5.0.0"
+  },
+  "engines": {
+    "node": ">= 12",
+    "npm": ">= 5.6.0 <7"
   },
   "browserslist": [
     "last 10 Chrome versions",
@@ -48,10 +49,5 @@
     "last 8 FirefoxAndroid versions",
     "last 10 iOS versions",
     "last 5 Opera versions"
-  ],
-  "engines": {
-    "node": ">= 12.22.1",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
-  }
+  ]
 }
