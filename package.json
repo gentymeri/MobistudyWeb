@@ -17,10 +17,10 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.10.11",
-    "axios": "^0.21.3",
+    "axios": "^0.24.0",
     "core-js": "^3.16.3",
     "owasp-password-strength-test": "^1.3.0",
-    "quasar": "^1.15.23",
+    "quasar": "^1.16.0",
     "vue-i18n": "^8.25.0",
     "vuelidate": "^0.7.6",
     "zxcvbn": "^4.4.2"
