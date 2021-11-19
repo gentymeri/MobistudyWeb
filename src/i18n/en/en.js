@@ -60,9 +60,12 @@ Technical logs will be deleted after 1 year they are produced.
   },
   scheduling: {
     notDefined: 'Not yet defined',
+    afterTaskExecution: 'After task {n} is completed',
     alwaysOn: 'Always available',
     fromDaysConsented: `The day after you have consented | {n} days after you have consented`,
+    fromTaskExecuted: `{days} days after you have completed task {taskId}`,
     untilDaysConsented: `Until {days} days after you have consented`,
+    untilTaskExecuted: `Until {days} days after you have completed task {taskId}`,
     occurrences: `Repeated {occurrences} times`,
     repeatedDays: `Repeated daily | Repeated every {n} days`,
     repeatedWeeks: `Repeated weekly | Repeated every {n} weeks`,

@@ -142,6 +142,7 @@
           class="text-h5"
           v-if="task.type === 'fingerTapping'"
         >Finger tapping</div>
+        Task Id: {{task.id}}
       </q-card-section>
       <q-card-section>
         <div
@@ -281,7 +282,7 @@
               expand-separator
               :label="schedulingToString(task.scheduling)"
             >
-              <scheduler v-model="task.scheduling"></scheduler>
+              <scheduler v-model="task.scheduling" :taskIds="value.tasks.map(t => t.id).filter(i => i != task.id)"></scheduler>
             </q-expansion-item>
           </div>
         </div>
@@ -334,6 +335,7 @@ let healthDataTypesEnum2String = function (type) {
 
 const defaultScheduling = {
   startEvent: 'consent',
+  eventTaskId: undefined,
   startDelaySecs: undefined,
   untilSecs: undefined,
   occurrences: undefined,

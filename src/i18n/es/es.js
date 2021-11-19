@@ -60,9 +60,12 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
   },
   scheduling: {
     notDefined: 'Aún no definido',
+    afterTaskExecution: 'Después que se complete la tarea {n}',
     alwaysOn: 'Siempre disponible',
     fromDaysConsented: `El día después de que hayas dado tu consentimiento| {n} días después de haber dado su consentimiento`,
+    fromTaskExecuted: `{days} días después de haber completado la tarea {taskId}`,
     untilDaysConsented: `Hasta {days} días después de haber dado su consentimiento`,
+    untilTaskExecuted: `Hasta {days} días después de haber completado la tarea {taskId}`,
     occurrences: `Repetidos {occurrences} veces`,
     repeatedDays: `Repetido diaramente | Repetido cada {n} día`,
     repeatedWeeks: `Repetido  semanalmente| Repetido cada {n} semana`,

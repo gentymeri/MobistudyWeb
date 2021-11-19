@@ -1,19 +1,48 @@
 <template>
   <q-card>
     <q-card-section>
-      <div class="text-h5"> Scheduler </div>
-      <div class="text-subtitle1"> Configure when the event will be scheduled. </div>
+      <div class="text-h5">Scheduler</div>
+      <div class="text-subtitle1">
+        Configure when the event will be scheduled.
+      </div>
     </q-card-section>
     <q-separator />
     <!-- Option Repeat Types -->
     <q-card-section>
+      <!-- start event -->
+      <div class="row">
+        <div class="col-2 q-pt-lg">Start event:</div>
+        <div class="col">
+          <q-select
+            v-model="startEvent"
+            :options="startEventOptions"
+            emit-value
+            map-options
+            hint="The event that triggers the start of the task."
+            @input="update()"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 q-pt-lg">Event task Id:</div>
+          <div class="col">
+            <q-select
+              type="number"
+              v-model="eventTaskId"
+              :options="taskIds"
+              :disable="startEvent != 'taskExecution'"
+              emit-value
+              hint="The task that triggers the event."
+              @input="update()"
+            />
+          </div>
+        </div>
+      <q-separator />
       <!-- Validity  -->
       <div class="q-mb-md">
-        <p>
-          Validity:
-        </p>
+        <p class="q-mt-lg text-bold">Validity:</p>
         <div class="row">
-          <div class="col-2 text-bold q-pt-lg"> From: </div>
+          <div class="col-2 q-pt-lg">From:</div>
           <div class="col">
             <q-input
               type="number"
@@ -25,7 +54,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-2 text-bold q-pt-lg"> To: </div>
+          <div class="col-2 q-pt-lg">To:</div>
           <div class="col">
             <q-input
               type="number"
@@ -37,24 +66,20 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-2 text-bold q-pt-lg"> Always On: </div>
+          <div class="col-2 q-pt-lg">Always On:</div>
           <div class="col">
-            <q-field hint="Optional. The tasks will always be available 24/7 during the study period.">
+            <q-field
+              hint="Optional. The tasks will always be available 24/7 during the study period."
+            >
               <div class="row">
-                <q-checkbox
-                  v-model="alwaysOn"
-                  @input="update()"
-                />
+                <q-checkbox v-model="alwaysOn" @input="update()" />
               </div>
             </q-field>
           </div>
         </div>
       </div>
-      <div
-        v-if="!alwaysOn"
-        class="row"
-      >
-        <div class="col-2 text-bold q-pt-lg"> Occurrences: </div>
+      <div v-if="!alwaysOn" class="row">
+        <div class="col-2 q-pt-lg">Occurrences:</div>
         <div class="col">
           <q-input
             type="number"
@@ -67,11 +92,9 @@
       </div>
       <q-separator />
       <div v-if="!alwaysOn">
-        <p class="q-mt-lg">
-          Recurrence:
-        </p>
+        <p class="q-mt-lg text-bold">Recurrence:</p>
         <div class="row">
-          <div class="col-2 text-bold q-pt-lg"> Frequency: </div>
+          <div class="col-2 q-pt-lg">Frequency:</div>
           <div class="col">
             <q-select
               type="number"
@@ -85,7 +108,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-2 text-bold q-pt-lg"> Interval: </div>
+          <div class="col-2 q-pt-lg">Interval:</div>
           <div class="col">
             <q-select
               @input="update()"
@@ -122,7 +145,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-2 text-bold q-py-lg"> Hours: </div>
+          <div class="col-2 q-py-lg">Hours:</div>
           <div class="col">
             <q-select
               v-model="hours"
@@ -138,9 +161,11 @@
           </div>
         </div>
         <div class="row q-pt-lg">
-          <div class="col-2 text-bold q-pt-lg"> Week days: </div>
+          <div class="col-2 q-pt-lg">Week days:</div>
           <div class="col">
-            <q-field hint="Optional. Specify the days in the week when this task is allowed. If not specified, all week days are eligible.">
+            <q-field
+              hint="Optional. Specify the days in the week when this task is allowed. If not specified, all week days are eligible."
+            >
               <div class="row">
                 <q-checkbox
                   v-for="(opt, ind) in weekDaysOpts"
@@ -155,7 +180,7 @@
           </div>
         </div>
         <div class="row q-pt-md">
-          <div class="col-2 text-bold q-pt-lg"> Months: </div>
+          <div class="col-2 q-pt-lg">Months:</div>
           <div class="col">
             <q-field hint="Optional. Specify months.">
               <div class="row">
@@ -172,9 +197,11 @@
           </div>
         </div>
         <div class="row q-pt-md">
-          <div class="col-2 text-bold q-pt-lg"> Days of the month:: </div>
+          <div class="col-2 q-pt-lg">Days of the month:</div>
           <div class="col">
-            <q-field hint="Optional. Specify the days of the month when this task is allowed.">
+            <q-field
+              hint="Optional. Specify the days of the month when this task is allowed."
+            >
               <div class="row">
                 <q-checkbox
                   v-for="monthday in 31"
@@ -196,9 +223,21 @@
 <script>
 export default {
   name: 'Scheduler',
-  props: ['value'],
+  props: ['value', 'taskIds'],
   data () {
     return {
+      startEvent: this.value.startEvent,
+      startEventOptions: [
+        {
+          label: 'After consent',
+          value: 'consent'
+        },
+        {
+          label: 'After end of a task',
+          value: 'taskExecution'
+        }
+      ],
+      eventTaskId: this.value.eventTaskId,
       startDelaySecs: this.value.startDelaySecs,
       validitySecs: this.value.untilSecs,
       alwaysOn: this.value.alwaysOn,
@@ -223,7 +262,9 @@ export default {
         }
       ],
 
-      dailyInterval: this.value.interval ? this.value.interval.toString() : undefined,
+      dailyInterval: this.value.interval
+        ? this.value.interval.toString()
+        : undefined,
       dailyIntervalOptions: [
         {
           label: 'Every day',
@@ -347,7 +388,9 @@ export default {
         }
       ],
 
-      weeklyInterval: this.value.interval ? this.value.interval.toString() : undefined,
+      weeklyInterval: this.value.interval
+        ? this.value.interval.toString()
+        : undefined,
       weeklyIntervalOptions: [
         {
           label: 'Every week',
@@ -455,7 +498,9 @@ export default {
         }
       ],
 
-      monthlyInterval: this.value.interval ? this.value.interval.toString() : undefined,
+      monthlyInterval: this.value.interval
+        ? this.value.interval.toString()
+        : undefined,
       monthlyIntervalOptions: [
         {
           label: 'Every month',
@@ -523,7 +568,9 @@ export default {
         }
       ],
 
-      yearlyInterval: this.value.interval ? this.value.interval.toString() : undefined,
+      yearlyInterval: this.value.interval
+        ? this.value.interval.toString()
+        : undefined,
       yearlyIntervalOptions: [
         {
           label: 'Every year',
@@ -677,8 +724,11 @@ export default {
   methods: {
     update () {
       let v = {
-        startEvent: 'consent',
-        startDelaySecs: isNaN(this.startDelaySecs) ? undefined : this.startDelaySecs,
+        startEvent: this.startEvent,
+        eventTaskId: isNaN(this.eventTaskId) ? undefined : this.eventTaskId,
+        startDelaySecs: isNaN(this.startDelaySecs)
+          ? undefined
+          : this.startDelaySecs,
         untilSecs: isNaN(this.validitySecs) ? undefined : this.validitySecs,
         alwaysOn: this.alwaysOn,
         occurrences: isNaN(this.occurrences) ? undefined : this.occurrences,
@@ -688,10 +738,27 @@ export default {
         monthDays: this.monthDays,
         weekDays: this.weekDays
       }
-      if (v.intervalType === 'd') v.interval = isNaN(this.dailyInterval) ? undefined : parseInt(this.dailyInterval)
-      if (v.intervalType === 'w') v.interval = isNaN(this.weeklyInterval) ? undefined : parseInt(this.weeklyInterval)
-      if (v.intervalType === 'm') v.interval = isNaN(this.monthlyInterval) ? undefined : parseInt(this.monthlyInterval)
-      if (v.intervalType === 'y') v.interval = isNaN(this.yearlyInterval) ? undefined : parseInt(this.yearlyInterval)
+      if (v.intervalType === 'd') {
+        v.interval = isNaN(this.dailyInterval)
+          ? undefined
+          : parseInt(this.dailyInterval)
+      }
+      if (v.intervalType === 'w') {
+        v.interval = isNaN(this.weeklyInterval)
+          ? undefined
+          : parseInt(this.weeklyInterval)
+      }
+      if (v.intervalType === 'm') {
+        v.interval = isNaN(this.monthlyInterval)
+          ? undefined
+          : parseInt(this.monthlyInterval)
+      }
+      if (v.intervalType === 'y') {
+        v.interval = isNaN(this.yearlyInterval)
+          ? undefined
+          : parseInt(this.yearlyInterval)
+      }
+      console.log(v)
       this.$emit('input', v)
     }
   }

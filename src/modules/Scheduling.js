@@ -3,14 +3,25 @@ import { i18n } from '../boot/i18n.js'
 export function schedulingToString (sc, lang) {
   if (!sc.startEvent) return i18n.t('scheduling.notDefined', lang)
   let s = ''
-  if (sc.startEvent === 'consent') {
-    if (sc.startDelaySecs) {
-      let daysFormConsent = Math.floor(sc.startDelaySecs / (24 * 60 * 60))
-      s += i18n.tc('scheduling.fromDaysConsented', daysFormConsent, lang) + '. '
+
+  if (sc.startDelaySecs) {
+    let daysFromConsent = Math.floor(sc.startDelaySecs / (24 * 60 * 60))
+    if (sc.startEvent === 'consent') {
+      s += i18n.tc('scheduling.fromDaysConsented', daysFromConsent, lang) + '. '
+    } else if (sc.startEvent === 'taskExecution') {
+      s += i18n.tc('scheduling.fromTaskExecuted', lang, { days: daysFromConsent, taskId: sc.eventTaskId }) + '. '
     }
-    if (sc.untilSecs) {
-      let untilFromConsent = Math.floor(sc.untilSecs / (24 * 60 * 60))
+  } else {
+    if (sc.startEvent === 'taskExecution') {
+      s += i18n.tc('scheduling.afterTaskExecution', sc.eventTaskId, lang) + '. '
+    }
+  }
+  if (sc.untilSecs) {
+    let untilFromConsent = Math.floor(sc.untilSecs / (24 * 60 * 60))
+    if (sc.startEvent === 'consent') {
       s += i18n.t('scheduling.untilDaysConsented', lang, { days: untilFromConsent }) + '. '
+    } else if (sc.startEvent === 'taskExecution') {
+      s += i18n.tc('scheduling.untilTaskExecuted', lang, { days: untilFromConsent, taskId: sc.eventTaskId }) + '. '
     }
   }
   if (sc.alwaysOn) {

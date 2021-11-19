@@ -119,4 +119,16 @@ describe('Scheduler to String', () => {
     let string = schedulingToString(sch, 'en')
     expect(string).toBe('Repeated daily. In the following month(s): September, November. ')
   })
+
+  it('1 day after task 2 is executed', () => {
+    const sch = {
+      startEvent: "taskExecution",
+      eventTaskId: 2,
+      startDelaySecs: 24 * 60 * 60,
+      intervalType: "d",
+      interval: 0
+    }
+    let string = schedulingToString(sch, 'en')
+    expect(string).toBe('1 days after you have completed task 2. ')
+  })
 })

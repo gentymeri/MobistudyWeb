@@ -60,9 +60,12 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
   },
   scheduling: {
     notDefined: 'Icke ännu definierad',
+    afterTaskExecution: 'Efter att uppgiften {n} är klar',
     alwaysOn: 'Alltid tillgänglig',
     fromDaysConsented: `Dagen efter du har gett ditt samtycke | {n} dagar efter att du har gett ditt samtycke`,
+    fromTaskExecuted: `{days} dagar efter att du har slutfört uppgiften {taskId}`,
     untilDaysConsented: `Till {days} dagar efter att du har gett ditt samtycke`,
+    untilTaskExecuted: `Till {days} dagar efter att du har slutfört uppgiften {taskId}`,
     occurrences: `Upprepad {occurrences} gånger`,
     repeatedDays: `Upprepad dagligen | Upprepad varje {n} dagar`,
     repeatedWeeks: `Upprepad veckovis | Upprepad varje {n} veckor`,
