@@ -35,6 +35,10 @@
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-vue": "^5.0.0"
   },
+  "engines": {
+    "node": ">= 12",
+    "npm": ">= 5.6.0 <7"
+  },
   "browserslist": [
     "last 10 Chrome versions",
     "last 10 Firefox versions",
