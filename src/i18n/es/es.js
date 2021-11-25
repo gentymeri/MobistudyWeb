@@ -6,7 +6,7 @@ export default {
 Estos son necesarios para identificarlo y crear estadísticas sobre quienes participan en este estudio.
 \u2022 Tu participación en el estudio y las veces que completas una tarea.
 Estos son necesarios para evaluar el nivel de participación en el estudio.
-\u2022 La marca y el modelo de tu teléfono.
+\u2022 La marca, modelo y versión del sistema operativo de tu teléfono.
 Estos son necesarios para estudiar cómo cambian los datos de un teléfono a otro.
 \u2022 Información técnica relacionada con el acceso al servidor (como inicios de sesión).
 Estos son necesarios para la seguridad y la auditoría.

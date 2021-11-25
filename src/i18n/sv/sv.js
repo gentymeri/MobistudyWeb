@@ -6,7 +6,7 @@ export default {
 Denna information behövs för att identifiera dig och för att skapa statistik angående de som deltar i studien.
 \u2022 Ditt deltagande i studien och tid när du slutför uppgifter.
 Denna information är nödvändig för att bedöma din nivå av deltagande i studien.
-\u2022 Märket och modellen av din telefon.
+\u2022 Märket, modellen och versionen av operativsystem av din telefon.
 Dessa behövs för att studera hur data förändras från telefon till telefon.
 \u2022 Teknisk information relaterat till access av servern (exempelvis inloggning).
 Denna information är nödvändig för säkerhets- och granskningssyften.

@@ -8,7 +8,7 @@ These are needed to identify you and to create statistics about those who partic
 These are needed to assess your level of involvement into the study.
 \u2022 Technical information related to access of the server (like logins).
 These are needed for security and auditing.
-\u2022 The brand and model of your phone.
+\u2022 The brand, model and operating system of your phone.
 These are needed to study how data changes from phone to phone.
 \u2022 Data collected within the tasks assigned in this study, specifically:
 `,
