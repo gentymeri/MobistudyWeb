@@ -87,11 +87,20 @@
             <q-item
               clickable
               v-close-popup
-              @click.native="addTappingT
-        ()"
+              @click.native="addTappingT()"
             >
               <q-item-section>
                 <q-item-label>Finger tapping</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item
+              clickable
+              v-close-popup
+              @click.native="addTUGT()"
+            >
+              <q-item-section>
+                <q-item-label>Timed up and go test</q-item-label>
               </q-item-section>
             </q-item>
 
@@ -142,6 +151,10 @@
           class="text-h5"
           v-if="task.type === 'fingerTapping'"
         >Finger tapping</div>
+        <div
+          class="text-h5"
+          v-if="task.type === 'tugt'"
+        >Timed up and go test</div>
         Task Id: {{task.id}}
       </q-card-section>
       <q-card-section>
@@ -547,6 +560,14 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'fingerTapping',
+        scheduling: defaultScheduling
+      })
+      this.update()
+    },
+    addtugt () {
+      this.value.tasks.push({
+        id: this.value.tasks.length + 1,
+        type: 'tugt',
         scheduling: defaultScheduling
       })
       this.update()
