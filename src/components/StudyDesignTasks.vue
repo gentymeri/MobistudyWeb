@@ -564,7 +564,7 @@ export default {
       })
       this.update()
     },
-    addtugt () {
+    addTUGT () {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'tugt',

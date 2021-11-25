@@ -340,7 +340,7 @@ export default {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataPeakFlow', lang)
           } else if (task.type === 'position') {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataPosition', lang)
-          } else if (task.type === 'tapping') {
+          } else if (task.type === 'fingerTapping') {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataFingerTapping', lang)
           } else if (task.type === 'tugt') {
             string += '\n' + this.$i18n.t('privacyPolicy.collectedDataTUGT', lang)

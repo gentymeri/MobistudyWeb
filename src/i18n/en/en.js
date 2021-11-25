@@ -21,7 +21,7 @@ These are needed to study how data changes from phone to phone.
     collectedDataPeakFlow: `    \u2022 Your peak flow measured by the smart peak flow meter.`,
     collectedDataPosition: `    \u2022 Your geographical position.`,
     collectedDataFingerTapping: `    \u2022 The time you tap on the screen during the finger tapping task.`,
-    collectedDataTUGT: `    \u2022 Your geographical position, distance, angle, time and steps during the timed up and go test`,
+    collectedDataTUGT: `    \u2022 The acceleration and orientation of the phone and steps walked during the Timed up and go test.`,
     collectedDataReason: `These data are needed to fulfil the aims of the research. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `Where will my data be stored?
 All these data will be stored on the Mobistudy server, which is managed by Malmö University in Sweden. Your phone will only keep your profile and data about which studies you are participating in.
@@ -52,13 +52,13 @@ Technical logs will be deleted after 1 year they are produced.
     taskItemDataQuery: `I agree to send my data about {dataType}, {scheduling}`,
     taskItemForm: `I agree to answer the {formName} form, {scheduling}`,
     taskItemMiBand3: `I agree to send my data collected by the MiBand3 fitness tracker, {scheduling}`,
-    taskItemQCST: 'I agree to perform the queens college step test, {scheduling}',
-    taskItemSMWT: 'I agree to perform the six minute walk test, {scheduling}',
-    taskItemPO60: 'I agree to send my data collected by the Beurer PO60 pulse oximeter, {scheduling}',
-    taskItemPeakFlow: 'I agree to send my data collected by the Smart Peak Flow Meter, {scheduling}',
+    taskItemQCST: 'I agree to perform the Queen\'s College step test, {scheduling}',
+    taskItemSMWT: 'I agree to perform the Six-minute walk test, {scheduling}',
+    taskItemPO60: 'I agree to measure my pulse-oximetry, {scheduling}',
+    taskItemPeakFlow: 'I agree to perform a Peak flow measurement, {scheduling}',
     taskItemPosition: 'I agree to send my location, {scheduling}',
-    taskItemFingerTapping: 'I agree to send the time I tap on the screen during the finger tapping task, {scheduling}',
-    taskItemTUGT: 'I agree to perform the timed up and go test, {scheduling}'
+    taskItemFingerTapping: 'I agree to perform the Finger tapping test, {scheduling}',
+    taskItemTUGT: 'I agree to perform the Timed up and go test, {scheduling}'
   },
   scheduling: {
     notDefined: 'Not yet defined',

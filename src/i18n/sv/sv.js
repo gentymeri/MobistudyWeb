@@ -21,6 +21,7 @@ Denna information är nödvändig för säkerhets- och granskningssyften.
     collectedDataPeakFlow: `    \u2022 Ditt toppflöde mätt med den smarta toppflödesmätaren.`,
     collectedDataPosition: `    \u2022 Din geografiska position.`,
     collectedDataFingerTapping: `    \u2022 Tiden du trycker på skärmen under fingeravtryckningsuppgiften.`,
+    collectedDataTUGT: `    \u2022 Telefonens acceleration och orientering och steg som du gick under testet Timed up and go.`,
     collectedDataReason: ` Den insamlade datan är nödvändig för att uppnå forskningssyftet. [LÄGG TILL ANLEDNINGEN FÖR INSAMLINGEN AV SPECIFIKT DEN HÄR DATAN]`,
     storage: `Var kommer min data att lagras?
 All data kommer lagras på Mobistudys egen server, vilken hanteras av Malmö Universitet i Sverige. Din telefon lagrar enbart din profil samt data om deltagande vilka studier du deltar i.
@@ -51,12 +52,13 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
     taskItemDataQuery: `Jag godkänner att skicka min data gällande {dataType}, {scheduling}`,
     taskItemForm: `Jag godkänner att svara på {formName} form, {scheduling}`,
     taskItemMiBand3: `Jag godkänner att skicka min data insamlad av MiBand3-hälsoklockan, {scheduling}`,
-    taskItemQCST: 'Jag godkänner att utföra queens college step test, {scheduling}',
+    taskItemQCST: 'Jag godkänner att utföra Queen\'s College step test, {scheduling}',
     taskItemSMWT: 'Jag godkänner att utföra 6-minuters gångtest, {scheduling}',
     taskItemPO60: 'Jag godkänner att skicka data insamlad av Beurer PO60 pulsoximetern, {scheduling}',
-    taskItemPeakFlow: 'Jag godkänner att skicka mina uppgifter som samlats in av Smart Peak Flow Meter, {scheduling}',
+    taskItemPeakFlow: 'Jag godkänner att utföra en  Smart Peak Flow Meter, {scheduling}',
     taskItemPosition: 'Jag accepterar att skicka min plats, {scheduling}',
-    taskItemFingerTapping: 'Jag godkänner att skicka den tid jag trycker på skärmen under fingeravtryckningsuppgiften, {scheduling}'
+    taskItemFingerTapping: 'Jag godkänner att utföra en fingeravtryckningsuppgiften, {scheduling}',
+    taskItemTUGT: 'Jag godkänner att utföra ett Timed up and Go test, {scheduling}'
   },
   scheduling: {
     notDefined: 'Icke ännu definierad',

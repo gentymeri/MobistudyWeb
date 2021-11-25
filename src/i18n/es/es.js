@@ -21,6 +21,7 @@ Estos son necesarios para la seguridad y la auditoría.
     collectedDataPeakFlow: `    \u2022 Su flujo máximo medido por el medidor de flujo máximo inteligente.`,
     collectedDataPosition: `    \u2022 Su posición geográfica.`,
     collectedDataFingerTapping: `    \u2022 Los tiempos en los que tocas la pantalla durante la tarea de tocar con el dedo.`,
+    collectedDataTUGT: `    \u2022 La aceleración y la orientación del teléfono y los pasos recorridos durante la prueba de levantarse y avanzar.`,
     collectedDataReason: `Estos datos son necesarios para cumplir con los objetivos de la investigación. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `¿Dónde se almacenarán mis datos?
 Todos estos datos se almacenarán en el servidor de Mobistudy, gestionado por la Universidad de Malmö en Suecia. Su teléfono solo conservará su perfil y datos sobre los estudios en los que está participando.
@@ -51,12 +52,13 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
     taskItemDataQuery: `Acepto enviar mis datos sobre {dataType}, {scheduling}`,
     taskItemForm: `Acepto contestar el formulario {formName}, {scheduling}`,
     taskItemMiBand3: `Acepto enviar mis datos recopilados por el reloj inteligente, {scheduling}`,
-    taskItemQCST: 'Acepto realizar la prueba queens college step test, {scheduling}',
-    taskItemSMWT: 'Acepto realizar la prueba six minute walk test, {scheduling}',
-    taskItemPO60: 'Acepto enviar mis datos recopilados por el oxímetro de pulso Beurer PO60, {scheduling}',
-    taskItemPeakFlow: 'Acepto enviar mis datos recopilados por el medidor de flujo máximo inteligente, {scheduling}',
+    taskItemQCST: 'Acepto realizar la prueba Queen\'s College step test, {scheduling}',
+    taskItemSMWT: 'Acepto realizar la prueba de camino de seis minutos, {scheduling}',
+    taskItemPO60: 'Acepto emedir mi oximetría de pulso, {scheduling}',
+    taskItemPeakFlow: 'Acepto realizar una prueba de flujo espiratorio máximo, {scheduling}',
     taskItemPosition: 'Acepto enviar mi posición geográfica, {scheduling}',
-    taskItemFingerTapping: 'Acepto enviar lso tiempos en los que toco la pantalla durante la tarea de tocar con el dedo, {scheduling}'
+    taskItemFingerTapping: 'Acepto realizar la tarea de tocar la pantalla con el dedo, {scheduling}',
+    taskItemTUGT: 'Acepto realizar la prueba de levantarse y avanzar, {scheduling}'
   },
   scheduling: {
     notDefined: 'Aún no definido',
