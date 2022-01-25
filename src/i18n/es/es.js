@@ -22,6 +22,7 @@ Estos son necesarios para la seguridad y la auditoría.
     collectedDataPosition: `    \u2022 Su posición geográfica.`,
     collectedDataFingerTapping: `    \u2022 Los tiempos en los que tocas la pantalla durante la tarea de tocar con el dedo.`,
     collectedDataTUGT: `    \u2022 La aceleración y la orientación del teléfono y los pasos recorridos durante la prueba de levantarse y avanzar.`,
+    collectedDataHoldPhone: `    \u2022 La aceleración y orientación del teléfono durante la tarea Sostener el teléfono.`,
     collectedDataReason: `Estos datos son necesarios para cumplir con los objetivos de la investigación. [ADD REASONS FOR WHY THESE DATA ARE NEEDED IN THE SPECIFIC STUDY]`,
     storage: `¿Dónde se almacenarán mis datos?
 Todos estos datos se almacenarán en el servidor de Mobistudy, gestionado por la Universidad de Malmö en Suecia. Su teléfono solo conservará su perfil y datos sobre los estudios en los que está participando.
@@ -58,7 +59,8 @@ Los registros técnicos se eliminarán después de 1 año de su producción.
     taskItemPeakFlow: 'Acepto realizar una prueba de flujo espiratorio máximo, {scheduling}',
     taskItemPosition: 'Acepto enviar mi posición geográfica, {scheduling}',
     taskItemFingerTapping: 'Acepto realizar la tarea de tocar la pantalla con el dedo, {scheduling}',
-    taskItemTUGT: 'Acepto realizar la prueba de levantarse y avanzar, {scheduling}'
+    taskItemTUGT: 'Acepto realizar la prueba de levantarse y avanzar, {scheduling}',
+    taskItemHoldPhone: 'Acepto realizar la tarea Retener el teléfono, {scheduling}'
   },
   scheduling: {
     notDefined: 'Aún no definido',

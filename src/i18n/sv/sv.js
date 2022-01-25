@@ -22,6 +22,7 @@ Denna information är nödvändig för säkerhets- och granskningssyften.
     collectedDataPosition: `    \u2022 Din geografiska position.`,
     collectedDataFingerTapping: `    \u2022 Tiden du trycker på skärmen under fingeravtryckningsuppgiften.`,
     collectedDataTUGT: `    \u2022 Telefonens acceleration och orientering och steg som du gick under testet Timed up and go.`,
+    collectedDataHoldPhone: `    \u2022 Telefonens acceleration och orientering under Håll telefonens uppgift.`,
     collectedDataReason: ` Den insamlade datan är nödvändig för att uppnå forskningssyftet. [LÄGG TILL ANLEDNINGEN FÖR INSAMLINGEN AV SPECIFIKT DEN HÄR DATAN]`,
     storage: `Var kommer min data att lagras?
 All data kommer lagras på Mobistudys egen server, vilken hanteras av Malmö Universitet i Sverige. Din telefon lagrar enbart din profil samt data om deltagande vilka studier du deltar i.
@@ -58,7 +59,8 @@ Teknisk data (loggar) kommer att tas bort 1 år efter de producerats.
     taskItemPeakFlow: 'Jag godkänner att utföra en  Smart Peak Flow Meter, {scheduling}',
     taskItemPosition: 'Jag accepterar att skicka min plats, {scheduling}',
     taskItemFingerTapping: 'Jag godkänner att utföra en fingeravtryckningsuppgiften, {scheduling}',
-    taskItemTUGT: 'Jag godkänner att utföra ett Timed up and Go test, {scheduling}'
+    taskItemTUGT: 'Jag godkänner att utföra ett Timed up and Go test, {scheduling}',
+    taskItemHoldPhone: 'Jag samtycker till att utföra uppgiften Håll telefonen, {scheduling}'
   },
   scheduling: {
     notDefined: 'Icke ännu definierad',

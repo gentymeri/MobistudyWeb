@@ -93,7 +93,6 @@
                 <q-item-label>Finger tapping</q-item-label>
               </q-item-section>
             </q-item>
-
             <q-item
               clickable
               v-close-popup
@@ -101,6 +100,15 @@
             >
               <q-item-section>
                 <q-item-label>Timed up and go test</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item
+              clickable
+              v-close-popup
+              @click.native="addHoldPhoneT()"
+            >
+              <q-item-section>
+                <q-item-label>Hold the phone task</q-item-label>
               </q-item-section>
             </q-item>
 
@@ -155,6 +163,10 @@
           class="text-h5"
           v-if="task.type === 'tugt'"
         >Timed up and go test</div>
+        <div
+          class="text-h5"
+          v-if="task.type === 'holdPhone'"
+        >Hold the phone task</div>
         Task Id: {{task.id}}
       </q-card-section>
       <q-card-section>
@@ -568,6 +580,14 @@ export default {
       this.value.tasks.push({
         id: this.value.tasks.length + 1,
         type: 'tugt',
+        scheduling: defaultScheduling
+      })
+      this.update()
+    },
+    addHoldPhoneT () {
+      this.value.tasks.push({
+        id: this.value.tasks.length + 1,
+        type: 'holdPhone',
         scheduling: defaultScheduling
       })
       this.update()
